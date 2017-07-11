@@ -139,15 +139,25 @@
 				</div>
 				<div class="main-detail">
 					<div style="width:50%">
-						<p>床型</p>
+						<p>类型</p>
 						<p>
-							<?php if($result['bed_type']==0):?>
-                                一张单人床
-                            <?php elseif($result['bed_type']==1):?>
-                                一张双人床
-                            <?php elseif($result['bed_type']==2):?>
-                                两张单人床
-                            <?php endif?>
+							<?php if($result['type']==0):?>
+	                            <span>院子</span>
+	                        <?php elseif($result['type']==1):?>
+	                            <span>窑洞</span>
+	                        <?php elseif($result['type']==2):?>
+	                            <span>木屋</span>
+	                        <?php elseif($result['type']==3):?>
+	                            <span>别墅</span>
+	                        <?php endif?>
+	                         +
+	                        <?php if($result['bed_type']==0):?>
+	                            <span>高级大床房</span>
+	                        <?php elseif($result['bed_type']==1):?>
+	                            <span>标准间</span>
+	                        <?php elseif($result['bed_type']==2):?>
+	                            <span>三人间</span>
+	                        <?php endif?>
 						</p>
 					</div>
 					<div style="width:50%">
@@ -158,19 +168,14 @@
 				</div>
 				<div class="p-list">
 					<ul>
-						<li><span class="half">床型：
+						<li><span class="half">设施：
 							<span class="d-value">
-								<?php if($result['bed_type']==0):?>
-                                一张单人床
-                            <?php elseif($result['bed_type']==1):?>
-                                一张双人床
-                            <?php elseif($result['bed_type']==2):?>
-                                两张单人床
-                            <?php endif?>
+							{$result.facility}
 							</span></span>
 						</li>
 					</ul>
 				</div>
+
 				<a href="javascript:;" class="actIamlink gotomap" data-href="/bj/map/pos/?pos=116.382471,40.08696&amp;house_code=BJCP91853423" title="位置及周边" data-dianji="map_esfxq_/bj/BJCP91853423">
 					<div class="p-list">
 						<h3>房屋详情<span class="icon-go-right"></span></h3>
