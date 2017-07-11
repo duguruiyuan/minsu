@@ -380,10 +380,7 @@
 					<a href="{:U('House/index',array('id'=>$v['id']))}" class="actIamlink" data-href="/bj/ershoufang/BJCP91853423.html" title="美丽新乡村">
 						<img style="width: 100%;height:100%" data-listen="1" alt="美丽新乡村" src="__ROOT__/Uploads/{$v.list_pic}" />
 						<p class="f-title"  title="{$v.name}" style="padding-right:2rem;">{$v.name}</p>
-					</a>
-						<p>
-							<a href="scores?hid={$v.id}">评分：{$v.score}</a>
-						</p>
+						<p>评分：{$v.score}</p>
 						<p>￥{$v.price}</p>
 						<p style="padding-right:2rem;">
 						      <?php if($v['bed_type']==0):?>高级大床房<?php endif?>
@@ -394,7 +391,7 @@
                       		  <?php if($v['type']==2):?>木屋<?php endif?>
                       		  <?php if($v['type']==3):?>别墅<?php endif?>
 						</p>
-
+					</a>
 				</li>
 			</foreach>
 			<?php else:?>
