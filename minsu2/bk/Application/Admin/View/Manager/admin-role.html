@@ -1,0 +1,249 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <title>AdminLTE 2 | Data Tables</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.5 -->
+    <link rel="stylesheet" href="__PUBLIC__/Admin/bootstrap/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Font-Awesome-master/css/font-awesome.min.css"/>
+    <!-- Ionicons -->
+    <!--<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">-->
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/ionicons-master/css/ionicons.min.css"/>
+    <!-- DataTables -->
+    <link rel="stylesheet" href="__PUBLIC__/Admin/plugins/datatables/dataTables.bootstrap.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="__PUBLIC__/Admin/dist/css/AdminLTE.min.css">
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" href="__PUBLIC__/Admin/dist/css/skins/_all-skins.min.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- 其他模板的css文件引入开始 -->
+    <link href="__PUBLIC__/Admin/css/H-ui.min.css" rel="stylesheet" type="text/css" />
+		<link href="__PUBLIC__/Admin/css/H-ui.admin.css" rel="stylesheet" type="text/css" />
+		<link href="__PUBLIC__/Admin/css/style.css" rel="stylesheet" type="text/css" />
+		<link href="__PUBLIC__/Admin/css/iconfont.css" rel="stylesheet" type="text/css" />
+    <!-- 其他模板的css文件引入结束 -->
+    <style type="text/css">
+    	.text-c{
+    		background: #fff;
+    	}
+    </style>
+  </head>
+  <body class="hold-transition skin-blue sidebar-mini">
+    <div class="wrapper">
+
+    <!--引入公共左侧和头部-->
+    <!--左边开始-->
+    <header class="main-header">
+      <!-- Logo -->
+      <a href="{:U('Index/index')}" class="logo">
+        <!-- mini logo for sidebar mini 50x50 pixels -->
+        <span class="logo-mini"><b>A</b>LT</span>
+        <!-- logo for regular state and mobile devices -->
+        <span class="logo-lg"><b>Admin</b>LTE</span>
+      </a>
+      <!-- Header Navbar: style can be found in header.less -->
+      <nav class="navbar navbar-static-top" role="navigation">
+        <!-- Sidebar toggle button-->
+        <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+          <span class="sr-only">Toggle navigation</span>
+        </a>
+        <div class="navbar-custom-menu">
+          <ul class="nav navbar-nav">
+            <li class="dropdown user user-menu">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <img src="__PUBLIC__/Admin/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+                <span class="hidden-xs">{$_SESSION['aname']}</span>
+              </a>
+              <ul class="dropdown-menu">
+                <!-- User image -->
+                <li class="user-header">
+                  <img src="__PUBLIC__/Admin/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                  <p>
+                    <small>管理员</small>
+                  </p>
+                </li>
+                <li class="user-footer">
+                  <div class="pull-right">
+                    <a href="{:U('Login/out')}" class="btn btn-default btn-flat">安全退出</a>
+                  </div>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <!-- Left side column. contains the logo and sidebar -->
+    <aside class="main-sidebar">
+      <!-- sidebar: style can be found in sidebar.less -->
+      <section class="sidebar">
+        <!-- Sidebar user panel -->
+        <div class="user-panel">
+          <div class="pull-left image">
+            <img src="__PUBLIC__/Admin/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+          </div>
+          <div class="pull-left info">
+            <p>{$_SESSION['aname']}</p>
+            <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+          </div>
+        </div>
+        <!-- search form -->
+        <form action="#" method="get" class="sidebar-form">
+          <div class="input-group">
+            <input type="text" name="q" class="form-control" placeholder="Search...">
+            <span class="input-group-btn">
+                        <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
+                      </span>
+          </div>
+        </form>
+        <!-- /.search form -->
+        <!-- sidebar menu: : style can be found in sidebar.less -->
+        <ul class="sidebar-menu">
+          <!--菜单栏循环开始-->
+          <foreach name="auth_infoA" item="v">
+            <li class="treeview">
+              <a href="#">
+                <i class="fa {$v.auth_icon}"></i>
+                <span>{$v.auth_name}</span>
+              </a>
+              <ul class="treeview-menu">
+
+                <foreach name="auth_infoB" item="vv">
+                  <if condition="$vv['auth_pid'] eq $v['auth_id']">
+                    <li><a href="__MODULE__/{$vv.auth_c}/{$vv.auth_a}"><i class="fa fa-circle-o"></i>{$vv.auth_name}</a></li>
+                  </if>
+                </foreach>
+
+              </ul>
+            </li>
+          </foreach>
+          <!--菜单栏循环结束-->
+        </ul>
+      </section>
+      <!-- /.sidebar -->
+    </aside>
+    <!--左边结束-->
+
+    <!-- 右侧部分开始 -->
+    <div class="content-wrapper" style="background: #FDF5E1;">
+      <section class="content-header">
+				<div class="pd-20">
+					<div class="cl pd-5 bg-1 bk-gray">
+						<span class="l">
+							<a class="btn btn-primary radius" href="{:U('Manager/roleadd')}"> <i class="Hui-iconfont">&#xe600;</i>
+								添加角色
+							</a>
+						</span>
+						<span class="r">
+							共有数据： <strong>{$number}</strong>
+							条
+						</span>
+					</div>
+					<table class="table table-border table-bordered table-hover table-bg">
+						<thead>
+							<tr>
+								<th scope="col" colspan="6">角色管理</th>
+							</tr>
+							<tr class="text-c">
+								<th width="40">ID</th>
+								<th width="200">角色名</th>
+								<th width="300">描述</th>
+								<th width="70">操作</th>
+							</tr>
+						</thead>
+						<tbody>
+							<foreach  name="info" item="v" key="k">
+									<tr class="text-c">
+										<td>{$v.role_id}</td>
+										<td>{$v.role_name}</td>
+										<td>{$v.describe}</td>
+										<td class="f-14">
+											<a title="编辑" href="{:U('Manager/roleedit',array('role_id'=>
+												$v['role_id']))}" style="text-decoration:none"> <i class="Hui-iconfont">&#xe6df;</i>
+											</a>
+											<a title="删除" id="{$v.role_id}" href="javascript:;" onclick="admin_role_del(this,'{$v.role_id}')" class="ml-5" style="text-decoration:none">
+												<i class="Hui-iconfont">&#xe6e2;</i>
+											</a>
+										</td>
+									</tr>
+							</foreach>
+						</tbody>
+					</table>
+				</div>
+      </section>
+    </div>
+    <!-- 右侧部分结束 -->
+
+  </div>
+  <!-- 整个结束 -->
+
+
+  <!-- jQuery 2.1.4 -->
+  <script src="__PUBLIC__/Admin/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+  <!-- Bootstrap 3.3.5 -->
+  <script src="__PUBLIC__/Admin/bootstrap/js/bootstrap.min.js"></script>
+  <!-- DataTables -->
+  <script src="__PUBLIC__/Admin/plugins/datatables/jquery.dataTables.min.js"></script>
+  <script src="__PUBLIC__/Admin/plugins/datatables/dataTables.bootstrap.min.js"></script>
+  <!-- SlimScroll -->
+  <script src="__PUBLIC__/Admin/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+  <!-- FastClick -->
+  <script src="__PUBLIC__/Admin/plugins/fastclick/fastclick.min.js"></script>
+  <!-- AdminLTE App -->
+  <script src="__PUBLIC__/Admin/dist/js/app.min.js"></script>
+  <!-- AdminLTE for demo purposes -->
+  <script src="__PUBLIC__/Admin/dist/js/demo.js"></script>
+  <!-- page script -->
+
+  <!-- 其他模板的js文件引入的部份開始 -->
+  <script type="text/javascript" src="__PUBLIC__/Admin/js/layer/layer.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/Admin/js/WdatePicker.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/Admin/js/H-ui.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/Admin/js/H-ui.admin.js"></script>
+  <!-- 其他模板的js文件引入的部份結束 -->
+	<script type="text/javascript">
+/*管理员-角色-添加*/
+function admin_role_add(title,url,w,h){
+  layer_show(title,url,w,h);
+}
+/*管理员-角色-编辑*/
+function admin_role_edit(title,url,id,w,h){
+  layer_show(title,url,w,h);
+}
+/*管理员-角色-删除*/
+function admin_role_del(obj,id){
+  var ids = {role_id:id};
+  layer.confirm('角色删除须谨慎，确认要删除吗？',function(index){
+    //此处请求后台程序，下方是成功后的前台处理……
+    $.ajax({
+        url: "{:U('Manager/deldata')}",
+        type: 'post',
+        data: ids,
+        dataType: 'json',
+        success:function(data) {
+          if(data.status == 1){
+            $(obj).parents("tr").remove();
+        layer.msg('已删除!',{icon:1,time:1000});
+          }else{
+            alert('删除失败');
+          }
+        }
+    });
+
+  });
+}
+</script>
+  </body>
+</html>

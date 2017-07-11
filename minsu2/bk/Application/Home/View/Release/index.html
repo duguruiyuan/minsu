@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+		<meta content="fullscreen=yes,preventMove=yes" name="ML-Config">
+
+		<meta content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" name="viewport">
+
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="yes" name="apple-touch-fullscreen">
+		<meta content="telephone=no,email=no" name="format-detection">
+		<link href="http://m.lianjia.com/favicon.ico" rel="apple-touch-icon-precomposed">
+		<link href="http://m.lianjia.com/favicon.ico" rel="Bookmark">
+		<link href="http://m.lianjia.com/favicon.ico" rel="apple-touch-icon">
+
+		<title>美丽新乡村-个人信息</title>
+		
+
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/release/index.css" media="all">
+	</head>
+
+	<body>
+
+		<div class="lj-pages">
+
+			<section style="" class="d-page" page-model="yezhu/yezhu">
+				<div class="yezhu-wrapper">
+					<div class="list">
+						<div class="step stepon steps" data-page="step1">
+							<div class="header"  style="z-index: 0;"><span class="tips"><a href="javascript:window.history.back();"><i></i>返回</a></span><span class="title">免费发布房源</span></div>
+							<form action="{:U('Release/addHouse')}" method="post">
+							<ul class="stepChange" style="z-index: 99;position: relative;">
+								<li class="change">
+									<div>请选择省份：</div><i></i>
+									<select style="width: 30%;height: 1.8rem;border: none;border:1px solid #ccc;" name="province" class="form-control" id="s_province"  ></select>
+								</li>
+
+								<li class="change">
+									<div>请选择城市：</div><i></i>
+									<select style="width: 30%;height: 1.8rem;border: none;border:1px solid #ccc;" name="city" class="form-control" id="s_city" ></select>
+								</li>
+
+								<li class="change">
+									<div>请选择区：</div><i></i>
+									<select style="width: 30%;height: 1.8rem;border: none;border:1px solid #ccc;" name="county" class="form-control" id="s_county" ></select>
+								</li>
+
+								<li class="change">
+									<div>请输入详细地址：</div><i></i>
+									<input style="width:50%;height: 1.8rem;border: none;border:1px solid #ccc;" type="text" name="address" class="form-control" placeholder="详细街道"  oninvalid="setCustomValidity(详细街道)" required="required">
+								</li>
+									
+								<li class="change">
+									<div>联系人姓名：</div><i></i>
+									<input style="width:40%;height: 1.8rem;border: none;border:1px solid #ccc;" type="text" name="cont_name" class="form-control" placeholder="联系人姓名"  oninvalid="setCustomValidity(联系人姓名)" required="required" value="">
+								</li>
+
+								<li class="change">
+									<div>联系方式：</div><i></i>
+									<input style="width:40%;height: 1.8rem;border: none;border:1px solid #ccc;" type="text" name="contact" class="form-control" placeholder="联系方式"  oninvalid="setCustomValidity(联系方式)" required="required" value="">
+								</li>
+							</ul>
+							<div class="step1 next steps" ><button style="border: none;background: #39AC6A;color: #FFFFFF;padding: 0.5rem 7rem;position: relative;z-index: 99;" type="submit">下一步</button></div>
+							<div class="pic"><img src="__PUBLIC__/Home/release/pic.png"></div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+
+
+		<!-- 其他模板的js文件引入的部份開始 -->
+		<script src="__PUBLIC__/Admin/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+		<script type="text/javascript" src="__PUBLIC__/Admin/area.js"></script>
+		<script type="text/javascript">_init_area();</script>
+		<!-- 其他模板的js文件引入的部份結束 -->
+		<!-- 其他模板的js文件引入的部份結束 -->
+		<script type="text/javascript">
+		  var Gid  = document.getElementById ;
+		  var showArea = function(){
+		    Gid('show').innerHTML = "<h3>省" + Gid('s_province').value + " - 市" +  
+		    Gid('s_city').value + " - 县/区" + 
+		    Gid('s_county').value + "</h3>"
+		                }
+		  Gid('s_county').setAttribute('onchange','showArea()');
+		</script>
+	</body>
+
+</html>

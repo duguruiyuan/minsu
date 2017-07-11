@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+		<meta content="fullscreen=yes,preventMove=yes" name="ML-Config">
+
+		<meta content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" name="viewport">
+
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="yes" name="apple-touch-fullscreen">
+		<meta content="telephone=no,email=no" name="format-detection">
+
+		<title>美丽新乡村-土地投资留言</title>
+		
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/release/index.css" media="all">
+	</head>
+
+	<body>
+
+		<div class="lj-pages">
+
+			<section style="" class="d-page" page-model="yezhu/yezhu">
+				<div class="yezhu-wrapper">
+					<div class="list">
+						<div class="step stepon steps" data-page="step1">
+							<div class="header"  style="z-index: 0;"><span class="tips" ><a  href="javascript:window.history.back();"><i></i>返回</a></span><span class="title">土地投资留言</span></div>
+
+							<ul class="stepChange" style="padding-top: 1.25rem;margin-top: 0px;">
+								<pre style="font-size:0.9rem;">
+请您留下联系方式，会有专人与您取得联系
+
+								</pre>
+
+								
+							</ul>
+							<ul >
+								<li>
+									<input style="width: 70%;height: 2rem;border: 1px solid #ccc;border-radius: 3px;padding: 0 1rem;" class="f-text" name="name" placeholder="您的姓名" validate="notNull" validatename="您的姓名" required="required" type="text">
+								</li>
+								<li>
+									<input style="width: 70%;height: 2rem;border: 1px solid #ccc;border-radius: 3px;padding: 0 1rem;" class="f-text" name="mail" placeholder="您的邮箱" validate="notNull" validatename="您的邮箱" required="required" type="text">
+								</li>
+								<li>
+									<input style="width: 70%;height: 2rem;border: 1px solid #ccc;border-radius: 3px;padding: 0 1rem;" class="f-text" name="phone" placeholder="您的联系方式" validate="notNull" validatename="您的联系方式" required="required" type="text">
+								</li>
+								<li style="height:5rem;">
+									<textarea style="width: 70%;height: 3.5rem;border: 1px solid #ccc;border-radius: 3px;padding: 0.4rem 1rem;margin-top: 0.5rem;font-size: 0.8rem;" class="f-text mess_fun" name="message" placeholder="宝贵建议" validate="notNull" validatename="" required="required" type="text"></textarea>
+								</li>
+
+								<input type="hidden" name="lid" value="{$Think.get.lid}">
+							</ul>
+							<div class="step1 next steps btn_mess" ><button style="border: none;background: #39AC6A;color: #FFFFFF;padding: 0.5rem 7rem;position: relative;z-index: 99;" type="submit">留言</button></div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+
+
+		<!-- 其他模板的js文件引入的部份結束 -->
+		<script src="__PUBLIC__/Admin/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+		<script type="text/javascript" src="__PUBLIC__/Admin/layer/1.9.3/layer.js"></script>
+		<!-- 其他模板的js文件引入的部份結束 -->
+	</body>
+
+	<script type="text/javascript">
+	$(function(){
+		$('.btn_mess').click(function(event) {
+			var name = $('input[name=name]').val();
+			var mail = $('input[name=mail]').val();
+			var phone = $('input[name=phone]').val();
+			var lid = $('input[name=lid]').val();
+			var message = $('.mess_fun').val();
+			
+			if (!name && !phone) {
+				layer.msg('信息不完整', {icon: 2,time: 2000});
+				return false;
+			};
+
+			$.ajax({
+				url: "{:U('Land/ajaxInterested')}",
+				type: 'POST',
+				dataType: 'json',
+				data: {name: name,mail: mail,phone: phone,message: message,lid:lid},
+				success:function(data){
+					if (data.status == 'ok') {
+						layer.msg('留言成功,即将跳转...', {
+							icon: 1,
+							time: 2000 //2秒关闭（如果不配置，默认是3秒）
+						}, function(){
+							window.location.href="{:U('Land/index')}";
+						}); 
+					};
+
+					if (data.status == 'no') {
+						layer.msg('留言失败', {icon: 2}); 
+					};
+				}
+			})
+			
+			
+
+		});
+	})
+
+	</script>
+
+</html>

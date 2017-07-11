@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+		<meta content="fullscreen=yes,preventMove=yes" name="ML-Config">
+
+		<meta content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" name="viewport">
+
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="yes" name="apple-touch-fullscreen">
+		<meta content="telephone=no,email=no" name="format-detection">
+
+		<title>美丽新乡村-众筹报名</title>
+		
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/release/index.css" media="all">
+	</head>
+
+	<body>
+
+		<div class="lj-pages">
+
+			<section style="" class="d-page" page-model="yezhu/yezhu">
+				<div class="yezhu-wrapper">
+					<div class="list">
+						<div class="step stepon steps" data-page="step1">
+							<div class="header"  style="z-index: 0;"><span class="tips" ><a  href="javascript:window.history.back();"><i></i>返回</a></span><span class="title">众筹报名信息</span></div>
+
+							<ul class="stepChange" style="padding-top: 1.25rem;margin-top: 0px;">
+								<pre style="font-size:0.9rem;">
+请您留下联系方式，会有专人与您取得联系
+
+								</pre>
+
+								
+							</ul>
+							<ul >
+								<li>
+									<input style="width: 70%;height: 2rem;border: 1px solid #ccc;border-radius: 3px;padding: 0 1rem;" class="f-text" name="fm_name" placeholder="您的姓名" validate="notNull" validatename="您的姓名" required="required" type="text">
+								</li>
+								<li>
+									<input style="width: 70%;height: 2rem;border: 1px solid #ccc;border-radius: 3px;padding: 0 1rem;" class="f-text" name="fm_mail" placeholder="您的邮箱" validate="notNull" validatename="您的邮箱" required="required" type="text">
+								</li>
+								<li>
+									<input style="width: 70%;height: 2rem;border: 1px solid #ccc;border-radius: 3px;padding: 0 1rem;" class="f-text" name="fm_phone" placeholder="您的联系方式" validate="notNull" validatename="您的联系方式" required="required" type="text">
+								</li>
+								<input type="hidden" name="funid" value="{$Think.get.funid}">
+							</ul>
+							<div class="step1 next steps btn_mess" ><button style="border: none;background: #39AC6A;color: #FFFFFF;padding: 0.5rem 7rem;position: relative;z-index: 99;" type="submit">报名</button></div>
+							</form>
+						</div>
+						
+					</div>
+					
+				</div>
+			</section>
+		</div>
+
+
+		<!-- 其他模板的js文件引入的部份結束 -->
+		<script type="text/javascript" src="__PUBLIC__/Home/index.js"></script>
+		<script type="text/javascript" src="__PUBLIC__/Home/common.js"></script>
+		<script src="__PUBLIC__/Admin/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+		<script type="text/javascript" src="__PUBLIC__/Admin/layer/1.9.3/layer.js"></script>
+		<!-- 其他模板的js文件引入的部份結束 -->
+	</body>
+
+	<script type="text/javascript">
+	$(function(){
+		var oid=getCookie('oid');
+	    if(oid==null) {
+	    	var url ='http://mei.vshijie.cn/minsu/index.php/Home/Weixin/callOpenid?u='+encodeURIComponent(window.location.href);
+			window.location.href=url;
+		}
+		$('.btn_mess').click(function(event) {
+			var name = $('input[name=fm_name]').val();
+			var mail = $('input[name=fm_mail]').val();
+			var phone = $('input[name=fm_phone]').val();
+			var funid = $('input[name=funid]').val();
+			
+			if (!name && !phone) {
+				layer.msg('信息不完整', {icon: 2,time: 2000});
+				return false;
+			};
+
+			$.ajax({
+				url: "{:U('Funding/ajaxSign')}",
+				type: 'POST',
+				dataType: 'json',
+				data: {fm_name: name,fm_mail: mail,fm_phone: phone,funid:funid,openid:oid},
+				success:function(data){
+					if (data.status == 'ok') {
+						layer.msg('报名成功,即将跳转...', {
+							icon: 1,
+							time: 2000 //2秒关闭（如果不配置，默认是3秒）
+						}, function(){
+							window.location.href="{:U('Funding/index')}";
+						}); 
+					};
+
+					if (data.status == 'no') {
+						layer.msg('报名失败', {icon: 2}); 
+					};
+				}
+			})
+		});
+	})
+	</script>
+</html>

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+		<meta content="fullscreen=yes,preventMove=yes" name="ML-Config">
+
+		<meta content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" name="viewport">
+
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="yes" name="apple-touch-fullscreen">
+		<meta content="telephone=no,email=no" name="format-detection">
+		<link href="http://m.lianjia.com/favicon.ico" rel="apple-touch-icon-precomposed">
+		<link href="http://m.lianjia.com/favicon.ico" rel="Bookmark">
+		<link href="http://m.lianjia.com/favicon.ico" rel="apple-touch-icon">
+
+		<title>美丽新乡村-房屋列表</title>
+
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/search/index.css" media="all">
+	</head>
+
+	<body>
+<div style="padding:0.5rem 0;padding-left: 0.8rem;font-size: 14px;background: #c3AB64;"><a href="javascript:window.history.back();" style="color: #fff;">&lt; 返回</a></div>
+		<div class="lj-pages">
+
+		<div class="bianhao">
+			<input style="border:1px solid #ccc;width:80%;height: 2rem;padding-left: 1rem;" placeholder='请输入房间编号' type="text" name="house_num" id="">
+			<a id="house_num" style="display:inline-block;font-size: 12px;border:1px solid #ccc;padding:0.4rem;" href="#">确定</a>
+		</div>
+
+
+		<div class="click_up">
+			<div class="banner">
+				<span>省份筛选:</span>
+				<ul>
+					<foreach name='province' item='v' key='k'>
+					<li  data="{$v.provincename}" class=""><a href="{:U('Search/city',array('id'=>$v['provinceid']))}">{$v.provincename}</a></li>
+					</foreach>
+				</ul>
+			</div>
+		</div>
+
+			
+			<section style="" class="d-page" page-model="list/ershoufang/ershoufang">
+				<div class="list-search">
+					<p>
+						<a href="#!/search" data-dianji="search_esflb_/bj">
+							<input value="" placeholder="请输入关键词" name="search_o"  class="searc-input" type="text"><span class="searc-btn"><span class="icon-search-b"></span></span>
+						</a>
+					</p>
+				</div>
+				<div class="search-container">
+					<div class="search-type" node-type="panelArea" style="position: relative">
+						<div class="type-list clear" >
+							<a href="#" style="width:33%" class="actPanel quyu" actdata="name=area" defaultname="{$_SESSION['city']}">
+								<span title="{$_SESSION['city']}" class="show-name">我附近</span><span class="icon-down"></span>
+							</a>
+							<a href="#" class="actPanel num_search" style="width:33%" actdata="name=type" defaultname="房型">
+								<span title="更多" class="show-name">价格</span><span class="icon-down"></span>
+							</a>
+							<a href="#" class="actPanel num_search" style="width:34%" actdata="name=type" defaultname="房型">
+								<span title="更多" class="show-name">区域</span><span class="icon-down"></span>
+							</a>
+						</div>
+						
+						<div class="panel more" searchparam="s,o,as,ae,t" style="display: none;">
+							<div class="search-panel search-more">
+								
+								<div class="panel-cell more2 more-tag2" node-type="houseId" style="display: none;">
+									<ul class="house-code">
+										<li>
+											<input value="" placeholder="请输入房源编号">
+										</li>
+									</ul>
+								</div>
+							</div>
+							<p class="searc-sub"><a href="#" class="actDoneSetArgs">确定</a></p>
+						</div>
+				
+						
+					</div>
+				</div>
+
+				<div class="masker"></div>
+				<div class="p-list ershoufang-list">
+					<ul class="fang-list" node-type="list">
+					<?php if($data):?>
+					<foreach name='data' item='v' key='k'>
+						<li>
+							<a href="__ROOT__/index.php/Home/Pay/house?hid={$v.hid}" class="actIamlink" data-href="/bj/ershoufang/BJDC91833047.html"><img data-listen="1" class="lazyload" src="__ROOT__/Uploads/{$v.list_pic}">
+								<p class="f-title" title="{$v.name}">{$v.name}
+									<?php if($v['tag']!=''):?>
+										<input type="button"  value="{$v.tag}" style="border-radius: 2px;align-items: flex-start;text-align: center;color: #00AB64;box-sizing: border-box;padding: 2px 6px 3px;border-width: 1px;border-style: solid;border-color: #00AB64;border-image: none;background-color: #ffffff;"/>
+									<?php endif?>
+								</p>
+								<p class="f-area">{$v.house_num}间 {$v.area} </p>
+								<p class="f-xiaoqu">{$v.address_fine}</p>
+								<p class="f-xiaoqu">浏览次数：{$v.house_click}</p>
+								<p class="f-xiaoqu" style="position: relative"><span class="f-price" style="font-size: 14px;position: absolute;right: 0px; top: -1rem;">{$v.price}</span></p>
+							</a>
+						</li>
+					</foreach>
+					<?php else:?>
+						<li>
+							<a href="javascript:;">您搜索的区域暂未开通美丽新乡村相关服务</a>
+							<a href="{:U('Index/message')}">点击我进行 留言申请该区域开通</a>
+						</li>
+					<?php endif?>
+					</ul>
+
+					<div id="uploadMore" style="text-align:center;font-size: 14px;color:rgb(98, 98, 98);padding:1rem 0;">点击加载更多</div>
+
+
+				</div>
+			</section>
+		</div>
+
+		<style type="text/css">
+			.click_up{
+				display: none;
+				position: relative;
+				z-index: 10000;
+				padding: 1rem 1rem;
+				background: #fff;
+				width: 100%;
+			}
+			.banner span{
+				font-size: 16px;
+				margin-bottom: 0.6rem;
+				display: inline-block;
+			}
+			.banner li{
+				float: left;
+				border: 1px solid #ccc;
+				font-size: 14px; 
+				padding: 0.7rem;
+				margin-bottom: 0.3rem;
+				margin-right: 0.3rem;
+			}
+			.banner .cur_t{
+				border: 1px solid red;
+			}
+			.d-page{
+				/*display: none;*/
+			}
+
+			.bianhao{
+				display: none;
+				position: relative;
+				z-index: 10000;
+				padding: 1rem 1rem;
+				background: #fff;
+				width: 100%;
+			}
+		</style>
+		
+	</body>
+  	<script src="__PUBLIC__/Admin/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+  	<script type="text/javascript" src="__PUBLIC__/Home/index.js"></script>
+
+	<script type="text/javascript">
+	$(function(){
+		$('.searc-btn').click(function(event) {
+			var search = $('input[name=search_o]').val();
+			$.ajax({
+				url: "{:U('Search/ajaxSearch')}",
+				type: 'post',
+				dataType: 'json',
+				data: {search: search},
+				success:function(data){
+					var content = '';
+					$.each(data, function(k, v) {
+						 content +='<li>'+
+							'<a href="'+v.url_lo+'" class="'+
+							'actIamlink"data-href="">'+
+							'<img datalisten="1" class="lazyload"' + 
+							'src="__ROOT__/Uploads/'+v.list_pic+'">'+
+								'<p class="f-title" title="'+v.name+'">'+v.name+'</p>'+
+								'<p class="f-area">'+v.house_num+'间</p>'+
+								'<p class="f-area">'+v.area+'</p>'+
+								'<p class="f-xiaoqu">'+v.address_fine+'</p>'+
+								'<p class="f-xiaoqu">浏览次数'+v.house_click+'</p>'+
+								'<p class="f-xiaoqu" style="position: relative"><span class="f-price" style="font-size: 14px;position: absolute;right: 0px; top: -1rem;">'+v.price+'</span></p>';
+					});
+
+					$('.fang-list').html(content);
+				}
+			});
+			
+		});
+	});
+	</script>
+
+	<script type="text/javascript">
+	$(function(){
+		$('.quyu').click(function(event) {
+			$('.d-page').css({display:'none'});
+			$('.click_up').css({display:'block'});
+		});
+
+		$('.num_search').click(function(event) {
+			// $('.d-page').css({display:'none'});
+			$('.bianhao').css({display:'block'});
+		});
+
+		$('#house_num').click(function(event) {
+			var num = $('input[name=house_num]').val();
+			$.ajax({
+				url: "{:U('Search/ajaxSearch')}",
+				type: 'post',
+				dataType: 'json',
+				data: {num: num},
+				success:function(data){
+					var content = '';
+					$.each(data, function(k, v) {
+						 content +='<li>'+
+							'<a href="'+v.url_lo+'" class="'+
+							'actIamlink"data-href="">'+
+							'<img datalisten="1" class="lazyload"' + 
+							'src="__ROOT__/Uploads/'+v.list_pic+'">'+
+								'<p class="f-title" title="'+v.name+'">'+v.name+'</p>'+
+								'<p class="f-area">'+v.house_num+'间</p>'+
+								'<p class="f-area">'+v.area+'</p>'+
+								'<p class="f-xiaoqu">'+v.address_fine+'</p>'+
+								'<p class="f-xiaoqu">浏览次数'+v.house_click+'</p>'+
+								'<p class="f-xiaoqu" style="position: relative"><span class="f-price" style="font-size: 14px;position: absolute;right: 0px; top: -1rem;">'+v.price+'</span></p>';
+					});
+
+					$('.fang-list').html(content);
+					$('.bianhao').css({display:'none'});
+				}
+			});
+		});
+
+
+		var page = 1;
+		$('#uploadMore').click(function(event) {
+			page = page + 1;
+
+			$(this).html('加载中...');
+
+			$.ajax({
+				url: "{:U('Search/ajaxUploadRefresh')}",
+				type: 'post',
+				dataType: 'json',
+				data: {page: page},
+				success:function(data){
+
+					var content = '';
+					if (!data.code) {
+						$.each(data, function(k, v) {
+							 content +='<li>'+
+								'<a href="'+v.url_lo+'" class="'+
+								'actIamlink"data-href="">'+
+								'<img datalisten="1" class="lazyload"' + 
+								'src="__ROOT__/Uploads/'+v.list_pic+'">'+
+									'<p class="f-title" title="'+v.name+'">'+v.name+'</p>'+
+									'<p class="f-area">'+v.house_num+'间</p>'+
+									'<p class="f-area">'+v.area+'</p>'+
+									'<p class="f-xiaoqu">'+v.address_fine+'</p>'+
+									'<p class="f-xiaoqu">浏览次数'+v.house_click+'</p>'+
+									'<p class="f-xiaoqu" style="position: relative"><span class="f-price" style="font-size: 14px;position: absolute;right: 0px; top: -1rem;">'+v.price+'</span></p>';
+						});
+
+						$('.fang-list').append(content);
+						$('.bianhao').css({display:'none'});
+						$('#uploadMore').html('点击加载更多');
+					}else{
+						$('#uploadMore').html('暂无更多数据');
+					}
+				}
+			})
+		});
+
+			
+	})
+
+</script>
+	
+</html>

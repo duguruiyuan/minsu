@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+		<meta content="fullscreen=yes,preventMove=yes" name="ML-Config">
+
+		<meta content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" name="viewport">
+
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="yes" name="apple-touch-fullscreen">
+		<meta content="telephone=no,email=no" name="format-detection">
+
+
+		<title>美丽新乡村-{$result.fun_name}</title>
+		
+
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/details/index.css" media="all">
+		<link rel="stylesheet" href="__PUBLIC__/Home/dist/css/swiper.min.css">
+	</head>
+
+	    <style>
+    body {
+        background: #eee;
+        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        color:#000;
+        margin: 0;
+        padding: 0;
+    }
+    .swiper-container {
+        width: 100%;
+        height: 16rem;
+        margin: auto;
+    }
+    .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+        
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+    }
+    .mask-way {
+		display: none;
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: rgba(0,0,0, .85);
+		z-index: 2;
+	}
+	#share-way:before {
+		content: "";
+		display: block;
+		position: absolute;
+		right: 30px;
+		top: 10px;
+		width: 235px;
+		height: 98px;
+		background: url('http://mei.vshijie.cn/minsu/Public/Home/home/shareto.png') no-repeat center;
+		background-size: 235px; 98px;
+	}
+	
+	.btn{
+		display: block;
+		width: 90%;
+		height: 2rem;
+		line-height: 2rem;
+		text-align: center;
+		margin: 0 auto;
+		margin-bottom: 4rem;
+		color: #fff;
+		background: rgb(57, 172, 106);
+	}
+		
+	.graybtn{
+		display: block;
+		width: 90%;
+		height: 2rem;
+		line-height: 2rem;
+		text-align: center;
+		margin: 0 auto;
+		margin-bottom: 4rem;
+		color: #333;
+		background: #eee;
+	}
+    </style>
+
+	<body>
+	<div id="share-way" class="mask-way"></div>
+	<div style="padding:0.5rem 0;padding-left: 0.8rem;font-size: 14px;background: #00AB64;" onclick="return_prepage()" ><a href="javascript:return_prepage();" style="color: #fff;">&lt; 返回</a></div>
+		<div class="lj-pages">
+
+			<section style="display: none; z-index: 0;" class="d-page" page-model="index/index">
+				<div class="section-wrapper">
+				</div>
+			</section>
+				<div class="page-padding">
+					<div class="detai-box">
+						<!-- <foreach name='houseImg' item='v' key='k'>
+							<li style="width: 12.5%;"><img width="600" height="450" class="actShowImage" src="__ROOT__/Uploads/{$v.pic}"></li>
+						</foreach> -->
+						<div class="swiper-container">
+						    <div class="swiper-wrapper">
+						    <?php if($img):?>
+						    	<foreach name='img' item='v' key='k'>
+						        	<div class="swiper-slide"><img class="actShowImage" src="__ROOT__/Uploads/{$v}"></div>
+						        </foreach>
+						    <?php else:?>
+						    	<div class="swiper-slide"><img class="actShowImage" src="__PUBLIC__/Home/home/lizi.png"></div>
+						    <?php endif?>
+						    </div>
+						</div>
+						<!-- <span class="pic-count"><span class="count-cur"></span>{$total}</span> -->
+					</div>
+					<div class="like-box ershoufang-like" is_followed="0">
+						<h1 class="title" title="{$result.fun_name}" style="width:100%">{$result.fun_name}</h1></div>
+						<input type="hidden" name="login_uid" value="{$Think.session.login_id}">
+				<div class="p-list">
+					<ul>
+						<li><span class="left">感兴趣人数：</span>
+							<p class="d-value">{$result.fun_interested}</p>
+						</li>
+					</ul>
+				</div>
+					<div class="p-list detai-list">
+						<h3>房屋详情<span class="icon-go-right"></span></h3>
+						<ul class="map-ul">
+							<li>
+								<div class="detail-map">{$result.fun_details}</div>
+							</li>
+						</ul>
+					</div>
+				</a>
+				<?php if($isweixin):?>
+					<a class="btn" href="http://mei.vshijie.cn/minsu/index.php/Home/Pay/fund_sign?funid={$result.funid}">我要报名</a>
+				<?php else:?>
+					<a class="graybtn" href="javascript:void(0)">您可以登录微信进行预定</a>
+				<?php endif?>
+				
+				<?php if($ad):?>
+					<div >
+						<center>广告</center>
+						<hr style="border:1px dashed #000; height:1px" />
+						<center>
+						<a href="{$ad.link}"><img src="__ROOT__/Uploads/{$ad.pic}" style="max-width: 95%;"/></a>
+						</center>
+						<br/>
+						<br/>
+						<br/>
+						<br/>
+						<br/>
+					</div>
+				<?php endif?>
+				<div class="contant">
+					<?php if($result['contact_charge']==0 || $unlock_contact==1):?>
+					<div class="user-image">
+						<a data-href="/bj/jingjiren/1000000020145400/" href=""><img data-listen="1" class="lazyload" src="__PUBLIC__/Home/details/20145400_1440660444.jpg.120x160.jpg"></a>
+					</div>
+					<p>{$result.fun_person}</p>
+					<p>{$result.fun_phone}</p>
+					<div class="c-opera"><a href="tel:{$result.fun_phone}" class="tel" onclick="try{$ULOG.send('10012',{'pid':'lianjiamweb','key':window.location.href})}catch(e){}"><span class="icon-go-tel"></span><p>致电</p></a><a href="sms:{$result.fun_phone}" onclick="try{$ULOG.send('10013',{'pid':'lianjiamweb','key':window.location.href})}catch(e){}"
+						class="msg nodeTypeSendSMS"><span class="icon-go-msg"></span><p>短信</p></a></div>
+					<?php else:?>
+					<div style="text-align: center;margin-top: 8px;">
+						<input type="button" id="payBtn" value="支付1元" style="border-radius: 2px;align-items: flex-start;text-align: center;color: #ffffff;box-sizing: border-box;padding: 2px 6px 3px;border-width: 1px;border-style: solid;border-color: #00AB64;border-image: none;background-color: #00AB64;"/>
+						<font color="#333333">查看联系方式或者</font>
+						<input type="button" id="timelineBtn" value="转发朋友圈" style="border-radius: 2px;align-items: flex-start;text-align: center;color: #ffffff;box-sizing: border-box;padding: 2px 6px 3px;border-width: 1px;border-style: solid;border-color: #00AB64;border-image: none;background-color: #00AB64;"/>
+						<font color="#333333">解锁信息</font>
+					</div>
+					<?php endif?>
+				</div>
+				
+		</div>
+		</section>
+		</div>
+
+		<script type="text/javascript" src="__PUBLIC__/Home/index.js"></script>
+		<script type="text/javascript" src="__PUBLIC__/Home/common.js"></script>
+		<script src="__PUBLIC__/Admin/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+		<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+		<script src="__PUBLIC__/Home/dist/js/swiper.min.js"></script>
+		 <script>
+			var swiper = new Swiper('.swiper-container');
+		</script>
+		
+
+		<script type="text/javascript">
+			 $.ajax({
+				url: "{:U('Funding/ajaxAddNum')}",
+				type: 'GET',
+				data: {funid:{$result.funid}}
+			});
+			
+(function($) {
+	var oid=getCookie('oid');
+    if(oid==null) {
+    	var url ='http://mei.vshijie.cn/minsu/index.php/Home/Weixin/callOpenid?u='+encodeURIComponent(window.location.href);
+		window.location.href=url;
+		return;
+	}
+	if(navigator.userAgent.toLowerCase().indexOf("micromessenger") != -1 && {$result['contact_charge']}==1) {
+		$.ajax({
+			url: "http://mei.vshijie.cn/minsu/index.php/Home/Weixin/ajaxConfig",
+			type: 'POST',
+			dataType: 'json',
+			data: {u: window.location.href},
+			success:function(data){
+				wx.config({
+					debug: false,
+					appId: data.appId, // 必填，公众号的唯一标识
+				    timestamp: data.timestamp, // 必填，生成签名的时间戳
+				    nonceStr: data.nonceStr, // 必填，生成签名的随机串
+				    signature: data.signature,// 必填，签名，见附录1
+					jsApiList: [
+						"checkJsApi",
+						"onMenuShareTimeline",
+						"showMenuItems",
+						"hideOptionMenu",
+						"closeWindow",
+						"chooseCard",
+						"chooseWXPay"
+					]
+				});
+			}
+		});
+		
+		// wx ready event.
+		wx.ready(function () {
+			wx.onMenuShareTimeline({
+					    title: '美丽新乡村好房等你来', // 分享标题
+					    link: window.location.href, // 分享链接
+					    imgUrl: 'http://mei.vshijie.cn/minsu/Public/Home/home/lizi.png', // 分享图标
+					    success: function () { 
+					       var url ='http://mei.vshijie.cn/minsu/index.php/Home/Weixin/ajaxTimelineUnlock?u='
+					       +encodeURIComponent(window.location.href)+'&openid='+oid+'&hid='+{$result.funid}+'&business=1';
+							window.location.href=url;
+					    },
+					    cancel: function () { 
+					        // 用户取消分享后执行的回调函数
+					    }
+					});
+		});
+	}
+	var obj = null;
+	
+	if($('#payBtn')) {
+		if(navigator.userAgent.toLowerCase().indexOf("micromessenger") != -1 && {$result['contact_charge']}==1) {
+		   $.ajax({
+				url: "http://mei.vshijie.cn/minsu/index.php/Home/Weixin/ajaxPayConfig",
+				type: 'POST',
+				dataType: 'json',
+				data: {openid:oid,hid:{$result.funid},business:1},
+				success:function(data){
+					obj=eval('(' + data + ')');
+				}
+			});
+		}
+		$('#payBtn').click(function(){
+			if(obj ==null) {
+				if(navigator.userAgent.toLowerCase().indexOf("micromessenger") == -1) {
+					alert('请在微信中打开');
+				} else {
+					alert('正在初始化，请稍后重试');				
+				}
+			} else if(obj.status==1) {
+				wx.chooseWXPay({
+				    timestamp: obj.timeStamp, // 支付签名时间戳，注意微信jssdk中的所有使用timestamp字段均为小写。但最新版的支付后台生成签名使用的timeStamp字段名需大写其中的S字符
+				    nonceStr: obj.nonceStr, // 支付签名随机串，不长于 32 位
+				    package: obj.package, // 统一支付接口返回的prepay_id参数值，提交格式如：prepay_id=***）
+				    signType: obj.signType, // 签名方式，默认为'SHA1'，使用新版支付需传入'MD5'
+				    paySign: obj.paySign, // 支付签名
+				    success: function (res) {
+				         var url ='http://mei.vshijie.cn/minsu/index.php/Home/Weixin/ajaxPayUnlock?u='
+					       +encodeURIComponent(window.location.href)+'&openid='+oid+'&hid='+{$result.funid}+'&business=1&';
+							window.location.href=url;
+				    }
+				});
+			}else {
+				alert('参数错误');
+			}
+		});
+		
+		$('#timelineBtn').click(function(){
+			if(navigator.userAgent.toLowerCase().indexOf("micromessenger") == -1) {
+				alert('请在微信中打开');
+			} else {
+				$("#share-way").show();
+			}
+		});
+	}
+})(jQuery);
+		</script>
+
+	</body>
+
+</html>

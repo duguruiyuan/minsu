@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="applicable-device" content="mobile">
+
+		<meta content="fullscreen=yes,preventMove=yes" name="ML-Config">
+
+		<meta content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" name="viewport">
+
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="yes" name="apple-touch-fullscreen">
+		<meta content="telephone=no,email=no" name="format-detection">
+		<title>我的乡居列表</title>
+
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/agent/index.css" media="all">
+	</head>
+	<body>
+		<div class="lj-pages">
+		<div class="header"><span class="tips" style='position: absolute;z-index: 1000;'>
+		<a href="javascript:window.history.back();" style="margin-left: 1rem;"><i>&lt; </i>返回</a></span><span class="title" style="margin-left: 40%">房屋列表</span></div>
+			<section  style="" class="d-page" >
+				<div class="search-container jingjiren-search">
+				</div>
+				
+			<div class="p-list ershoufang-list jingjiren-list">
+				<ul class="fang-list" node-type="list">
+				<foreach name='data' item='v' key='k'>
+					<li>
+						<a href="{:U('editHouse',array('id'=>$v['id']))}"><img data-listen="1" class="lazyload" src="__ROOT__/Uploads/{$v.list_pic}">
+							<p class="f-title">{$v['name']}</p>
+							<p class="f-area">￥{$v.price}</p>
+							<p class="f-xiaoqu">联系人：<span class="jjr-hl">{$v['cont_name']} / {$v['contact']}</span></p>
+							<p class="f-area">审核状态：
+								<?php if($v['status'] == 0):?>
+									未审核
+								<?php elseif($v['status'] == 1):?>
+									审核中
+								<?php elseif($v['status'] == 2):?>
+									审核通过
+								<?php elseif($v['status'] == 3):?>
+									审核未通过<br>
+									<span style='color:red;margin-top:0.5rem;display: inline-block;'>理由:{$v['reason']}</span>
+								<?php endif?>
+							</p>
+						</a>
+						<input type="button" value="删除" class="delete"
+						 onclick="if(confirm('确定删除此房源吗?')) location.href='{:U('delHouse',array('id'=>$v['id']))}'"/>
+					</li>
+					</foreach>
+				</ul>
+			</div>
+	</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+		<meta content="fullscreen=yes,preventMove=yes" name="ML-Config">
+
+		<meta content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" name="viewport">
+
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="yes" name="apple-touch-fullscreen">
+		<meta content="telephone=no,email=no" name="format-detection">
+
+		<title>美丽新乡村-排期不可用</title>
+		
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/release/index.css" media="all">
+		<link rel="stylesheet" href="__PUBLIC__/Admin/laydate/need/laydate.css">
+		<style>
+		.text{
+			width: 70%;
+			height: 2rem;
+			border: 1px solid #ccc;
+			border-radius: 3px;
+			padding: 0 1rem;
+		}
+		</style>
+	</head>
+
+	<body>
+		<div class="lj-pages">
+			<section style="" class="d-page" page-model="yezhu/yezhu">
+				<div class="yezhu-wrapper">
+					<div class="list">
+						<div class="step stepon steps" data-page="step1">
+							<div class="header"  style="z-index: 0;"><span class="tips" ><a  href="javascript:window.history.back();"><i></i>返回</a></span><span class="title">排期不可用</span></div>
+
+							<ul class="stepChange" style="padding-top: 1.25rem;margin-top: 0px;">
+									<span style="color:#f30;font-weight:bold;">默认空闲房间是房屋发布的总数，所有房间的所有时段均可预定，可添加排期使其不可用，亦可恢复</span>
+							</ul>
+							<ul >
+							<li>
+								<li>
+                					<select name="hid" class="text" id="hid">
+                						 <foreach name="house" item="v">
+					                      	<option value='{$v.id}'>{$v.name}</option>
+					                      </foreach>
+					                  </select>
+								</li>
+								<li>
+                					<input type="text" name="begin_time" id="beginTime" class="text laydate-icon"  placeholder="开始时间" required="required" value=""/>
+								</li>
+								<li>
+									<input type="text" name="end_time" id="endTime" class="text laydate-icon" placeholder="结束时间" required="required" value="">
+								</li>
+								<li>
+									<input type="number" name="amount" id="amount" class="text" placeholder="影响房间数" required="required" value="">
+								</li>
+							</ul>
+							<center style="margin-top:20px;"><button id="appointBtn" style="border: none;background:#c3AB64;color: #FFFFFF;padding: 0.5rem 7rem;position: relative;z-index: 99;" type="submit">排期不可用</button></center>
+							</form>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+		<!-- 其他模板的js文件引入的部份結束 -->
+		<script type="text/javascript" src="__PUBLIC__/Home/index.js"></script>
+		<script type="text/javascript" src="__PUBLIC__/Home/common.js"></script>
+		<script src="__PUBLIC__/Admin/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+		<script type="text/javascript" src="__PUBLIC__/Admin/layer/1.9.3/layer.js"></script>
+		<!-- 其他模板的js文件引入的部份結束 -->
+	</body>
+  <script type="text/javascript" src='__PUBLIC__/Admin/laydate/laydate.js'></script>
+
+    <script type="text/javascript">
+        laydate.skin('dahong');
+        var start = {
+            elem: '#beginTime',
+            format: 'YYYY-MM-DD',
+            min: laydate.now(), //设定最小日期为当前日期
+            max: '2099-12-31 23:59:59', // 最大日期
+            istime: true, // 是否开启时间选择
+            isclear: true, // 是否显示清空
+            istoday: false, // 是否显示今天
+            issure: true, // 是否显示确认
+            festival: true, // 是否显示节日
+            start:laydate.now(), // 开始日期
+            choose: function(datas){ // 选择好日期的回调
+                end.min = datas; //开始日选好后，重置结束日的最小日期
+                end.start = datas; //将结束日的初始值设定为开始日
+            }
+        };
+        var end = {
+            elem: '#endTime',
+            format: 'YYYY-MM-DD',
+            min: laydate.now(),
+            max: '2099-12-31 23:59:59',
+            istime: true,
+            isclear: true,
+            istoday: false,
+            issure: true,
+            festival: true,
+            choose: function(datas){
+                start.max = datas; //结束日选好后，重置开始日的最大日期
+                calculate();
+            }
+        };
+        laydate.skin('molv');
+        laydate(start);
+        laydate(end);
+	$(function(){
+		$('#appointBtn').click(function(event) {
+			var amount = $('input[name=amount]').val();
+			var begin = $('input[name=begin_time]').val();
+			var end = $('input[name=end_time]').val();
+			var hid = $("#hid option:selected").val();
+			if (!begin ||!end || !amount) {
+				layer.msg('信息不完整', {icon: 2,time: 2000});
+				return false;
+			};
+			$.ajax({
+				url: "http://mei.vshijie.cn/bk/index.php/Home/Owner/addQueue",
+				type: 'POST',
+				dataType: 'json',
+				data: {begin_time:begin,end_time:end,hid:hid,amount:amount},
+				success:function(data){
+					if (data.status == 1) {
+						layer.msg('房间设置不可用成功...', {
+							icon: 1,
+							time: 2000 //2秒关闭（如果不配置，默认是3秒）
+						}, function(){
+							window.location.href="http://mei.vshijie.cn/bk/index.php/Home/Owner/queue";
+						}); 
+					} else {
+						layer.msg('您的排期中已有房间被预定', {icon: 2}); 
+					}
+				},
+				error: function(XMLHttpRequest, textStatus, errorThrown){
+					alert(errorThrown);
+				},
+				fail: function(){
+					alert("fail");
+				}
+			});
+		});
+	})
+	</script>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<meta http-equiv="Access-Control-Allow-Origin" content="*">
+	<style type="text/css">
+		body, html,#allmap {width: 100%;height: 100%;overflow: hidden;margin:0;font-family:"微软雅黑";}</style>
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=D16oOwxxZUeBReAXr5gmRGcAb1qFgVyu"></script>
+	<title>地图定位</title>
+</head>
+<body>
+	<div style="padding:0.5rem 0;padding-left: 0.8rem;font-size: 14px;background: #c3AB64;">
+		<a href="javascript:window.history.back();" style="text-decoration: none;color: #fff;">&lt; 返回</a>
+	</div>
+	<div id="allmap"></div>
+</body>
+</html>
+<script src="__PUBLIC__/Admin/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+<script type="text/javascript">
+	// 百度地图API功能
+	var map = new BMap.Map("allmap");  // 创建Map实例
+	map.centerAndZoom("{$place}",20);      // 初始化地图,用城市名设置地图中心点
+	var geoc = new BMap.Geocoder();    
+
+//	map.addEventListener("click", function(e){        
+//		var pt = e.point;
+//		geoc.getLocation(pt, function(rs){
+//			var addComp = rs.addressComponents;
+//			alert(addComp.province + ", " + addComp.city + ", " + addComp.district + ", " + addComp.street + ", " + addComp.streetNumber);
+//		});
+//	});
+</script>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <title>AdminLTE 2 | Data Tables</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.5 -->
+    <link rel="stylesheet" href="__PUBLIC__/Admin/bootstrap/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Font-Awesome-master/css/font-awesome.min.css"/>
+    <!-- Ionicons -->
+    <!--<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">-->
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/ionicons-master/css/ionicons.min.css"/>
+    <!-- DataTables -->
+    <link rel="stylesheet" href="__PUBLIC__/Admin/plugins/datatables/dataTables.bootstrap.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="__PUBLIC__/Admin/dist/css/AdminLTE.min.css">
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" href="__PUBLIC__/Admin/dist/css/skins/_all-skins.min.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- 其他模板的css文件引入开始 -->
+    <link href="__PUBLIC__/Admin/css/H-ui.min.css" rel="stylesheet" type="text/css" />
+		<link href="__PUBLIC__/Admin/css/H-ui.admin.css" rel="stylesheet" type="text/css" />
+		<link href="__PUBLIC__/Admin/css/style.css" rel="stylesheet" type="text/css" />
+		<link href="__PUBLIC__/Admin/css/iconfont.css" rel="stylesheet" type="text/css" />
+    <!-- 其他模板的css文件引入结束 -->
+    <style type="text/css">
+    	.select-box{
+    		background: #fff;
+    	}
+    </style>
+  </head>
+  <body class="hold-transition skin-blue sidebar-mini">
+    <div class="wrapper">
+
+    <!--引入公共左侧和头部-->
+    <!--左边开始-->
+    <header class="main-header">
+      <!-- Logo -->
+      <a href="{:U('Index/index')}" class="logo">
+        <!-- mini logo for sidebar mini 50x50 pixels -->
+        <span class="logo-mini"><b>A</b>LT</span>
+        <!-- logo for regular state and mobile devices -->
+        <span class="logo-lg"><b>Admin</b>LTE</span>
+      </a>
+      <!-- Header Navbar: style can be found in header.less -->
+      <nav class="navbar navbar-static-top" role="navigation">
+        <!-- Sidebar toggle button-->
+        <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+          <span class="sr-only">Toggle navigation</span>
+        </a>
+        <div class="navbar-custom-menu">
+          <ul class="nav navbar-nav">
+            <li class="dropdown user user-menu">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <img src="__PUBLIC__/Admin/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+                <span class="hidden-xs">{$_SESSION['aname']}</span>
+              </a>
+              <ul class="dropdown-menu">
+                <!-- User image -->
+                <li class="user-header">
+                  <img src="__PUBLIC__/Admin/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                  <p>
+                    <small>管理员</small>
+                  </p>
+                </li>
+                <li class="user-footer">
+                  <div class="pull-right">
+                    <a href="{:U('Login/out')}" class="btn btn-default btn-flat">安全退出</a>
+                  </div>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <!-- Left side column. contains the logo and sidebar -->
+    <aside class="main-sidebar">
+      <!-- sidebar: style can be found in sidebar.less -->
+      <section class="sidebar">
+        <!-- Sidebar user panel -->
+        <div class="user-panel">
+          <div class="pull-left image">
+            <img src="__PUBLIC__/Admin/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+          </div>
+          <div class="pull-left info">
+            <p>{$_SESSION['aname']}</p>
+            <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+          </div>
+        </div>
+        <!-- search form -->
+        <form action="#" method="get" class="sidebar-form">
+          <div class="input-group">
+            <input type="text" name="q" class="form-control" placeholder="Search...">
+            <span class="input-group-btn">
+                        <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
+                      </span>
+          </div>
+        </form>
+        <!-- /.search form -->
+        <!-- sidebar menu: : style can be found in sidebar.less -->
+        <ul class="sidebar-menu">
+          <!--菜单栏循环开始-->
+          <foreach name="auth_infoA" item="v">
+            <li class="treeview">
+              <a href="#">
+                <i class="fa {$v.auth_icon}"></i>
+                <span>{$v.auth_name}</span>
+              </a>
+              <ul class="treeview-menu">
+
+                <foreach name="auth_infoB" item="vv">
+                  <if condition="$vv['auth_pid'] eq $v['auth_id']">
+                    <li><a href="__MODULE__/{$vv.auth_c}/{$vv.auth_a}"><i class="fa fa-circle-o"></i>{$vv.auth_name}</a></li>
+                  </if>
+                </foreach>
+
+              </ul>
+            </li>
+          </foreach>
+          <!--菜单栏循环结束-->
+        </ul>
+      </section>
+      <!-- /.sidebar -->
+    </aside>
+    <!--左边结束-->
+
+    <!-- 右侧部分开始 -->
+    <div class="content-wrapper" style="background: #FDF5E1;">
+      <section class="content-header">
+				<div class="pd-20">
+				  <form action="{:U('Admin/addData')}" method="post" class="form form-horizontal" id="form-admin-add" autocomplete="off">
+				    <div class="row cl">
+				      <label class="form-label col-3"><span class="c-red">*</span>管理员：</label>
+				      <div class="formControls col-5">
+				        <input type="text" class="input-text" value="" placeholder="" id="user-name" name="mg_name" datatype="*2-16" nullmsg="用户名不能为空">
+				      </div>
+				      <div class="col-4"> </div>
+				    </div>
+				    <div class="row cl">
+				      <label class="form-label col-3"><span class="c-red">*</span>初始密码：</label>
+				      <div class="formControls col-5">
+				        <input type="password" placeholder="密码" autocomplete="off" value="" class="input-text" datatype="*6-20" nullmsg="密码不能为空" name="mg_pwd">
+				      </div>
+				      <div class="col-4"> </div>
+				    </div>
+				    <div class="row cl">
+				      <label class="form-label col-3"><span class="c-red">*</span>确认密码：</label>
+				      <div class="formControls col-5">
+				        <input type="password" placeholder="确认新密码" autocomplete="off" class="input-text Validform_error" errormsg="您两次输入的新密码不一致！" datatype="*" nullmsg="请再输入一次新密码！" recheck="newpassword" id="newpassword2" name="mg_pwd2">
+				      </div>
+				      <div class="col-4"> </div>
+				    </div>
+				    <div class="row cl">
+				      <label class="form-label col-3">角色：</label>
+				      <div class="formControls col-5"> <span class="select-box" style="width:150px;">
+				        <select class="select" name="hj_role_role_id" size="1">
+				          <option value="0">-请选择角色-</option>
+				          <foreach name="info" item="v">
+				            <option value="{$v.role_id}">{$v.role_name}</option>
+				          </foreach>
+				        </select>
+				        </span> </div>
+				    </div>
+				    
+				  <!--   <div class="row cl">
+            <label class="form-label col-3">渠道名称：</label>
+            <div class="formControls col-5"> <span class="select-box" style="width:150px;">
+              <select class="select" name="downid" size="1">
+                <option value="0">-请选择渠道-</option>
+                <foreach name="downinfo" item="vo" >
+                              <option value="{$vo.downid}">{$vo.down_name}</option>
+                            </foreach>
+              </select>
+              </span> </div>
+          </div> -->
+				    
+				    <div class="row cl">
+				      <div class="col-9 col-offset-3">
+				        <input class="btn btn-primary radius" type="submit" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
+				      </div>
+				    </div>
+				  </form>
+				</div>
+      </section>
+    </div>
+    <!-- 右侧部分结束 -->
+
+  </div>
+  <!-- 整个结束 -->
+
+
+  <!-- jQuery 2.1.4 -->
+  <script src="__PUBLIC__/Admin/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+  <!-- Bootstrap 3.3.5 -->
+  <script src="__PUBLIC__/Admin/bootstrap/js/bootstrap.min.js"></script>
+  <!-- DataTables -->
+  <script src="__PUBLIC__/Admin/plugins/datatables/jquery.dataTables.min.js"></script>
+  <script src="__PUBLIC__/Admin/plugins/datatables/dataTables.bootstrap.min.js"></script>
+  <!-- SlimScroll -->
+  <script src="__PUBLIC__/Admin/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+  <!-- FastClick -->
+  <script src="__PUBLIC__/Admin/plugins/fastclick/fastclick.min.js"></script>
+  <!-- AdminLTE App -->
+  <script src="__PUBLIC__/Admin/dist/js/app.min.js"></script>
+  <!-- AdminLTE for demo purposes -->
+  <script src="__PUBLIC__/Admin/dist/js/demo.js"></script>
+  <!-- page script -->
+
+  <!-- 其他模板的js文件引入的部份開始 -->
+  <script type="text/javascript" src="__PUBLIC__/Admin/js/layer/layer.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/Admin/js/WdatePicker.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/Admin/js/H-ui.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/Admin/js/H-ui.admin.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/Admin/js/laypage/1.2/laypage.js"></script>
+  <!-- 其他模板的js文件引入的部份結束 -->
+  <script type="text/javascript">
+$(function(){
+//  异步检测用户名是否存在
+  $('#user-name').focusout(function(){
+    var name = $('#user-name').val();
+    var mg_name = {mg_name:name};
+    $.ajax({
+        url: "{:U('Admin/checkname')}",
+        type: 'post',
+        data: mg_name,
+        dataType: 'json',
+        success:function(data) {
+          if(data.status == 0){
+            $('form').submit( function () {
+          return true;
+        } );
+          }else{
+            alert('用户名存在');
+            $('#user-name').val('');
+            $('form').submit( function () {
+          return false;
+        } );
+          }
+        }
+    });
+  });
+});
+</script>
+
+  </body>
+</html>

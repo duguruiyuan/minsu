@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+		<meta content="fullscreen=yes,preventMove=yes" name="ML-Config">
+
+		<meta content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" name="viewport">
+
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="yes" name="apple-touch-fullscreen">
+		<meta content="telephone=no,email=no" name="format-detection">
+		<link href="http://m.lianjia.com/favicon.ico" rel="apple-touch-icon-precomposed">
+		<link href="http://m.lianjia.com/favicon.ico" rel="Bookmark">
+		<link href="http://m.lianjia.com/favicon.ico" rel="apple-touch-icon">
+
+		<title>美丽新乡村-我的乡居列表</title>
+		
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/home/index.css" media="all">
+		<link rel="stylesheet" href="__PUBLIC__/Home/dist/css/swiper.min.css">
+	</head>
+
+	<body>
+		<div id="myCity" style="padding:0.7rem 0;font-size: 14px;background: #c3AB64;color:#FFFFFF" >
+			<a href="javascript:window.history.back();" style="margin-left: 1rem;color:#FFFFFF"><i>&lt; </i>返回</a></span>
+			<span class="title" style="margin-left: 40%">我的乡居列表</span>
+		</div>
+		<div class="home-list p-list">
+			<ul class="fang-list">
+			<foreach name='data' item='v' key='k'>
+				<li>
+					<a href="{:U('House/index',array('id'=>$v['id']))}" class="actIamlink" data-href="/bj/ershoufang/BJCP91853423.html" title="美丽新乡村"><img data-listen="1" class="lazyload" alt="美丽新乡村" src="__ROOT__/Uploads/{$v.list_pic}" >
+						<p class="f-title"  title="{$v.name}" style="padding-right:2rem;">{$v.name}</p>
+						<p>￥{$v.price}</p>
+					</a>
+				</li>
+			</foreach>
+			</ul>
+		</div>
+		<span id="cnzz_stat_icon_1253491255"></span><span id="cnzz_stat_icon_1254525948"></span>
+		<div style="display: none;"></div>
+  		<script src="__PUBLIC__/Admin/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+		<script src="__PUBLIC__/Home/dist/js/swiper.min.js"></script>
+		 <script>
+			var swiper = new Swiper('.swiper-container',{
+				pagination: '.pagination',
+				loop:false,
+				grabCursor: true,
+				paginationClickable: true,
+				autoplay: 2000,
+				autoplayDisableOnInteraction: false
+			});
+		</script>
+
+		<script type="text/javascript">
+			$(function(){
+				$('.search').click(function() {
+					window.location.href="{:U('Index/search')}";
+				});
+				$('#myCity').click(function(event) {
+					$('#cover').css({display:'block'});
+					$('#city').css({display:'block'});
+				});
+				$('#city li').click(function(event) {
+					var city = $(this).html();
+					$.ajax({
+						url: "{:U('ajaxCity')}",
+						type: 'post',
+						dataType: 'json',
+						data: {city: city},
+						success:function(data){
+                             if (data.code == 'ok') {
+                             	self.location.reload();
+                             }else{
+                             	return false;
+                             }
+						}
+					})
+				});
+				
+				$('#minsuMenu').click(function() {
+					if($('#menu-top').is(":hidden")) {
+						$('#menu-top').show();
+					} else {
+						$('#menu-top').hide();
+					}
+				});
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="applicable-device" content="mobile">
+
+		<meta content="fullscreen=yes,preventMove=yes" name="ML-Config">
+
+		<meta content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" name="viewport">
+
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="yes" name="apple-touch-fullscreen">
+		<meta content="telephone=no,email=no" name="format-detection">
+		<title>美丽新乡村-预约列表</title>
+
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/agent/index.css" media="all">
+	</head>
+
+	<body>
+
+		<div class="lj-pages">
+		<div class="header"><span class="tips" style='position: absolute;z-index: 1000;'>
+		<a href="javascript:window.history.back();" style="margin-left: 1rem;"><i>&lt; </i>返回</a></span><span class="title" style="margin-left: 40%">经纪人列表</span><span style='position: absolute;right: 0.5rem;'><a href="{:U('Agent/add')}" style="font-size: 12px;">申请成为</a></span></div>
+			<section  style="" class="d-page" >
+			<div class="search-container jingjiren-search"></div>
+
+			<div class="p-list ershoufang-list jingjiren-list">
+				<ul class="fang-list" node-type="list">
+                <foreach name="auth_infoA" item="v">
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa {$v.auth_icon}"></i>
+                            <span>{$v.auth_name}</span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <foreach name="auth_infoB" item="vv">
+                                <if condition="$vv['auth_pid'] eq $v['auth_id']">
+                                <li><a href="__MODULE__/{$vv.auth_c}/{$vv.auth_a}"><i class="fa fa-circle-o"></i>{$vv.auth_name}</a></li>
+                                </if>
+                            </foreach>
+                        </ul>
+                    </li>
+                </foreach>
+				</ul>
+			</div>
+	</body>
+
+</html>

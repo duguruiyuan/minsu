@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+		<meta content="fullscreen=yes,preventMove=yes" name="ML-Config">
+
+		<meta content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" name="viewport">
+
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="yes" name="apple-touch-fullscreen">
+		<meta content="telephone=no,email=no" name="format-detection">
+		<link href="http://m.lianjia.com/favicon.ico" rel="apple-touch-icon-precomposed">
+		<link href="http://m.lianjia.com/favicon.ico" rel="Bookmark">
+		<link href="http://m.lianjia.com/favicon.ico" rel="apple-touch-icon">
+
+		<title>乡居预定-我的预订</title>
+		
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/home/index.css" media="all">
+		<link rel="stylesheet" href="__PUBLIC__/Home/dist/css/swiper.min.css">
+	</head>
+
+	 <style>
+    body {
+        background: #eee;
+        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        color:#000;
+        margin: 0;
+        padding: 0;
+    }
+    .swiper-container {
+        width: 100%;
+        height: 16rem;
+        margin: auto;
+    }
+    .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+        
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+    }
+
+    #cover{
+    	position: fixed;
+    	top: 0rem;
+    	width: 100%;
+    	height: 100%;
+    	background: #000;
+    	z-index: 9999;
+    	opacity: 0.7;
+    	display: none;
+    }
+
+	#city{
+		font-size: 14px;text-align: center;color: #fff;
+		position: absolute;
+		top: 0rem;
+		z-index: 10000;
+		width: 100%;
+		height: 100%;
+		display: none;
+	}
+	#city li{
+		padding: 0.6rem 0;
+		margin: 0 7rem;
+		font-size: 1rem;
+		border-bottom: 1px solid #ccc;
+		cursor: pointer;
+	}
+
+	.right {
+		position: absolute;
+		top: 10px;
+		right: 0;
+		height: 30px;
+		padding: 0 10px;
+		font-size: 14px;
+		line-height: 30px;
+		color: #111111;
+		text-align: center;
+	}
+	.nav-top {
+		display: block;
+		width: 20px;
+		height: 13px;
+		border-top: 1px solid;
+		border-bottom: 1px solid;
+		position: relative;
+	}
+	.nav-top:before {
+		content: "";
+		position: absolute;
+		left: 0;
+		top: 5px;
+		width: 100%;
+		height: 1px;
+		background: currentColor;
+	}
+	.tag {
+		border-radius: 2px;
+		align-items: flex-start;
+		text-align: center;
+		color: #00AB64;
+		box-sizing: border-box;
+		padding: 2px 6px 3px;
+		border-width: 1px;
+		border-style: solid;
+		border-color: #00AB64;
+		border-image: none;
+		background-color: #ffffff;
+	}
+    </style>
+
+	<body>
+		<div class="lj-pages">
+			<div class="user-wrap">
+				<div class="user-comp">
+					<header class="header nt-AppPromot"></header>
+					<img src="__PUBLIC__/Home/member/mine_head.png">
+					<?php if($_SESSION['gid']):?>
+					<p class="user-num user-info">欢迎你，{$guest.name}<span></span></p>
+					<p class="user-num user-info">我的积分:{$guest.score}分</p>
+					<?php else:?>
+					<p class="user-num"><a href="{:U('Guest/login')}" class="btn">登录</a><a href="{:U('Guest/register')}" class="btn">注册</a></p>
+					<?php endif?>
+				</div>
+			</div>
+			<?php if($_SESSION['gid']):?>
+			<div class="home-list p-list">
+				<h2>我的预定</h2>
+				<ul class="fang-list">
+				<?php if(count($data)>0):?>
+				<foreach name='data' item='v' key='k'>
+					<li>
+						<a href="{:U('House/index',array('id'=>$v['hid']))}" class="actIamlink" title="美丽新乡村"><img data-listen="1" class="lazyload" alt="美丽新乡村" src="__ROOT__/Uploads/{$v.list_pic}" >
+							<p class="f-title"  title="{$v.name}" style="padding-right:2rem;">{$v.name}</p>
+							<p>
+								￥{$v.r_fee}
+								<span>
+									<?php if($v['status']==1):?>
+									<a href="javascipt:;" class="tag">您已预订</a>
+									<?php elseif($v['status']==3):?>
+									<a href="javascipt:;" class="tag">您已经提交退款申请</a>
+									<?php elseif($v['status']==4):?>
+									<a href="javascipt:;" class="tag">您的退款已经受理</a>
+									<?php elseif($v['status']==5):?>
+									<a href="javascipt:;" class="tag">您的退款已返钱完毕</a>
+									<?php elseif($v['status']==6):?>
+									<a href="javascipt:;" class="tag">您的退款申请被拒绝</a>
+									<?php elseif($v['status']==7):?>
+									<a href="{:U('Guest/comment',array('qid'=>$v['id']))}" class="tag">评价赚积分</a>
+									<?php elseif($v['status']==8):?>
+									<a href="javascipt:;" class="tag">已评价</a>
+									<?php endif?>
+								</span>
+							</p>
+						</a>
+					</li>
+				</foreach>
+				<?php else:?>
+					您暂时没有预定数据
+				<?php endif?>
+				</ul>
+			</div>
+			<?php endif?>
+		</div>
+		<span id="cnzz_stat_icon_1253491255"></span><span id="cnzz_stat_icon_1254525948"></span>
+		<div style="display: none;"></div>
+  		<script src="__PUBLIC__/Admin/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+		<script src="__PUBLIC__/Home/dist/js/swiper.min.js"></script>
+		 <script>
+			var swiper = new Swiper('.swiper-container',{
+				pagination: '.pagination',
+				loop:false,
+				grabCursor: true,
+				paginationClickable: true,
+				autoplay: 2000,
+				autoplayDisableOnInteraction: false
+			});
+		</script>
+
+		<script type="text/javascript">
+			$(function(){
+				$('.search').click(function() {
+					window.location.href="{:U('Index/search')}";
+				});
+				$('#myCity').click(function(event) {
+					$('#cover').css({display:'block'});
+					$('#city').css({display:'block'});
+				});
+				$('#city li').click(function(event) {
+					var city = $(this).html();
+					$.ajax({
+						url: "{:U('ajaxCity')}",
+						type: 'post',
+						dataType: 'json',
+						data: {city: city},
+						success:function(data){
+                             if (data.code == 'ok') {
+                             	self.location.reload();
+                             }else{
+                             	return false;
+                             }
+						}
+					})
+				});
+			})
+		</script>
+	</body>
+</html>

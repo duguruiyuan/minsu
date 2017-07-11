@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+		<meta content="fullscreen=yes,preventMove=yes" name="ML-Config">
+
+		<meta content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" name="viewport">
+
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="yes" name="apple-touch-fullscreen">
+		<meta content="telephone=no,email=no" name="format-detection">
+		<link href="http://m.lianjia.com/favicon.ico" rel="apple-touch-icon-precomposed">
+		<link href="http://m.lianjia.com/favicon.ico" rel="Bookmark">
+		<link href="http://m.lianjia.com/favicon.ico" rel="apple-touch-icon">
+
+		<title>美丽新乡村-个人信息</title>
+		
+
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/release/index.css" media="all">
+		<style>
+			.edit_btn {
+				border-radius: 2px;
+				align-items: flex-start;
+				text-align: center;
+				color: #ffffff;
+				box-sizing: border-box;
+				padding: 2px 6px 3px;
+				border-width: 1px;
+				border-style: solid;
+				border-color: #00AB64;
+				border-image: none;
+				background-color: #00AB64;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<div class="lj-pages">
+
+			<section style="" class="d-page" page-model="yezhu/yezhu">
+				<div class="yezhu-wrapper">
+					<div class="list">
+						<div class="step stepon steps" data-page="step1">
+							<div class="header"  style="z-index: 0;"><span class="tips"><a href="javascript:window.history.back();"><i></i>返回</a></span><span class="title">修改房源</span></div>
+							<form action="{:U('editHouse')}" method="post" enctype="multipart/form-data">
+							<ul class="stepChange" style="z-index: 99;position: relative;">
+								<li class="change">
+									<div>请选择省份：</div><i></i>
+									<select style="width: 30%;height: 1.8rem;border: none;border:1px solid #ccc;" name="s_province" class="form-control" id="s_province" data="<?php echo $address['0']?>" ></select>
+								</li>
+
+								<li class="change">
+									<div>请选择城市：</div><i></i>
+									<select style="width: 30%;height: 1.8rem;border: none;border:1px solid #ccc;" name="s_city" class="form-control" id="s_city" data="<?php echo $address['1']?>"></select>
+								</li>
+
+								<li class="change">
+									<div>请选择区：</div><i></i>
+									<select style="width: 30%;height: 1.8rem;border: none;border:1px solid #ccc;" name="s_county" class="form-control" id="s_county" data="<?php echo $address['2']?>"></select>
+								</li>
+
+								<li class="change">
+									<div>请输入详细地址：</div><i></i>
+									<input style="width:50%;height: 1.8rem;border: none;border:1px solid #ccc;" type="text" name="address" class="form-control" placeholder="详细街道"  oninvalid="setCustomValidity(详细街道)" required="required" value="<?php echo $address['3']?>">
+								</li>
+									
+								<li class="change">
+									<div>联系人姓名：</div><i></i>
+									<input style="width:40%;height: 1.8rem;border: none;border:1px solid #ccc;" type="text" name="cont_name" class="form-control" placeholder="联系人姓名"  oninvalid="setCustomValidity(联系人姓名)" required="required" value="{$houseinfo.cont_name}">
+								</li>
+
+								<li class="change">
+									<div>联系方式：</div><i></i>
+									<input style="width:40%;height: 1.8rem;border: none;border:1px solid #ccc;" type="text" name="contact" class="form-control" placeholder="联系方式"  oninvalid="setCustomValidity(联系方式)" required="required" value="{$houseinfo.contact}">
+								</li>
+
+								<li class="change" data-page="chengshi">
+									<div>房屋名称：</div><i></i>
+									<input style="width:50%;height: 1.8rem;border: none;border:1px solid #ccc;" type="text" name="name" class="form-control" id="exampleInputEmail1" placeholder="房屋名称"  oninvalid="setCustomValidity(房屋名称)" required="required" value="{$houseinfo.name}">
+								</li>
+								<input type="hidden" name="hid" value="{$Think.get.hid}">
+								
+								<li class="change" data-page="chengshi">
+									<div>出租年限：</div><i></i>
+									<input style="width:50%;height: 1.8rem;border: none;border:1px solid #ccc;" type="number" name="rent_year" class="form-control" id="exampleInputEmail1" placeholder="出租年限"  oninvalid="setCustomValidity(出租年限)" required="required" value="{$houseinfo.rent_year}">
+								</li>
+
+								<li class="change" data-page="chengshi">
+									<div>房屋价格：</div><i></i>
+									<input style="width:50%;height: 1.8rem;border: none;border:1px solid #ccc;" type="text" name="price" class="form-control" id="exampleInputEmail1" placeholder="房屋价格"  oninvalid="setCustomValidity(房屋价格)" required="required" value="{$houseinfo.price}">
+								</li>
+
+								<li class="change" data-page="chengshi">
+									<div>可否改建：</div><i></i>
+									<input style="width:50%;height: 1.8rem;border: none;border:1px solid #ccc;" type="text" name="house_num" class="form-control" id="exampleInputEmail1" placeholder="可否改建"  oninvalid="setCustomValidity(可否改建)" required="required" value="{$houseinfo.house_num}">
+								</li>
+
+								<li class="change" data-page="chengshi">
+									<div>房间数量：</div><i></i>
+									<input style="width:50%;height: 1.8rem;border: none;border:1px solid #ccc;" type="number" name="house_num" class="form-control" id="exampleInputEmail1" placeholder="房间数量"  oninvalid="setCustomValidity(房间数量)" required="required" value="{$houseinfo.house_num}">
+								</li>
+
+								<li class="change" data-page="chengshi">
+									<div>可住人房间数量：</div><i></i>
+									<input style="width:50%;height: 1.8rem;border: none;border:1px solid #ccc;" type="text" name="house_live" class="form-control" id="exampleInputEmail1" placeholder="可住人房间数量"  oninvalid="setCustomValidity(可住人房间数量)" required="required" value="{$houseinfo.house_live}">
+								</li>
+
+
+								<li class="change" data-page="chengshi">
+									<div>房屋类型：</div><i></i>
+									<select style="width: 30%;height: 1.8rem;border: none;border:1px solid #ccc;" name="type" class="form-control" >
+										<option value='楼房'>楼房</option>
+					                      <option value='宅院' selected="">宅院</option>
+					                      <option value='部分出租'>部分出租</option>
+					                      <option value='其  它'>其  它</option>
+									</select>
+								</li>
+
+								<li class="change" data-page="chengshi">
+									<div>面积：</div><i></i>
+									<input style="width:50%;height: 1.8rem;border: none;border:1px solid #ccc;" type="text" name="area" class="form-control" id="exampleInputEmail1" placeholder="面积"  oninvalid="setCustomValidity(联系方式)" required="required" value="{$houseinfo.area}">
+								</li>
+
+								<li class="change" data-page="chengshi">
+									<div>水电描述：</div><i></i>
+									<input style="width:50%;height: 1.8rem;border: none;border:1px solid #ccc;" type="text" name="water_elect" class="form-control" id="exampleInputEmail1" placeholder="例 自来水 民用电"  oninvalid="setCustomValidity(水电描述)" required="required" value="{$houseinfo.water_elect}">
+								</li>
+
+								<li class="change" data-page="chengshi">
+									<div>有无可耕土地：</div><i></i>
+									<input style="width:50%;height: 1.8rem;border: none;border:1px solid #ccc;" type="text" name="land" class="form-control" id="exampleInputEmail1" placeholder="有无果树 蔬菜 土地种植等"  oninvalid="setCustomValidity(有无可耕土地)" required="required" value="{$houseinfo.land}">
+								</li>
+
+								<li class="change" data-page="chengshi">
+									<div>付款方式：</div><i></i>
+									<input style="width:50%;height: 1.8rem;border: none;border:1px solid #ccc;" type="text" name="payment" class="form-control" id="exampleInputEmail1" placeholder="付款方式"  oninvalid="setCustomValidity(付款方式)" required="required" value="{$houseinfo.payment}">
+								</li>
+								<li style="height:5rem;">
+									<textarea style="width: 70%;height: 3.5rem;border: 1px solid #ccc;border-radius: 3px;padding: 0.4rem 1rem;margin-top: 0.5rem;font-size: 0.8rem;" class="f-text mess_fun" name="details" placeholder="房屋详细信息" validate="notNull" validatename="" required="required" type="text">{$houseinfo.details}</textarea>
+								</li>
+			                   <li style="height:5rem;" class="addPicLi" id="addPicLi0">
+			                      <div style="width:50%;margin-left:0px;margin-bottom: 15px;">
+			                        <label for="exampleInputPassword6">新增房屋图片</label>
+			                        <input type="file" name="pic[]" />
+			                      </div>
+			                      <a href="javascript:;" class="edit_btn" onclick="addPic('addPicLi0')">新增</a>
+								</li>
+		                  <foreach name='result_img' item='v' key='k'>
+		                    <li id="addPicLi{$k+1}" style="height:12rem;">
+		                        <div style="width:50%;margin-left:0px;margin-bottom: 15px;">
+		                          <img class="img_pic" style="margin-left:0px;max-height:10rem;max-width:70%" src="__ROOT__/Uploads/{$v.pic}">
+		                        </div>
+		                        <a href="javascript:;" class="edit_btn" onclick="removePic('addPicLi{$k+1}')">删除</a>
+		                        <input class="temp_img" type="hidden" name="temp_img[]" value="{$v.pic}">
+		                   </li>
+		                  </foreach>
+								<li style="height:6rem;" data-page="chengshi">
+									<div>预约看房费用(0是免费，-1是无看房选项)：</div><i></i>
+									<input style="width:50%;height: 1.8rem;border: none;border:1px solid #ccc;" type="number" name="house_fee" value="{$house_fee}">元
+								</li>
+							</ul>
+							<div class="step1 next steps" ><button style="border: none;background: #39AC6A;color: #FFFFFF;padding: 0.5rem 7rem;position: relative;z-index: 99;" type="submit">下一步</button></div>
+							<div class="pic"><img src="__PUBLIC__/Home/release/pic.png"></div>
+							</form>
+						</div>
+						
+					</div>
+
+				</div>
+			</section>
+		</div>
+		<!-- 其他模板的js文件引入的部份開始 -->
+		<script src="__PUBLIC__/Admin/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+		<script type="text/javascript" src="__PUBLIC__/Admin/area.js"></script>
+		<!-- 编辑地址 -->
+		<script type="text/javascript">
+			var sheng = $('#s_province').attr('data');
+			var shi = $('#s_city').attr('data');
+			var qu = $('#s_county').attr('data');
+			if (sheng && shi && qu) {
+			  var opt0 = [sheng,shi,qu];
+			};
+		</script>
+		<script type="text/javascript">_init_area();</script>
+		<!-- 其他模板的js文件引入的部份結束 -->
+		<!-- 其他模板的js文件引入的部份結束 -->
+		<script type="text/javascript">
+		  var Gid  = document.getElementById ;
+		  var showArea = function(){
+		    Gid('show').innerHTML = "<h3>省" + Gid('s_province').value + " - 市" +  
+		    Gid('s_city').value + " - 县/区" + 
+		    Gid('s_county').value + "</h3>"
+		                }
+		  Gid('s_county').setAttribute('onchange','showArea()');
+		  
+	var i=100;	  
+    function addPic(idValue) {
+        // 克隆一个div
+        var cl = $("#"+idValue).clone();
+        $("#"+idValue).after(cl);
+        var id=cl.attr("id");
+        id=id.substring(0,id.length-1)+(++i);
+        cl.find('.edit_btn').html('删除');
+        cl.find('.edit_btn').attr('onclick', 'removePic("'+id+'")');
+         cl.attr("id",id);
+    }
+    
+    function removePic(idValue) {
+    	 $('#'+idValue).remove();
+    }
+		</script>
+	</body>
+
+</html>

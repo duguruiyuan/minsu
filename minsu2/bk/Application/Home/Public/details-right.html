@@ -1,0 +1,8 @@
+<div class="notice_right">
+							<ul>
+								<li <?php if($_GET['cate']==1):?>class="notice_liselected"<?php endif?> > <a style="color:rgb(108, 108, 108);" href="{:U('Info/index',array('cate'=>1))}"><span>新闻公告</span></a> </li>
+								<li <?php if($_GET['cate']==2):?>class="notice_liselected"<?php endif?>> <a style="color:rgb(108, 108, 108);" href="{:U('Info/index',array('cate'=>2))}"><span>活动信息</span></a> </li>
+								<li <?php if($_GET['cate']==3):?>class="notice_liselected"<?php endif?>> <a style="color:rgb(108, 108, 108);" href="{:U('Info/index',array('cate'=>3))}"><span>行业资讯</span></a> </li>
+								<li <?php if($_GET['cate']==4):?>class="notice_liselected"<?php endif?>> <a style="color:rgb(108, 108, 108);" href="{:U('Info/problem',array('cate'=>4))}"><span>常见问题</span></a> </li>
+							</ul>
+						</div>

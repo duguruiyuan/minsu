@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+		<meta content="fullscreen=yes,preventMove=yes" name="ML-Config">
+
+		<meta content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" name="viewport">
+
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="yes" name="apple-touch-fullscreen">
+		<meta content="telephone=no,email=no" name="format-detection">
+		<link href="http://m.lianjia.com/favicon.ico" rel="apple-touch-icon-precomposed">
+		<link href="http://m.lianjia.com/favicon.ico" rel="Bookmark">
+		<link href="http://m.lianjia.com/favicon.ico" rel="apple-touch-icon">
+
+		<title>美丽新乡村</title>
+		
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/home/index.css" media="all">
+		<link rel="stylesheet" href="__PUBLIC__/Home/dist/css/swiper.min.css">
+	</head>
+
+	 <style>
+    body {
+        background: #eee;
+        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        color:#000;
+        margin: 0;
+        padding: 0;
+    }
+    .swiper-container {
+        width: 100%;
+        height: 16rem;
+        margin: auto;
+    }
+    .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+        
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+    }
+
+    #cover{
+    	position: fixed;
+    	top: 0rem;
+    	width: 100%;
+    	height: 100%;
+    	background: #000;
+    	z-index: 9999;
+    	opacity: 0.7;
+    	display: none;
+    }
+
+	#city{
+		font-size: 14px;text-align: center;color: #fff;
+		position: absolute;
+		top: 0rem;
+		z-index: 10000;
+		width: 100%;
+		height: 100%;
+		display: none;
+	}
+	#city li{
+		padding: 0.6rem 0;
+		margin: 0 7rem;
+		font-size: 1rem;
+		border-bottom: 1px solid #ccc;
+		cursor: pointer;
+	}
+
+	.right {
+		position: absolute;
+		top: 7px;
+		right: 0;
+		height: 30px;
+		padding: 0 10px;
+		font-size: 14px;
+		line-height: 30px;
+		color: #00AB64;
+		text-align: center;
+	}
+	.nav-top {
+		display: block;
+		width: 20px;
+		height: 13px;
+		border-top: 1px solid;
+		border-bottom: 1px solid;
+		position: relative;
+	}
+	.nav-top:before {
+		content: "";
+		position: absolute;
+		left: 0;
+		top: 5px;
+		width: 100%;
+		height: 1px;
+		background: currentColor;
+	}
+    </style>
+
+	<body>
+<div id="myCity" style="padding:0.7rem 0;font-size: 14px;background: #00AB64;text-align: center" ><a id="topCity" href="javascript:;" style="color: #fff;">{$Think.session.city}</a></div>
+
+<div id="cover"></div>
+
+<div id="city">
+	<ul>
+		<li>北京市</li>
+		<foreach name='province' item='v' key='k'>
+			<li>{$v.provincename}</li>
+		</foreach>
+	</ul>
+</div>
+
+		<div class="lj-pages">
+			<section style="" class="d-page" page-model="index/index">
+				<div class="section-wrapper">
+					<header class="home-header">
+						<div style="font-size: 1rem;" class="title">美丽新乡村</div>
+						<div class="search"><span class="icon-home-search"></span>
+							<input class="input" placeholder="搜索的关键词">
+						</div>
+						<div class="member">
+						<a class="right" id="rightTopMenuBtn" href="{:U('Member/index')}" data-stat-category="H5-其它页" data-stat-action="功能列表" style="display: block">
+							<div id="show-rightTopMenu"><i class="nav-top has-msg"></i><span class="msg">&nbsp;</span></div>
+						</a>
+						</div>
+					</header>
+
+					<div class="banner">
+						<!-- <div class="banner-img"><img src="__PUBLIC__/Home/home/u71.jpg" alt=""> </div> -->
+						<div class="swiper-container banner-img">
+						    <div class="swiper-wrapper" style="height: 10rem;">
+						    	<foreach name='carousel_data' item='v' key='k'>
+						        	<div class="swiper-slide" style="height: 10rem;">
+							    		<a class="ban-img" href="{$v.carousel_url}"><img class="actShowImage ban-img" src="__ROOT__/Uploads/{$v.carousel_img}"></a>
+							    	</div>
+						        </foreach>
+						    </div>
+						</div>
+					</div>
+
+					<div class="home-nav">
+						<ul>
+							<li style="width: 23%;" class="cell ">
+								<a title="精品民宅" href="{:U('Search/goodHouse')}" class="actIamlink" >
+									<p class="menu-ershoufang"></p>
+									<p>精品民宅</p>
+								</a>
+							</li>
+							<li style="width: 23%;" class="cell ">
+								<a title="发布房源" href="{:U('Release/index')}" class="actIamlink">
+									<p class="menu-xinfang"></p>
+									<p>发布房源</p>
+								</a>
+							</li>
+							<li style="width: 23%;" class="cell ">
+								<a  title="土地合作" href="{:U('Land/coop')}" class="actIamlink" >
+									<p class="menu-rent"></p>
+									<p>土地合作</p>
+								</a>
+							</li>
+							<li style="width: 23%;" class="cell ">
+								<a title="乡居众筹" href="{:U('Funding/index')}" class="actIamlink">
+									<p class="menu-yezhu"></p>
+									<p>乡居众筹</p>
+								</a>
+							</li>
+							<li style="width: 23%;" class="cell ">
+								<a  title="成为经纪人" href="{:U('Agent/add')}" class="actIamlink">
+									<p class="menu-jingjiren"></p>
+									<p>成为经纪人</p>
+								</a>
+							</li>
+							
+							<li style="width: 23%;" class="cell">
+								<a title="房源合作" href="{:U('Index/coop')}" class="actIamlink" >
+									<p class="menu-school"></p>
+									<p>房源合作</p>
+								</a>
+							</li>
+							<li style="width: 23%;" class="cell ">
+								<a title="用户反馈" href="{:U('Index/message')}" class="actIamlink" >
+									<p class="menu-wenda"></p>
+									<p>用户反馈</p>
+								</a>
+							</li>
+							<li style="width: 23%;" class="cell ">
+								<a title="委托发布" href="{:U('Index/entrust')}" class="actIamlink" >
+									<p class="menu-chengjiao"></p>
+									<p>委托发布</p>
+								</a>
+							</li>
+						</ul>
+					</div>
+					<div class="home-list p-list">
+						<h2>热门房源</h2>
+						<ul class="fang-list">
+						<foreach name='data' item='v' key='k'>
+							<li>
+								<a href="__ROOT__/index.php/Home/Pay/house?hid={$v.hid}" class="actIamlink" title="美丽新乡村">
+									<?php if($v["list_pic"]):?>
+								    	<img data-listen="1" class="lazyload" alt="美丽新乡村" src="__ROOT__/Uploads/{$v.list_pic}" />
+								    <?php else:?>
+								    	<img data-listen="1" class="lazyload" alt="美丽新乡村" src="__PUBLIC__/Home/home/lizi.png" />
+								    <?php endif?>
+									<p class="f-title"  title="{$v.name}" style="padding-right:2rem;">{$v.name}
+										<?php if($v['tag']!=''):?>
+											<input type="button"  value="{$v.tag}" style="border-radius: 2px;align-items: flex-start;text-align: center;color: #00AB64;box-sizing: border-box;padding: 2px 6px 3px;border-width: 1px;border-style: solid;border-color: #00AB64;border-image: none;background-color: #ffffff;"/>
+										<?php endif?>
+									</p>
+									<p class="f-area">{$v.house_num}间 {$v.area}</p>
+									<p class="f-xiaoqu">{$v.address_fine}</p>
+									<p class="f-xiaoqu" style="width:100%;margin-left: 3rem;">浏览次数：{$v.house_click}</p>
+									<p class="f-price" style="margin-top: 2rem;"><span title="288">{$v.price}</span><span class="unit-price"></span></p>
+									<?php if($v['placed_top'] == 1):?>
+									<p class="f-xiaoqu" style="text-align:right;color:red;position: absolute;top:1.2rem;;right:1rem;background:#ff6600;color:#fff;padding:0.1rem;">荐</p>
+									<?php endif?>
+								</a>
+							</li>
+						</foreach>
+						</ul>
+						<div class="huan"><a style="border-right: 1px solid #999999;" href="">换一换</a><a href="{:U('Search/index')}">更多</a></div>
+					</div>
+					
+			</section>
+		</div>
+
+		<span id="cnzz_stat_icon_1253491255"></span><span id="cnzz_stat_icon_1254525948"></span>
+		<div style="display: none;"></div>
+  		<script src="__PUBLIC__/Admin/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+		<script src="__PUBLIC__/Home/dist/js/swiper.min.js"></script>
+		 <script>
+			var swiper = new Swiper('.swiper-container',{
+				pagination: '.pagination',
+				loop:false,
+				grabCursor: true,
+				paginationClickable: true,
+				autoplay: 2000,
+				autoplayDisableOnInteraction: false
+			});
+		</script>
+
+		<script type="text/javascript">
+			$(function(){
+				$('.search').click(function() {
+					window.location.href="{:U('Index/search')}";
+				});
+
+
+				$('#myCity').click(function(event) {
+					$('#cover').css({display:'block'});
+					$('#city').css({display:'block'});
+				});
+
+				$('#city li').click(function(event) {
+					var city = $(this).html();
+					window.location.href="http://mei.vshijie.cn/minsu/index.php/Home/Index/ajaxCity?city="+city+"&u="+encodeURIComponent(window.location.href);
+				});
+
+			})
+		</script>
+	</body>
+
+</html>

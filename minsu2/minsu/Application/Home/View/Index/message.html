@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+		<meta content="fullscreen=yes,preventMove=yes" name="ML-Config">
+
+		<meta content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" name="viewport">
+
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="yes" name="apple-touch-fullscreen">
+		<meta content="telephone=no,email=no" name="format-detection">
+		<link href="http://m.lianjia.com/favicon.ico" rel="apple-touch-icon-precomposed">
+		<link href="http://m.lianjia.com/favicon.ico" rel="Bookmark">
+		<link href="http://m.lianjia.com/favicon.ico" rel="apple-touch-icon">
+
+		<title>美丽新乡村-用户反馈</title>
+		
+		<meta name="keywords" content="北京房产网,北京房地产,北京房产,北京房屋交易,北京房地产交易平台">
+
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/release/index.css" media="all">
+	</head>
+
+	<body>
+
+		<div class="lj-pages">
+
+			<section style="" class="d-page" page-model="yezhu/yezhu">
+				<div class="yezhu-wrapper">
+					<div class="list">
+						<div class="step stepon steps" data-page="step1">
+							<div class="header"  style="z-index: 0;"><span class="tips" ><a  href="javascript:window.history.back();"><i></i>返回</a></span><span class="title">用户反馈</span></div>
+							<form action="{:U('Index/message')}" method="post" >
+							<ul >
+								<li>
+									<input style="width: 70%;height: 2rem;border: 1px solid #ccc;border-radius: 3px;padding: 0 1rem;" class="f-text" name="mess_name" placeholder="您的姓名" validate="notNull" validatename="您的姓名" required="required" type="text">
+								</li>
+								<li>
+									<input style="width: 70%;height: 2rem;border: 1px solid #ccc;border-radius: 3px;padding: 0 1rem;" class="f-text" name="mess_mail" placeholder="您的邮箱" validate="notNull" validatename="您的邮箱" required="required" type="text">
+								</li>
+								<li>
+									<input style="width: 70%;height: 2rem;border: 1px solid #ccc;border-radius: 3px;padding: 0 1rem;" class="f-text" name="mess_phone" placeholder="您的联系方式" validate="notNull" validatename="您的联系方式" required="required" type="text">
+								</li>
+								<li style="height:5rem;">
+									<textarea style="width: 70%;height: 3.5rem;border: 1px solid #ccc;border-radius: 3px;padding: 0.4rem 1rem;margin-top: 0.5rem;font-size: 0.8rem;" class="f-text" name="mess_text" placeholder="宝贵建议" validate="notNull" validatename="" required="required" type="text"></textarea>
+								</li>
+								<input type="hidden" name="openid" id="openid" value="{$openid}" />
+							</ul>
+							<div class="step1 next steps" ><button style="border: none;background: #39AC6A;color: #FFFFFF;padding: 0.5rem 7rem;position: relative;z-index: 99;" type="submit">留言</button></div>
+							</form>
+						</div>
+						
+					</div>
+					
+				</div>
+			</section>
+		</div>
+
+
+		<!-- 其他模板的js文件引入的部份結束 -->
+	</body>
+</html>

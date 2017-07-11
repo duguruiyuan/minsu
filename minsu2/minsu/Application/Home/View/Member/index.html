@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+		<meta content="fullscreen=yes,preventMove=yes" name="ML-Config">
+
+		<meta content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" name="viewport">
+
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="yes" name="apple-touch-fullscreen">
+		<meta content="telephone=no,email=no" name="format-detection">
+		<link href="http://m.lianjia.com/favicon.ico" rel="apple-touch-icon-precomposed">
+		<link href="http://m.lianjia.com/favicon.ico" rel="Bookmark">
+		<link href="http://m.lianjia.com/favicon.ico" rel="apple-touch-icon">
+
+		<title>美丽新乡村-个人中心</title>
+
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/member/index.css" media="all">
+		<style>
+		.user-wrap .p-list > ul li a .list-iconA {
+		    position: absolute;
+		    left: -1.875rem;
+		    top: 0px;
+		    bottom: 0px;
+		    margin: auto;
+		    z-index: 2;
+		    display: inline-block;
+		    width: 1rem;
+		    height: 1.0625rem;
+		    background-image: url(__PUBLIC__/Home/member/hifi.png);
+		    background-size: cover;
+		}
+		.user-wrap .p-list > ul li a .list-iconB {
+		    position: absolute;
+		    left: -1.875rem;
+		    top: 0px;
+		    bottom: 0px;
+		    margin: auto;
+		    z-index: 2;
+		    display: inline-block;
+		    width: 1rem;
+		    height: 1.0625rem;
+		    background-image: url(__PUBLIC__/Home/pay/star.png);
+		    background-size: cover;
+		}
+		</style>
+	</head>
+
+	<body>
+<div style="padding:0.5rem 0;padding-left: 0.8rem;font-size: 14px;background: #00AB64;"  ><a href="javascript:window.history.back();" style="color: #fff;">&lt; 返回</a></div>
+		<div class="lj-pages">
+
+			<section style="" class="d-page" page-model="user/index/index">
+				<div class="user-wrap">
+					<div class="user-comp">
+						<header class="header nt-AppPromot"></header>
+						<img src="__PUBLIC__/Home/member/mine_head.png">
+						<?php if($_SESSION['login_id'] && $_SESSION['login_name']):?>
+						<p class="user-num user-info">欢迎你，{$Think.session.login_name}<span></span></p>
+						<p class="user-num user-info"><font size="1">
+							(您的用户ID是：{$Think.session.login_id}，请在后台发布房源时向后台工作人员提供)
+							</font></p>
+						<?php else:?>
+						<p class="user-num"><a href="{:U('Member/login')}" class="btn">登录</a><a href="{:U('Member/register')}" class="btn">注册</a></p>
+						<?php endif?>
+					</div>
+					<div class="p-list">
+						<ul>
+							<li><a href="{:U('Release/index')}" class="actCheck">发布房源<span class="icon-go-right"></span><span class="list-icon list-icon-favorHouse"></span></a></li>
+							<li><a href="{:U('Index/problem')}" data-href="" class="actCheck">联系客服<span class="icon-go-right"></span><span class="list-icon list-icon-favorCommunity"></span></a></li>
+							<li><a href="{:U('Index/message')}" data-href="" class="actCheck">用户留言<span class="icon-go-right"></span><span class="list-icon list-icon-favorNewHouse"></span></a></li>
+							<?php if($_SESSION['login_id'] && $_SESSION['login_name']):?>
+							<li><a href="{:U('Member/houseInfo')}" data-href="/user/houseSeeRecord/" class="actCheck">我的房屋信息<span class="icon-go-right"></span><span class="list-icon list-icon-houseSeeRecord"></span></a></li>
+							<li><a href="{:U('Member/appointment')}" data-href="" class="actCheck">预约看房记录<span class="icon-go-right"></span><span class="list-iconA"></span></a></li>
+							<li><a href="{:U('Member/feedback')}" data-href="" class="actCheck">看房后反馈<span class="icon-go-right"></span><span class="list-iconB"></span></a></li>
+							<?php endif?>
+						</ul>
+					</div>
+					<?php if($_SESSION['login_id'] && $_SESSION['login_name']):?>
+					<p class="logout-p"><a href="{:U('Member/out')}" class="actLogout">退出登录</a></p>
+					<?php endif?>
+				</div>
+			</section>
+		</div>
+
+		<span id="cnzz_stat_icon_1253491255"></span><span id="cnzz_stat_icon_1254525948"></span>
+		<div style="display: none;"></div>
+
+
+		<textarea style="display: none;">
+
+			&lt;/body&gt; &lt;/html&gt;
+		</textarea>
+	</body>
+	<script type="text/javascript" src="__PUBLIC__/Home/index.js"></script>
+
+</html>

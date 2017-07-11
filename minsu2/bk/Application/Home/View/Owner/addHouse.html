@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+		<meta content="fullscreen=yes,preventMove=yes" name="ML-Config">
+
+		<meta content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" name="viewport">
+
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="yes" name="apple-touch-fullscreen">
+		<meta content="telephone=no,email=no" name="format-detection">
+		<link href="http://m.lianjia.com/favicon.ico" rel="apple-touch-icon-precomposed">
+		<link href="http://m.lianjia.com/favicon.ico" rel="Bookmark">
+		<link href="http://m.lianjia.com/favicon.ico" rel="apple-touch-icon">
+		<title>美丽新乡村-添加乡居</title>
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/release/index.css" media="all">
+	</head>
+	<body>
+		<div class="lj-pages">
+			<section style="" class="d-page" page-model="yezhu/yezhu">
+				<div class="yezhu-wrapper">
+					<div class="list">
+						<div class="step stepon steps" data-page="step1">
+							<div class="header"  style="z-index: 0;">
+								<span class="tips"><a href="javascript:window.history.back();"><i></i>返回</a></span>
+								<span class="title">添加乡居</span></div>
+							<form action="{:U('addHouse')}" method="post" enctype="multipart/form-data">
+							<ul class="stepChange" style="z-index: 99;position: relative;">
+       
+            <li class="column">
+				<input class="input" type="file" name="pic[]"
+					placeholder="列表图片"  oninvalid="setCustomValidity(列表图片)" required="required" value="">
+			</li> 
+			<li class="column">
+				<div>请选择省份：</div><span style="color:red">*</span>
+			</li> 
+			<li class="column">
+				<select class="input" name="province" id="province"> </select>
+			</li>
+			<li class="column">
+				<div>请选择城市：</div><span style="color:red">*</span>
+			</li>
+			<li class="column">
+				<select class="input" name="city" id="city"></select>
+			</li>
+			<li class="column">
+				<div>请选择区：</div><span style="color:red">*</span>
+			</li>
+			<li class="column">
+				<select class="input" name="county" id="county"></select>
+			</li>
+
+			<li class="column">
+				<div>请输入详细地址：</div><span style="color:red">*</span>
+			</li>
+			<li class="column">
+				<input class="input" type="text" name="address" placeholder="详细街道"  oninvalid="setCustomValidity(详细街道)" required="required" value="">
+			</li>
+           <li class="column">
+				<div>名称</div><span style="color:red">*</span>
+			</li>
+           <li class="column">	
+           	<input class="input" type="text" name="name"
+					placeholder="最主要的信息描述"  oninvalid="setCustomValidity(联系人姓名)" required="required" value="">
+			</li>
+            <li class="column">
+                  <div>产品</div><span style="color:red">*</span>
+			</li>
+            <li class="column">
+            	<select name="type" class="input" id="product_1">
+                      <option value='0' <?php if($v['type']==0):?>selected<?php endif?>>院子</option>
+                      <option value='1' <?php if($v['type']==1):?>selected<?php endif?>>窑洞</option>
+                      <option value='2' <?php if($v['type']==2):?>selected<?php endif?>>木屋</option>
+                      <option value='3' <?php if($v['type']==3):?>selected<?php endif?>>别墅</option>
+                  </select>
+             </li>
+            <li class="column">
+                  <div>房型</div><span style="color:red">*</span>
+			</li>
+            <li class="column">
+            	<select name="bed_type" class="input" id="product_1">
+                      <option value='0' <?php if($v['bed_type']==0):?>selected<?php endif?>>高级大床房</option>
+                      <option value='1' <?php if($v['bed_type']==1):?>selected<?php endif?>>标准间</option>
+                      <option value='2' <?php if($v['bed_type']==2):?>selected<?php endif?>>三人间</option>
+                  </select>
+             </li>
+             <li class="column">
+                  <div>总房间数</div><span style="color:red">*</span>
+             </li>
+             <li class="column">
+             	<input type="number" name="total" class="input" placeholder="房间数" required="required" value="">
+             </li>
+              <li class="column">
+                  <div>每晚收费(元)</div><span style="color:red">*</span>
+             </li>
+              <li class="column">
+              	<input type="number" step="0.01" name="price" class="input" placeholder="一天多少钱" required="required" value="">
+             </li>
+            <li class="column">
+                <div>室内设施</div>
+             </li>
+             <li class="column">
+               	<input type="checkbox" id="facility1" value="无线上网"/><label style="margin-right:7px;">无线上网</label>
+               	<input type="checkbox" id="facility2" value="停车场"/><label style="margin-right:7px;">停车场</label>
+               	<input type="checkbox" id="facility3" value="热水洗浴"/><label style="margin-right:7px;">热水洗浴</label>
+               	<input type="checkbox" id="facility4" value="洗漱用品"/><label style="margin-right:7px;">洗漱用品</label>
+               	<input type="checkbox" id="facility5" value="叫醒服务"/><label style="margin-right:7px;">叫醒服务</label>
+               	<input type="checkbox" id="facility6" value="吹风机"/><label style="margin-right:7px;">吹风机</label>
+               	<input type="checkbox" id="facility7" value="行李寄存"/><label style="margin-right:7px;">行李寄存</label>
+               	<input type="checkbox" id="facility8" value="早餐"/><label style="margin-right:7px;">早餐</label>
+               	<input type="hidden" name="facility" id="facility" value=""/>
+             </li>
+            <li class="column">
+                <div>标签</div>
+             </li>
+             <li class="column">
+               	<input type="checkbox" id="tag1" value="主题乡居"/><label style="margin-right:7px;">主题乡居</label>
+               	<input type="checkbox" id="tag2" value="特价乡居"/><label style="margin-right:7px;">特价乡居</label>
+               	<input type="checkbox" id="tag3" value="热门乡居"/><label style="margin-right:7px;">热门乡居</label>
+               	<input type="checkbox" id="tag4" value="少数民族"/><label style="margin-right:7px;">少数民族</label>
+               	<input type="hidden" name="tags" id="tags" value=""/>
+             </li>
+            <li class="column">
+				<div>列表图片</div><span style="color:red">*</span>
+			</li> 
+            <li style="height:5rem;" class="addPicLi" id="addPicLi0">
+              <div style="width:50%;margin-left:0px;margin-bottom: 15px;">
+                <label for="exampleInputPassword6">新增房屋图片</label>
+                <input type="file" name="pic[]" />
+              </div>
+              <a href="javascript:;" class="edit_btn" onclick="addPic('addPicLi0')">新增</a>
+			</li>
+              <foreach name='result_img' item='v' key='k'>
+                <li id="addPicLi{$k+1}" style="height:12rem;">
+                    <div style="width:80%;margin-left:0px;margin-bottom: 15px;">
+                      <img class="img_pic" style="margin-left:0px;max-height:10rem;max-width:70%" src="__ROOT__/Uploads/{$v.pic}">
+                    </div>
+                    <a href="javascript:;" class="edit_btn" onclick="removePic('addPicLi{$k+1}')">删除</a>
+                    <input class="temp_img" type="hidden" name="temp_img[]" value="{$v.pic}">
+               </li>
+              </foreach>
+              <li class="column">
+                <div>详细信息</div><span style="color:red">*</span>
+             </li>
+              <li>
+              	<textarea style="width: 100%;height: 3.5rem;border: 1px solid #ccc;border-radius: 3px;padding: 0.4rem 1rem;margin-top: 0.5rem;font-size: 0.8rem;" class="f-text mess_fun" name="details" placeholder="详细信息" validate="notNull" validatename="" required="required" type="text"></textarea>
+              </li>
+            <li class="column">
+				<div>联系人名称</div><span style="color:red">*</span>
+			</li>
+			<li class="column">
+				<input class="input" type="text" name="cont_name"
+					placeholder="联系人姓名"  oninvalid="setCustomValidity(联系人姓名)" required="required" value="">
+			</li>
+            <li class="column">
+				<div>联系人手机号码</div><span style="color:red">*</span>
+			<li class="column">
+				<input class="input" type="text" name="contact"
+					placeholder="联系人姓名"  oninvalid="setCustomValidity(联系人手机号码)" required="required" value="">
+			</li>   
+              <li class="column">
+                <button type="submit" class="btn">提交信息</button>
+               </li>
+             </ul>
+            </form>
+          </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- jQuery 2.1.4 -->
+  <script src="__PUBLIC__/Admin/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+  <script type="text/javascript" src="__PUBLIC__/Admin/area.js"></script>
+  <script type="text/javascript">
+  _init_area();
+  $(function(){
+	   $('#facilityLi input[type=checkbox]').change(function(){
+	    $('#facility').val($('#facilityLi input[type=checkbox]:checked').map(function(){return this.value}).get().join(','))
+	  });
+	  $('#tagsLi input[type=checkbox]').change(function(){
+	    $('#tags').val($('#tagsLi input[type=checkbox]:checked').map(function(){return this.value}).get().join(','))
+	  });
+   })
+   
+	var i=100;	  
+    function addPic(idValue) {
+        // 克隆一个div
+        var cl = $("#"+idValue).clone();
+        $("#"+idValue).after(cl);
+        var id=cl.attr("id");
+        id=id.substring(0,id.length-1)+(++i);
+        cl.find('.edit_btn').html('删除');
+        cl.find('.edit_btn').attr('onclick', 'removePic("'+id+'")');
+         cl.attr("id",id);
+    }
+    
+    function removePic(idValue) {
+    	 $('#'+idValue).remove();
+    }
+  </script>
+  </body>
+</html>

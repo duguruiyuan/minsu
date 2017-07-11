@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta content="fullscreen=yes,preventMove=yes" name="ML-Config">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="yes" name="apple-touch-fullscreen">
+		<meta content="telephone=no,email=no" name="format-detection">
+		<link href="http://m.lianjia.com/favicon.ico" rel="apple-touch-icon-precomposed">
+		<link href="http://m.lianjia.com/favicon.ico" rel="Bookmark">
+		<link href="http://m.lianjia.com/favicon.ico" rel="apple-touch-icon">
+		<title>用户注册登录</title>
+
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/register/index.css" media="all">
+	</head>
+
+	<body>
+	<div style="padding:0.5rem 0;padding-left: 0.8rem;font-size: 14px;background:#c3AB64;">
+		<a href="javascript:window.history.back();" style="color: #fff;">&lt; 返回</a>
+	</div>
+		<div class="lj-pages">
+			<section class="d-page" page-model="user/userform">
+				<div class="login-type">
+					<a href="#" class="actTap" actdata="panel=#loginType1">房主注册</a>
+					<span class="arrow"></span>
+				</div>
+				<form style="" class="tapPanel" id="loginType1" action="" method="post" autocomplete="off" >
+					<input name="redirect" disabled="disabled" class="redirect" value="" type="hidden">
+					<div class="form-list">
+						<ul>
+							<li>
+								<input class="f-text" name="nickname" placeholder="请输入昵称" validate="notNull" validatename="昵称" required="required" type="text">
+							</li>
+
+							<li>
+								<input class="f-text" name="phone" placeholder="请输入电话" validate="notNull" validatename="昵称" required="required" type="text">
+							</li>
+
+							<li>
+								<input class="f-text" name="pwd" placeholder="请输入登录密码" validate="notNull" validatename="密码" type="password">
+							</li>
+						</ul>
+					</div>
+					<p class="p-br">
+						<a href="#" class="btn actLogin">立即注册</a>
+					</p>
+				</form>
+				
+				<p class="p-br">
+					<a href="{:U('Owner/login')}" class="regist-a">立即登录</a>
+					<!-- <a href="" class="forget-a">忘记密码</a> -->
+				</p>
+			</section>
+
+		</div>
+
+		<span id="cnzz_stat_icon_1253491255"></span><span id="cnzz_stat_icon_1254525948"></span>
+
+		<div style="display: none;"></div>
+	</body>
+	<script type="text/javascript" src="__PUBLIC__/Home/index.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/Home/common.js"></script>
+	<script src="__PUBLIC__/Admin/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+	<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/Admin/layer/1.9.3/layer.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			var oid=getCookie('oid');
+			if(oid==null && navigator.userAgent.toLowerCase().indexOf("micromessenger") != -1) {
+		    	var url ='http://mei.vshijie.cn/bk/index.php/Home/Weixin/callOpenid?u='+encodeURIComponent(window.location.href);
+				window.location.href=url;
+				return;
+			}
+			$('.actLogin').click(function(event) {
+				var pwd = $('input[name=pwd]').val();
+				var nickname = $('input[name=nickname]').val();
+				var phone = $('input[name=phone]').val();
+				$.ajax({
+					url: "{:U('Owner/ajaxRegister')}",
+					type: 'post',
+					dataType: 'json',
+					data: {pwd:pwd,nickname:nickname,phone:phone,openid:oid},
+					success:function(Data){
+						if (Data.status==1) {
+				            layer.msg('用户已存在', {icon: 5,time: 2000});
+				        };
+			            if (Data.status==2) {
+			              	layer.msg('密码长度不合要求', {icon: 5,time: 2000});
+			            };
+			            if (Data.status==4) {
+			              	layer.msg('手机号长度不合要求', {icon: 5,time: 2000});
+			            };
+			            if (Data.status=='no') {
+			              	layer.msg('注册失败', {icon: 5,time: 2000});
+			            };
+			            if (Data.status=='ok') {
+			              	layer.msg('注册成功,即将跳转...', {
+								icon: 6,
+								time: 2000 //2秒关闭（如果不配置，默认是3秒）
+							}, function(){
+								window.location.href="{:U('Owner/index')}";
+							}); 
+			            };
+					}
+				})
+
+			});
+		})
+	</script>
+</html>

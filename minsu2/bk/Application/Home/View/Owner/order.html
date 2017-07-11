@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta content="fullscreen=yes,preventMove=yes" name="ML-Config">
+		<meta content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" name="viewport">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="yes" name="apple-touch-fullscreen">
+		<meta content="telephone=no,email=no" name="format-detection">
+		<title>乡居预定-预定信息</title>
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/release/index.css" media="all">
+	</head>
+
+	<body>
+		<div class="yezhu-wrapper" style="height:50px;">
+			<div class="header"  style="z-index: 0;">
+				<span class="tips"><a href="javascript:window.history.back();"><i></i>返回</a></span>
+				<span class="title">预定信息</span>
+			</div>
+		</div>
+		<div style="margin-top:20px;overflow: auto;">
+			<table width="820px;" class="table"> 
+				<tr> 
+					<th>房屋</th> 
+					<th>姓名</th> 
+					<th>电话</th> 
+					<th>付款</th> 
+					<th>状态</th> 
+					<th>入住日期</th>
+					<th>退房日期</th>
+					<th>创建时间</th>
+				</tr> 
+            <foreach name="data" item="v">
+                <tr>
+                	<td>
+                    	<a href="{:U('House/index',array('id'=>$v['hid']))}">
+							{$v.name}
+						</a>
+                	</td>
+                	<td>{$v.r_name}</td>
+                	<td>{$v.r_phone}</td>
+                	<td>￥{$v.r_fee}</td>
+                	<td>
+                			<?php if($v['status']==1):?>已付款
+							<?php elseif($v['status']==3):?>提交退款申请
+							<?php elseif($v['status']==4):?>退款被受理
+							<?php elseif($v['status']==5):?>退款已返钱完毕
+							<?php elseif($v['status']==6):?>退款申请被拒绝
+							<?php elseif($v['status']==7):?>已结算
+							<?php elseif($v['status']==8):?>已评价
+							<?php endif?>
+                	</td>
+                	<td>{$v.begin_time}</td>
+                	<td>{$v.end_time}</td>
+                	<td>{$v.createtime}</td>
+                </tr>
+            </foreach>
+            </table>
+		</div>
+		<span id="cnzz_stat_icon_1253491255"></span><span id="cnzz_stat_icon_1254525948"></span>
+	</body>
+</html>

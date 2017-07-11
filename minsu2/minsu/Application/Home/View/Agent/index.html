@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="applicable-device" content="mobile">
+
+		<meta content="fullscreen=yes,preventMove=yes" name="ML-Config">
+
+		<meta content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" name="viewport">
+
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="yes" name="apple-touch-fullscreen">
+		<meta content="telephone=no,email=no" name="format-detection">
+		<title>美丽新乡村-经纪人列表</title>
+
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/agent/index.css" media="all">
+	</head>
+
+	<body>
+
+		<div class="lj-pages">
+		<div class="header"><span class="tips" style='position: absolute;z-index: 1000;'>
+		<a href="javascript:window.history.back();" style="margin-left: 1rem;"><i>&lt; </i>返回</a></span><span class="title" style="margin-left: 40%">经纪人列表</span><span style='position: absolute;right: 0.5rem;'><a href="{:U('Agent/add')}" style="font-size: 12px;">申请成为</a></span></div>
+					
+			<section  style="" class="d-page" >
+				
+				<div class="search-container jingjiren-search">
+					<!-- <div class="search-type autoFixed" node-type="panelArea">
+						<div class="type-list clear"><a href="#" class="actPanel" actdata="name=area" defaultname="区域"><span title="区域" class="show-name">区域</span><span class="icon-down"></span></a><a href="#" class="actPanel" actdata="name=more" defaultname="筛选"><span title="筛选" class="show-name">筛选</span><span class="icon-down"></span></a>
+							<a
+							href="#" class="actPanel" actdata="name=sort" defaultname="排序"><span title="排序" class="show-name">排序</span><span class="icon-down"></span></a>
+						</div>
+						<div class="panel area" style="display: none;">
+							<div class="search-panel search-area jingjiren-area">
+								<div class="panel-cell area2" sindex="2">
+									
+								</div>
+								<div class="panel-cell area3" sindex="3">
+									<ul style="transition-timing-function: cubic-bezier(0.1, 0.57, 0.1, 1); transition-duration: 0ms; transform: translate(0px, 0px) scale(1) translateZ(0px);">
+										<li><a class="actRedirect" href="#">不限</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div> -->
+				</div>
+				
+			<div class="p-list ershoufang-list jingjiren-list">
+				<ul class="fang-list" node-type="list">
+				<foreach name='data' item='v' key='k'>
+					<li>
+						<a href="javascript:;" class="actIamlink"><img data-listen="1" class="lazyload" src="__ROOT__/Uploads/{$v.ag_pic}">
+							<p class="f-title">{$v['ag_name']}</p>
+							<p class="f-area">{$v['ag_address']}</p>
+							<p class="f-xiaoqu">联系电话：<span class="jjr-hl">{$v['ag_phone']}</span></p>
+						</a>
+					</li>
+					</foreach>
+				</ul>
+			</div>
+	</body>
+
+</html>

@@ -1,0 +1,20 @@
+<div class="logo">
+            <a href="__ROOT__"><img src="__PUBLIC__/Home/index/logo.png"></a>
+          </div>
+          <div class="nav">
+            <ul>
+              <li class="liselected"><a href="__ROOT__">首页</a></li>
+              <li><a href="{:U('Ad/index')}">广告主</a></li>
+              <li><a href="{:U('Developer/index')}">开发者</a></li>
+              <li><a href="{:U('Index/index')}">广告介绍</a></li>
+              <li><a href="{:U('Info/index',array('cate'=>1))}">网盟资讯</a></li>
+            </ul>
+          </div>
+          <?php if($_SESSION['loginname'] && $_SESSION['loginid']):?>
+
+              <div class="res_log" id="resLog"> <a class="a_reg" href="{:U('Member/Index/index')}">{$Think.session.loginname}</a> <span>|</span> <a href="{:U('Login/out')}">退出</a> </div>
+          <?php else:?>
+
+              <div class="res_log" id="resLog"> <a class="a_reg" href="{:U('Register/index')}">注册</a> <span>|</span> <a href="{:U('Login/index')}">登录</a> </div>
+
+          <?php endif?>

@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+		<meta content="fullscreen=yes,preventMove=yes" name="ML-Config">
+
+		<meta content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" name="viewport">
+
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="yes" name="apple-touch-fullscreen">
+		<meta content="telephone=no,email=no" name="format-detection">
+		<link href="http://m.lianjia.com/favicon.ico" rel="apple-touch-icon-precomposed">
+		<link href="http://m.lianjia.com/favicon.ico" rel="Bookmark">
+		<link href="http://m.lianjia.com/favicon.ico" rel="apple-touch-icon">
+
+		<title>自在乡居</title>
+		
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/home/index.css" media="all">
+		<link rel="stylesheet" href="__PUBLIC__/Home/dist/css/swiper.min.css">
+		<link rel="stylesheet" href="__PUBLIC__/Admin/laydate/need/laydate.css">
+	</head>
+
+	 <style>
+    body {
+        background: #eee;
+        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        color:#000;
+        margin: 0;
+        padding: 0;
+    }
+    .swiper-container {
+        width: 100%;
+        height: 16rem;
+        margin: auto;
+    }
+    .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+        
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+    }
+
+    #cover{
+    	position: fixed;
+    	top: 0rem;
+    	width: 100%;
+    	height: 100%;
+    	background: #000;
+    	z-index: 9999;
+    	opaprovince: 0.7;
+    	display: none;
+    }
+	#province li{
+		padding: 0.6rem 0;
+		margin: 0 7rem;
+		font-size: 1rem;
+		border-bottom: 1px solid #ccc;
+		cursor: pointer;
+	}
+
+	#province{
+		font-size: 14px;text-align: center;color: #fff;
+		position: absolute;
+		top: 0rem;
+		z-index: 10000;
+		width: 100%;
+		height: 100%;
+		display: none;
+	}
+	.tag {
+		border-radius: 2px;
+		align-items: flex-start;
+		text-align: center;
+		color: #00AB64;
+		box-sizing: border-box;
+		padding: 2px 6px 3px;
+		border-width: 1px;
+		border-style: solid;
+		border-color: #00AB64;
+		border-image: none;
+		background-color: #ffffff;
+	}
+
+	.right {
+		position: absolute;
+		top: 10px;
+		right: 10px;
+		height: 30px;
+		padding: 0 10px;
+		font-size: 14px;
+		line-height: 30px;
+		color: #111111;
+		text-align: center;
+		display: block;
+	}
+
+	#menu-top-mask {
+	    position: fixed;
+	    left: 0;
+	    top: 0;
+	    bottom: 0;
+	    width: 100%;
+	    background: rgba(0,0,0,0);
+	    z-index: 99;
+	}
+	#menu-top {
+	    position: absolute;
+	    right: 19px;;
+	    top: 80px;
+	    min-width: 106px;
+	    height: 85px;
+	    padding-right: 10px;
+	    z-index: 101;
+	    background-color: #7f7f7f;
+	    display:none;
+	}
+	#menu-top:after {
+	    content: "";
+	    position: absolute;
+	    top: -4px;
+	    right: 19px;
+	    width: 10px;
+	    height: 10px;
+	    background-color: #7f7f7f;
+	    -webkit-transform: rotate(45deg);
+	    transform: rotate(45deg);
+	}
+	#menu-top li {
+	    padding-left: 18px;
+	    position: relative;
+	}
+	#menu-top li a {
+	    display: block;
+	    padding-right: 5px;
+	    font-size: 12px;
+	    line-height: 40px;
+	    color: #fff;
+	    white-space: nowrap;
+	    position: relative;
+	}
+	a:visited {
+	    color: #333;
+	}
+	.input {
+	height: 2.1875rem;
+	width: 100%;
+	border: 0px none;
+	background: rgba(255, 255, 255, 0.9) none repeat scroll 0% 0%;
+	color: rgb(153, 153, 153);
+	font-size: 0.8125rem;
+	padding-left: 2.0625rem;
+	border-radius: 0.1875rem;
+	display: inline-block;
+	line-height: 1.875rem;
+	vertical-align: middle;
+	}
+	
+	.tosearch {
+		position: absolute;
+		bottom: 0.45rem;
+		padding: 0px 20px;
+	}
+	.click_up {
+		display: none;
+		position: relative;
+		z-index: 10000;
+		padding: 1rem 1rem;
+		background: #fff;
+		width: 100%;
+	}
+	.banner li {
+		float: left;
+		border: 1px solid #ccc;
+		font-size: 14px;
+		padding: 0.7rem;
+		margin-bottom: 0.3rem;
+		margin-right: 0.3rem;
+	}
+    </style>
+
+	<body>
+		<div id="menu-top">
+		    <ul>
+                <li class="menu-home">
+                    <a href="http://mei.vshijie.cn/bk/index.php/Home/Owner/index">
+                        <span style="font-size: 13px;margin-right: 10px;">❤</span>我是房主
+                    </a>
+                </li>
+		        <li class="menu-locate">
+		            <a href="http://mei.vshijie.cn/bk/index.php/Home/Guest/home">
+		            	<span style="font-size: 18px;margin-right: 10px;">★</span>我的预定
+		            </a>
+		        </li>
+		    </ul>
+		</div>
+<div id="myProvince" style="padding:0.7rem 0;font-size: 14px;background:#c3AB64;text-align:center;" >
+	<div style="width: 60px;display: inline;text-align: left;position: fixed;left: 2px;">
+		<?php if($_SESSION['tag']):?>
+			<a href="javascript:;" style="text-decoration: none;color: #fff;padding-left: 0.8rem;" id="returnA">&lt; 返回</a>
+		<?php endif?>
+	</div>
+	<div style="width: 100%;display:inline;">
+		<a id="topprovince" href="javascript:;" style="color: #fff;">
+		<?php if($_SESSION['tag']):?> {$Think.session.tag}. <?php endif?> {$Think.session.province}</a>
+	</div>
+</div>
+<div id="cover"></div>
+		<div id="province">
+			<ul>
+				<li>北京市</li>
+				<foreach name='province' item='v' key='k'>
+					<li>{$v.provincename}</li>
+				</foreach>
+			</ul>
+		</div>
+		<div id="selectQuyu" class="click_up">
+			<div class="banner" style="height: auto;">
+				<span>省份筛选:</span>
+				<ul>
+					<foreach name='province' item='v' key='k'>
+					<li><a href="javascript:;" onclick="selectArea({$v.provinceid},'{$v.provincename}')">{$v.provincename}</a></li>
+					</foreach>
+				</ul>
+			</div>
+		</div>
+		<div id="selectJiage" class="click_up">
+			<div class="banner">
+				<span>价格筛选:</span>
+				<ul>
+					<li><a href="javascript:;" onclick="selectPrice('300以下')">300以下</a></li>
+					<li><a href="javascript:;" onclick="selectPrice('300-600')">300-600</a></li>
+					<li><a href="javascript:;" onclick="selectPrice('600以上')">600以上</a></li>
+				</ul>
+			</div>
+		</div>
+		<div id="selectNear" class="click_up">
+			<div class="banner">
+				<span>距离排序:</span>
+				<ul>
+					<li><a href="javascript:;" onclick="selectJuli('由近及远')">由近及远</a></li>
+					<li><a href="javascript:;" onclick="selectJuli('由远及近')">由远及近</a></li>
+				</ul>
+			</div>
+		</div>
+	<div id="fullDiv">
+		<div class="section-wrapper">
+			<header class="home-header">
+				<div class="tosearch" style="width: 92%;"><span class="icon-home-search" style="top: 0.6875rem;position: absolute;"></span>
+					<input class="input" placeholder="商圈/酒店/地址" value="{$key}" />
+				</div>
+				<div id="minsuMenu" class="member">
+					<i class="nav-top has-msg"></i><span class="msg">&nbsp;</span>
+				</div>
+			</header>
+		</div>
+
+		<div class="banner">
+			<div class="swiper-container banner-img">
+			    <div class="swiper-wrapper" style="height: 10rem;">
+			    	<foreach name='carousel_data' item='v' key='k'>
+			        	<div class="swiper-slide" style="height: 10rem;">
+				    		<a class="ban-img" href="{$v.carousel_url}"><img class="actShowImage ban-img" src="__ROOT__/Uploads/{$v.carousel_img}"></a>
+				    	</div>
+			        </foreach>
+			    </div>
+			</div>
+		</div>
+
+		<div class="section-wrapper">
+			<header class="home-header"><div class="tosearch" style="width: 100%;">
+				<input type="text" name="begin_time" id="beginTime" class="text laydate-icon" style="height: 2.1875rem;width: 100%;border-radius: 0.1875rem;text-align: center;"
+					placeholder="入住" required="required" value="{$Think.session.begin}"/>
+				</div>
+			</header>
+		</div>
+		<div class="section-wrapper">
+			<header class="home-header"><div class="tosearch" style="width: 100%;">
+				<input type="text" name="end_time" id="endTime" class="text laydate-icon" style="height: 2.1875rem;width: 100%;border-radius: 0.1875rem;text-align: center;"
+					placeholder="退房" required="required" value="{$Think.session.end}">
+				</div>
+			</header>
+		</div>
+		
+		<div class="home-nav">
+			<ul>
+				<li style="width: 23%;" class="cell ">
+					<a title="主题乡居" href="http://mei.vshijie.cn/bk/index.php/Home/House/home?tag=主题乡居" class="actIamlink" >
+						<p class="menu-ershoufang"></p>
+						<p>主题乡居</p>
+					</a>
+				</li>
+				<li style="width: 23%;" class="cell ">
+					<a title="特价乡居" href="http://mei.vshijie.cn/bk/index.php/Home/House/home?tag=特价乡居" class="actIamlink">
+						<p class="menu-xinfang"></p>
+						<p>特价乡居</p>
+					</a>
+				</li>
+				<li style="width: 23%;" class="cell ">
+					<a  title="热门乡居" href="http://mei.vshijie.cn/bk/index.php/Home/House/home?tag=热门乡居" class="actIamlink" >
+						<p class="menu-yezhu"></p>
+						<p>热门乡居</p>
+					</a>
+				</li>
+				<li style="width: 23%;" class="cell ">
+					<a  title="少数民族" href="http://mei.vshijie.cn/bk/index.php/Home/House/home?tag=少数民族" class="actIamlink" >
+						<p class="menu-school"></p>
+						<p>少数民族</p>
+					</a>
+				</li>
+			</ul>
+		</div>
+		
+		<div class="home-list p-list">
+			<div class="search-container">
+				<div class="search-type" node-type="panelArea" style="position: relative">
+					<div class="type-list clear" >
+						<a href="#" id="near" style="width:33%" class="actPanel quyu" actdata="name=area" defaultname="{$_SESSION['province']}">
+							<span title="更多" class="show-name">
+								<?php if($_SESSION['near']):?> {$Think.session.near}<?php endif?>
+								<?php if(!$_SESSION['near']):?>我附近<?php endif?>
+							</span>
+							<span class="icon-down"></span>
+						</a>
+						<a href="#" id="jiage" class="actPanel num_search" style="width:33%" actdata="name=type" defaultname="房型">
+							<span title="更多" class="show-name">
+								<?php if($_SESSION['jiage']):?> {$Think.session.jiage}<?php endif?>
+								<?php if(!$_SESSION['jiage']):?>价格<?php endif?>
+							</span>
+							<span class="icon-down"></span>
+						</a>
+						<a href="#" id="quyu" class="actPanel num_search" style="width:34%" actdata="name=type" defaultname="房型">
+							<span title="更多" class="show-name">
+								<?php if($_SESSION['city']):?> {$Think.session.city}<?php endif?>
+								<?php if(!$_SESSION['city']):?>区域<?php endif?>
+							</span>
+							<span class="icon-down"></span>
+						</a>
+					</div>
+					
+					<div class="panel more" searchparam="s,o,as,ae,t" style="display: none;">
+						<div class="search-panel search-more">
+							
+							<div class="panel-cell more2 more-tag2" node-type="houseId" style="display: none;">
+								<ul class="house-code">
+									<li>
+										<input value="" placeholder="请输入房源编号">
+									</li>
+								</ul>
+							</div>
+						</div>
+						<p class="searc-sub"><a href="#" class="actDoneSetArgs">确定</a></p>
+					</div>
+				</div>
+			</div>
+
+			<ul class="fang-list">
+			<?php if($data):?>
+			<foreach name='data' item='v' key='k'>
+				<li>
+					<a href="{:U('House/index',array('id'=>$v['id']))}" class="actIamlink" data-href="/bj/ershoufang/BJCP91853423.html" title="美丽新乡村">
+						<img style="width: 100%;height:100%" data-listen="1" alt="美丽新乡村" src="__ROOT__/Uploads/{$v.list_pic}" />
+						<p class="f-title"  title="{$v.name}" style="padding-right:2rem;">{$v.name}</p>
+					</a>
+						<p>
+							<a href="scores?hid={$v.id}">评分：{$v.score}</a>
+						</p>
+						<p>￥{$v.price}</p>
+						<p style="padding-right:2rem;">
+						      <?php if($v['bed_type']==0):?>高级大床房<?php endif?>
+                      		  <?php if($v['bed_type']==1):?>标准间<?php endif?>
+                      		  <?php if($v['bed_type']==2):?>三人间<?php endif?>/
+                      		  <?php if($v['type']==0):?>院子<?php endif?>
+                      		  <?php if($v['type']==1):?>窑洞<?php endif?>
+                      		  <?php if($v['type']==2):?>木屋<?php endif?>
+                      		  <?php if($v['type']==3):?>别墅<?php endif?>
+						</p>
+
+				</li>
+			</foreach>
+			<?php else:?>
+				<li>
+					<a href="javascript:;">暂时没有匹配的内容</a>
+				</li>
+			<?php endif?>
+			</ul>
+		</div>
+	</div>
+		<span id="cnzz_stat_icon_1253491255"></span><span id="cnzz_stat_icon_1254525948"></span>
+		<div style="display: none;"></div>
+  		<script src="__PUBLIC__/Admin/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+		<script src="__PUBLIC__/Home/dist/js/swiper.min.js"></script>
+		<script type="text/javascript" src="__PUBLIC__/Admin/layer/1.9.3/layer.js"></script>
+		<script type="text/javascript" src='__PUBLIC__/Admin/laydate/laydate.js'></script>
+		<script type="text/javascript">
+			var swiper = new Swiper('.swiper-container',{
+				pagination: '.pagination',
+				loop:false,
+				grabCursor: true,
+				paginationClickable: true,
+				autoplay: 2000,
+				autoplayDisableOnInteraction: false
+			});
+			$('#quyu').click(function(event) {
+				$('#fullDiv').css({display:'none'});
+				$('#selectQuyu').css({display:'block'});
+			});
+			$('#jiage').click(function(event) {
+				$('#fullDiv').css({display:'none'});
+				$('#selectJiage').css({display:'block'});
+			});
+			$('#near').click(function(event) {
+				$('#fullDiv').css({display:'none'});
+				$('#selectNear').css({display:'block'});
+			});
+	        var start = {
+	            elem: '#beginTime',
+	            format: 'YYYY年MM月DD日(入住)',
+	            min: laydate.now(), //设定最小日期为当前日期
+	            max: '2099-12-31 23:59:59', // 最大日期
+	            istime: true, // 是否开启时间选择
+	            isclear: true, // 是否显示清空
+	            istoday: true, // 是否显示今天
+	            issure: true, // 是否显示确认
+	            festival: true, // 是否显示节日
+	            start:laydate.now(), // 开始日期
+	            choose: function(datas){ // 选择好日期的回调
+	                end.min = datas; //开始日选好后，重置结束日的最小日期
+	                end.start = datas; //将结束日的初始值设定为开始日
+	                $.ajax({
+						url: "http://mei.vshijie.cn/bk/index.php/Home/house/beginSession?d="+datas,
+						type: 'POST',
+						dataType: 'text'
+					});
+	            }
+	        };
+	        var end = {
+	            elem: '#endTime',
+	            format: 'YYYY年MM月DD日(退房)',
+	            min: laydate.now(),
+	            max: '2099-12-31 23:59:59',
+	            istime: true,
+	            isclear: true,
+	            istoday: true,
+	            issure: true,
+	            festival: true,
+	            choose: function(datas){
+	                start.max = datas; //结束日选好后，重置开始日的最大日期
+	                $.ajax({
+						url: "http://mei.vshijie.cn/bk/index.php/Home/house/endSession?d="+datas,
+						type: 'POST',
+						dataType: 'text'
+					});
+	            }
+	        };
+	        laydate.skin('default');
+	        laydate(start);
+	        laydate(end);
+	        function selectArea(id,province) {
+				window.location.href="http://mei.vshijie.cn/bk/index.php/Home/House/city?province="+encodeURIComponent(province)+"&id="+id;
+			}
+			function selectPrice(price) {
+				window.location.href="http://mei.vshijie.cn/bk/index.php/Home/House/home?jiage="+encodeURIComponent(price);
+			}
+			function selectJuli(juli) {
+				window.location.href="http://mei.vshijie.cn/bk/index.php/Home/House/home?near="+encodeURIComponent(juli);
+			}
+			$(function(){
+				$('.tosearch').click(function() {
+					window.location.href="{:U('search')}";
+				});
+				$('#myProvince').click(function(event) {
+					$('#cover').css({display:'block'});
+					$('#province').css({display:'block'});
+				});
+				$('#province li').click(function(event) {
+					var province = $(this).html();
+					window.location.href="http://mei.vshijie.cn/bk/index.php/Home/House/ajaxProvince?province="+province+"&u="+encodeURIComponent(window.location.href);
+				});
+				$('#minsuMenu').click(function() {
+					if($('#menu-top').is(":hidden")) {
+						$('#menu-top').show();
+					} else {
+						$('#menu-top').hide();
+					}
+				});
+				$('#returnA').click(function() {
+					window.location.href="http://mei.vshijie.cn/bk/index.php/Home/House/home?r=1"; 
+				});
+			})
+		</script>
+	</body>
+</html>

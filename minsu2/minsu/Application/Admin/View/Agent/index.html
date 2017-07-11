@@ -1,0 +1,312 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <title>经纪人列表</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.5 -->
+    <link rel="stylesheet" href="__PUBLIC__/Admin/bootstrap/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/Font-Awesome-master/css/font-awesome.min.css"/>
+    <!-- Ionicons -->
+    <!--<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">-->
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/ionicons-master/css/ionicons.min.css"/>
+    <!-- DataTables -->
+    <link rel="stylesheet" href="__PUBLIC__/Admin/plugins/datatables/dataTables.bootstrap.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="__PUBLIC__/Admin/dist/css/AdminLTE.min.css">
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" href="__PUBLIC__/Admin/dist/css/skins/_all-skins.min.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- 其他模板的css文件引入开始 -->
+    <link href="__PUBLIC__/Admin/css/H-ui.admin.css" rel="stylesheet" type="text/css" />
+    <link href="__PUBLIC__/Admin/css/style.css" rel="stylesheet" type="text/css" />
+    <!-- 其他模板的css文件引入结束 -->
+    <style type="text/css">
+        .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th{
+            vertical-align:middle;
+            text-align: center;
+        }
+        .r{
+            float: right;
+        }
+        .content-header{
+            width: 100%;
+        }
+        body{
+            width: 100%;
+        }
+        .color{
+            color: #fff;
+            background-color: #1c84c6;
+            cursor: wait;
+        }
+    </style>
+</head>
+<body class="hold-transition skin-blue sidebar-mini sidebar-collapse">
+<div class="wrapper">
+
+    <!--引入公共左侧和头部-->
+    <!--左边开始-->
+    <header class="main-header">
+        <!-- Logo -->
+        <a href="{:U('Index/index')}" class="logo">
+            <!-- mini logo for sidebar mini 50x50 pixels -->
+            <span class="logo-mini"><b>A</b>LT</span>
+            <!-- logo for regular state and mobile devices -->
+            <span class="logo-lg"><b>Admin</b>LTE</span>
+        </a>
+        <!-- Header Navbar: style can be found in header.less -->
+        <nav class="navbar navbar-static-top" role="navigation">
+            <!-- Sidebar toggle button-->
+            <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                <span class="sr-only">Toggle navigation</span>
+            </a>
+            <div class="navbar-custom-menu">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown user user-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <img src="__PUBLIC__/Admin/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+                            <span class="hidden-xs">{$_SESSION['aname']}</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <!-- User image -->
+                            <li class="user-header">
+                                <img src="__PUBLIC__/Admin/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                                <p>
+                                    <small>管理员</small>
+                                </p>
+                            </li>
+                            <li class="user-footer">
+                                <div class="pull-right">
+                                    <a href="{:U('Login/out')}" class="btn btn-default btn-flat">安全退出</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!-- Left side column. contains the logo and sidebar -->
+    <aside class="main-sidebar">
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar">
+            <!-- Sidebar user panel -->
+            <div class="user-panel">
+                <div class="pull-left image">
+                    <img src="__PUBLIC__/Admin/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                </div>
+                <div class="pull-left info">
+                    <p>{$_SESSION['aname']}</p>
+                    <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                </div>
+            </div>
+            <!-- search form -->
+            <form action="#" method="get" class="sidebar-form">
+                <div class="input-group">
+                    <input type="text" name="q" class="form-control" placeholder="Search...">
+            <span class="input-group-btn">
+                        <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
+                      </span>
+                </div>
+            </form>
+            <!-- /.search form -->
+            <!-- sidebar menu: : style can be found in sidebar.less -->
+            <!--载入菜单-->
+            <ul class="sidebar-menu">
+                <!--<li class="header">MAIN NAVIGATION</li>-->
+                <li class="active treeview">
+                    <a href="#">
+                        <i class="fa fa-dashboard"></i> <span>首页</span> <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li class="active"><a href="{:U('Index/index')}"><i class="fa fa-circle-o"></i>后台首页</a></li>
+                        <li class="active"><a href="{:U('Public/index')}"><i class="fa fa-circle-o"></i>图标</a></li>
+                    </ul>
+                </li>
+                <!--菜单栏循环开始-->
+                <foreach name="auth_infoA" item="v">
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa {$v.auth_icon}"></i>
+                            <span>{$v.auth_name}</span>
+                        </a>
+                        <ul class="treeview-menu">
+                            
+                            <foreach name="auth_infoB" item="vv">
+                                <if condition="$vv['auth_pid'] eq $v['auth_id']">
+                                <li><a href="__MODULE__/{$vv.auth_c}/{$vv.auth_a}"><i class="fa fa-circle-o"></i>{$vv.auth_name}</a></li>
+                                </if>
+                            </foreach>
+                            
+                        </ul>
+                    </li>
+                </foreach>
+                <!--菜单栏循环结束-->
+            </ul>
+        </section>
+        <!-- /.sidebar -->
+    </aside>
+    <!--左边结束-->
+
+    <!-- 右侧部分开始 -->
+    <div class="content-wrapper" style="background: #FDF5E1;">
+        <section class="content-header">
+            <div class="cl pd-5 bg-1 bk-gray mt-20">
+            <div class="box-header" style="margin-bottom:15px">
+              </form>
+            </div>
+
+                <span class="l">
+                    <a href="javascript:;" class="btn btn-primary radius"> <i class="fa  fa-plus-square"></i>经纪人列表</a>
+                    <!-- <a href="{:U('Web/addItem')}" class="btn btn-primary radius"> <i class="fa  fa-plus-square"></i>添加 包信息</a> -->
+                </span>
+                <span class="r">
+                    <a href="javascript:;" class="btn btn-primary radius"> <i class=""></i>全部</a>
+                    
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                          共有数据： <strong>{$dataNum}&nbsp;&nbsp;</strong>条
+                </span>
+            </div>
+            <div class="box">
+                <div class="box-body">
+                    <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                        <tr>
+                            <th>经纪人姓名</th>
+                            <th>经纪人地址</th>
+                            <th>经纪人电话</th>
+                            <th>经纪人头像</th>
+                            <th>申请时间</th>
+                            <th>申请状态</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <foreach name='data' item='v' key='k'>
+                                <tr>
+                                    
+                                    <td>{$v.ag_name}</td>
+                                    <td>{$v.ag_address}</td>
+                                    <td>{$v.ag_phone}</td>
+                                    <td>
+                                        <img height="80"  src="__ROOT__/Uploads/{$v.ag_pic}">
+                                    </td>
+                                     <td>
+                                        {$v.createtime}
+                                    </td>
+                                    <td>
+                                        <?php if($v['ag_audit'] == 1):?>
+                                            申请通过
+                                        <?php else:?>
+                                            申请失败
+                                        <?php endif?>
+                                    </td>
+                                    <td>
+                                        <?php if($v['ag_audit'] == 1):?>
+                                            <a href="javascript:;" onclick="if(confirm('确定失败吗?')) location.href='{:U('audit_no',array('agid'=>$v['agid']))}'" class="btn btn-warning radius"> <i class=" fa-remove "></i> 审核失败</a>
+                                        <?php else:?>
+                                            <a href="javascript:;" onclick="if(confirm('确定通过吗?')) location.href='{:U('audit',array('agid'=>$v['agid']))}'" class="btn btn-warning radius"> <i class=" fa-remove "></i> 审核通过</a>
+                                        <?php endif?>
+                                        <a href="javascript:;" onclick="if(confirm('确定删除吗?')) location.href='{:U('del',array('agid'=>$v['agid']))}'" class="btn btn-danger radius"> <i class=" fa-remove "></i> 删除</a>
+                                    </td>
+                                </tr>
+                            </foreach>
+                            
+                        </tbody>
+
+                    </table>
+                </div><!-- /.box-body -->
+            </div><!-- /.box -->
+    </div><!-- /.col -->
+    </section>
+</div>
+<!-- 右侧部分结束 -->
+
+</div>
+<!-- 整个结束 -->
+
+
+<!-- jQuery 2.1.4 -->
+<script src="__PUBLIC__/Admin/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+<!-- Bootstrap 3.3.5 -->
+<script src="__PUBLIC__/Admin/bootstrap/js/bootstrap.min.js"></script>
+<!-- DataTables -->
+<script src="__PUBLIC__/Admin/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="__PUBLIC__/Admin/plugins/datatables/dataTables.bootstrap.min.js"></script>
+<!-- SlimScroll -->
+<script src="__PUBLIC__/Admin/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
+<script src="__PUBLIC__/Admin/plugins/fastclick/fastclick.min.js"></script>
+<!-- AdminLTE App -->
+<script src="__PUBLIC__/Admin/dist/js/app.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="__PUBLIC__/Admin/dist/js/demo.js"></script>
+<!-- page script -->
+
+<!-- 其他模板的js文件引入的部份開始 -->
+<script type="text/javascript" src="__PUBLIC__/Admin/layer/1.9.3/layer.js"></script>
+<!-- 其他模板的js文件引入的部份結束 -->
+<script>
+   
+    $(function () {
+        $("#example1").DataTable({
+            "bPaginate": true, //翻页功能
+            "bLengthChange": true, //改变每页显示数据数量
+            "bFilter": true, //过滤功能
+            "bSort": true, //排序功能
+            "bInfo": true,//页脚信息
+            "bAutoWidth": true,//自动宽度
+            "aLengthMenu": [[100, 50, 25, -1], [100,50,25, "All"]],
+            columnDefs:[{
+                orderable:false,//禁用排序
+                targets:[],   //指定的列
+            }],
+            "aaSorting": [
+                [ 11, "desc" ],
+            ],
+            "oLanguage": {
+                "sProcessing": "正在加载中......",
+                "sLengthMenu": "每页显示 _MENU_ 条记录",
+                "sZeroRecords": "对不起，查询不到相关数据！",
+                "sEmptyTable": "表中无数据存在！",
+                "sInfo": "当前显示 _START_ 到 _END_ 条，共 _TOTAL_ 条记录",
+                "sInfoFiltered": "数据表中共为 _MAX_ 条记录",
+                "sSearch": "搜索",
+                "oPaginate": {
+                    "sFirst": "首页",
+                    "sPrevious": "上一页",
+                    "sNext": "下一页",
+                    "sLast": "末页"
+                }
+            } //多语言配置
+        });
+        $('#example2').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": false,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+        });
+    });
+
+
+</script>
+
+    <script type="text/javascript" src='__PUBLIC__/Admin/laydate/laydate.js'></script>
+
+
+</body>
+</html>

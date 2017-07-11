@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+		<meta content="fullscreen=yes,preventMove=yes" name="ML-Config">
+
+		<meta content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" name="viewport">
+
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="yes" name="apple-touch-fullscreen">
+		<meta content="telephone=no,email=no" name="format-detection">
+		<link href="http://m.lianjia.com/favicon.ico" rel="apple-touch-icon-precomposed">
+		<link href="http://m.lianjia.com/favicon.ico" rel="Bookmark">
+		<link href="http://m.lianjia.com/favicon.ico" rel="apple-touch-icon">
+
+		<title>美丽新乡村-搜索</title>
+		
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/home/index.css" media="all">
+	</head>
+
+	<style type="text/css">
+	.banner{
+		padding: 0 1rem;
+		font-size: 0.8rem;
+		padding-top: 0.5rem;
+	}
+	.banner ul li{
+		list-style: none;
+		width: 25%;
+		height: 2rem;
+		float: left;
+		margin-right: 0.5rem;
+		font-size: 0.8rem;
+		margin-top: 0.5rem;
+		text-align: center;
+		border: 1px solid #ccc;
+		padding: 0.5rem;
+		border-radius: 5px;
+	}
+	.banner .cur{
+		border: 1px solid red;
+	}
+	.search select{
+		width: 20%;
+		height: 2rem;
+	}
+	.search input{
+		width: 60%;
+		height: 2rem;
+	}
+	.search button{
+		width: 15%;
+		height: 2rem;
+	}
+
+	</style>
+    
+
+	<body>
+	<div style="padding:0.5rem 0;padding-left: 0.8rem;font-size: 14px;background: #c3AB64;" ><a href="javascript:window.history.back();" style="color: #fff;">&lt; 返回</a></div>
+		<div class="lj-pages">
+			<section style="" class="d-page" page-model="index/index">
+				<div class="section-wrapper">
+				<form action="{:U('House/home')}" method="post" id="searchForm">
+					<header style="width:100%;" class="home-header">
+						<div style="width:100%;left: 0rem;" class="search"><!-- <span class="icon-home-search"></span> -->
+							<input id="search_input" name="key" type="text" placeholder="商圈/酒店/地址">
+							<button type="submit" >确认</button>
+						</div>
+					</header>
+				
+					<div class="banner">
+						热门搜索：
+						<ul>
+							<li class="">山景别墅</li>
+							<li>海景别墅</li>
+							<li>交通方便</li>
+							<li>历史文化</li>
+							<li>少数民族</li>
+							<li>机场附近</li>
+						</ul>
+					</div>
+				</form>
+			</section>
+		</div>
+
+		<script src="__PUBLIC__/Admin/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+
+		<script type="text/javascript" src="__PUBLIC__/Home/index.js"></script>
+
+		<script type="text/javascript">
+
+		$(function(){
+			$('li').click(function(event) {
+				var i = $(this).index();
+				var value = $(this).html();
+				$('li').eq(i).addClass('cur').siblings().removeClass('cur');
+				$('#search_input').val(value);
+				$("#searchForm").submit();
+			});
+
+		})
+		</script>
+	</body>
+
+</html>

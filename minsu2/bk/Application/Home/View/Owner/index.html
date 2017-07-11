@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+		<meta content="fullscreen=yes,preventMove=yes" name="ML-Config">
+
+		<meta content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" name="viewport">
+
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="yes" name="apple-touch-fullscreen">
+		<meta content="telephone=no,email=no" name="format-detection">
+		<link href="http://m.lianjia.com/favicon.ico" rel="apple-touch-icon-precomposed">
+		<link href="http://m.lianjia.com/favicon.ico" rel="Bookmark">
+		<link href="http://m.lianjia.com/favicon.ico" rel="apple-touch-icon">
+
+		<title>美丽新乡村-个人中心</title>
+
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/member/index.css" media="all">
+	</head>
+
+	<body>
+<div style="padding:0.5rem 0;padding-left: 0.8rem;font-size: 14px;background:#c3AB64"  ><a href="javascript:window.history.back();" style="color: #fff;">&lt; 返回</a></div>
+		<div class="lj-pages">
+			<section style="" class="d-page" page-model="user/index/index">
+				<div class="user-wrap">
+					<div class="user-comp">
+						<header class="header nt-AppPromot"></header>
+						<img src="__PUBLIC__/Home/member/mine_head.png">
+						<?php if($_SESSION['owner_id'] && $_SESSION['owner_name']):?>
+						<p class="user-num user-info">欢迎你，{$Think.session.owner_name}<span></span></p>
+						<?php else:?>
+						<p class="user-num"><a href="{:U('Owner/login')}" class="btn">登录</a><a href="{:U('Owner/register')}" class="btn">注册</a></p>
+						<?php endif?>
+					</div>
+					<?php if($_SESSION['owner_id'] && $_SESSION['owner_name']):?>
+					<div class="p-list">
+						<ul>
+							<li><a href="{:U('Owner/addHouse')}" class="actCheck">发布乡居<span class="icon-go-right"></span><span class="list-icon list-icon-favorHouse"></span></a></li>
+							<li><a href="{:U('Owner/editStory')}" class="actCheck">房主故事<span class="icon-go-right"></span><span class="list-icon list-icon-favorCommunity"></span></a></li>
+							<li><a href="{:U('Owner/houseInfo')}" class="actCheck">乡居列表<span class="icon-go-right"></span><span class="list-icon list-icon-favorNewHouse"></span></a></li>
+							<li><a href="{:U('Owner/order')}" class="actCheck">预定信息<span class="icon-go-right"></span><span class="list-icon list-icon-houseSeeRecord"></span></a></li>
+							<li><a href="{:U('Owner/queue')}" class="actCheck">我的排期<span class="icon-go-right"></span><span class="list-iconA"></span></a></li>
+							<li><a href="{:U('Owner/balance')}" class="actCheck">提取收益<span class="icon-go-right"></span><span class="list-iconB"></span></a></li>
+						</ul>
+					</div>
+					<p class="logout-p"><a href="{:U('Owner/out')}" class="actLogout">退出登录</a></p>
+					<?php endif?>
+				</div>
+			</section>
+		</div>
+	</body>
+	<script type="text/javascript" src="__PUBLIC__/Home/index.js"></script>
+</html>

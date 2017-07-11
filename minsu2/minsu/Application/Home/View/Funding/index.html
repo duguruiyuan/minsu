@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="applicable-device" content="mobile">
+
+		<meta content="fullscreen=yes,preventMove=yes" name="ML-Config">
+
+		<meta content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" name="viewport">
+
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="yes" name="apple-touch-fullscreen">
+		<meta content="telephone=no,email=no" name="format-detection">
+		<title>美丽新乡村-众筹列表</title>
+
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/agent/index.css" media="all">
+		<style type="text/css">
+			.tag{
+				border-radius: 2px;
+				align-items: flex-start;
+				text-align: center;
+				color: #00AB64;
+				box-sizing: border-box;
+				padding: 2px 6px 3px;
+				border-width: 1px;
+				border-style: solid;
+				border-color: #00AB64;
+				border-image: none;
+				background-color: #ffffff;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="lj-pages">
+		<div class="header"><span class="tips" style='position: absolute;z-index: 1000;'>
+		<a href="javascript:window.history.back();" style="margin-left: 1rem;"><i>&lt; </i>返回</a></span><span class="title" style="margin-left: 40%">众筹列表</span></div>
+			<section  style="" class="d-page" >
+				
+				<div class="search-container jingjiren-search">
+				</div>
+			<div class="p-list ershoufang-list jingjiren-list">
+				<ul class="fang-list" node-type="list">
+				<foreach name='data' item='v' key='k'>
+					<li>
+						<a href="__ROOT__/index.php/Home/Pay/funding?funid={$v.funid}" class="actIamlink"><img data-listen="1" class="lazyload" src="__ROOT__/Uploads/{$v.fun_list_pic}">
+							<p class="f-title" title="{$v.fun_name}" style="height: 1.5rem;">{$v.fun_name}
+								<?php if($v['tag']!=''):?>
+									<input type="button"  value="{$v.tag}" class="tag"/>
+								<?php endif?>
+							</p>
+							<p class="f-area">{$v['fun_person']} / {$v['fun_phone']}</p>
+							<p class="f-xiaoqu">阅读人数：<span class="jjr-hl">{$v['fun_interested']}</span></p>
+						</a>
+					</li>
+					</foreach>
+				</ul>
+			</div>
+	</body>
+
+</html>

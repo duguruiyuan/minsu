@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta content="fullscreen=yes,preventMove=yes" name="ML-Config">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="yes" name="apple-touch-fullscreen">
+		<meta content="telephone=no,email=no" name="format-detection">
+		<link href="http://m.lianjia.com/favicon.ico" rel="apple-touch-icon-precomposed">
+		<link href="http://m.lianjia.com/favicon.ico" rel="Bookmark">
+		<link href="http://m.lianjia.com/favicon.ico" rel="apple-touch-icon">
+		<link href="favicon.ico" type="image/x-icon" rel="icon">
+		<link href="favicon.ico" type="image/x-icon" rel="shortcut icon">
+		<title>用户个人中心_用户注册登录-手机链家网</title>
+		<meta name="description" content="链家网手机站用户个人中心提供用户用户关注的房源和和小区以及看房记录等信息，方便用户操作。">
+		<meta name="keywords" content="链家网用户个人中心，链家网用户注册登录">
+
+		<link rel="stylesheet" type="text/css" href="index.css" media="all">
+	</head>
+
+	<body>
+		<iframe style="display: none;" src="index_1.html"></iframe>
+		<div class="lj-pages">
+			<section class="d-page" page-model="user/userform">
+				<div class="login-type">
+					<a href="#" class="actTap" actdata="panel=#loginType1">普通登录</a>
+					<a href="#" class="actTap" actdata="panel=#loginType2">验证码快捷登录</a>
+					<span class="arrow"></span>
+				</div>
+				<form style="" class="tapPanel" id="loginType1" action="http://m.api.lianjia.com/user/account/loginByPasswordV2/" method="post">
+					<input name="redirect" disabled="disabled" class="redirect" value="http://m.lianjia.com/user/index/" type="hidden">
+					<div class="form-list">
+						<ul>
+							<li>
+								<input class="f-text" name="mobile_phone_no" placeholder="请输入手机号" validate="notNull,isTel" validatename="手机号" type="tel">
+							</li>
+							<li>
+								<input class="f-text" name="password" placeholder="请输入登录密码" validate="notNull" validatename="密码" type="password">
+								<input name="remember" value="1" type="hidden">
+							</li>
+						</ul>
+					</div>
+					<p class="p-br">
+						<a href="#" class="btn actLogin">立即登录</a>
+					</p>
+				</form>
+				<form class="tapPanel" id="loginType2" style="display: none;" action="http://m.api.lianjia.com/user/account/loginByVerifyCodeV2/" method="post">
+					<input name="redirect" disabled="disabled" class="redirect" value="http://m.lianjia.com/user/index/" type="hidden">
+					<div class="form-list">
+						<ul>
+							<li>
+								<input class="h-text" name="mobile_phone_no" placeholder="请输入手机号" validate="notNull,isTel" validatename="手机号" type="tel">
+								<a href="#" class="send-check actSendSms"><span>发送验证码</span></a>
+							</li>
+							<li>
+								<input value="" class="f-text" name="verify_code" validate="notNull" validatename="验证码" placeholder="请输入验证码" type="text">
+								<input name="remember" value="1" type="hidden">
+							</li>
+						</ul>
+					</div>
+					<p class="p-br">
+						<a href="#" class="btn actQuickLogin">立即登录</a>
+					</p>
+				</form>
+				<p class="p-br">
+					<a href="http://m.lianjia.com/user/register/?redirect=http%3A%2F%2Fm.lianjia.com%2Fuser%2Findex%2F" class="regist-a">立即注册</a>
+					<a href="http://m.lianjia.com/user/forget/" class="forget-a">忘记密码</a>
+				</p>
+			</section>
+
+		</div>
+
+		<span id="cnzz_stat_icon_1253491255"></span><span id="cnzz_stat_icon_1254525948"></span>
+
+		<div style="display: none;"></div>
+	</body>
+
+</html>

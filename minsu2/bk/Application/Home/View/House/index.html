@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta content="fullscreen=yes,preventMove=yes" name="ML-Config">
+		<meta content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" name="viewport">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="yes" name="apple-touch-fullscreen">
+		<meta content="telephone=no,email=no" name="format-detection">
+		<title>乡居预定-{$result.name}</title>
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/details/index.css" media="all">
+		<link rel="stylesheet" href="__PUBLIC__/Home/dist/css/swiper.min.css">
+	</head>
+	    <style>
+    body {
+        background: #eee;
+        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        color:#000;
+        margin: 0;
+        padding: 0;
+    }
+    .swiper-container {
+        width: 100%;
+        height: 16rem;
+        margin: auto;
+    }
+    .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+        
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+    }
+    .mask-way {
+		display: none;
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: rgba(0,0,0, .85);
+		z-index: 2;
+	}
+	#share-way:before {
+		content: "";
+		display: block;
+		position: absolute;
+		right: 30px;
+		top: 10px;
+		width: 235px;
+		height: 98px;
+		background: url('http://mei.vshijie.cn/minsu/Public/Home/home/shareto.png') no-repeat center;
+		background-size: 235px; 98px;
+	}
+	
+	.btn{
+		display: block;
+		width: 90%;
+		height: 3rem;
+		line-height: 3rem;
+		text-align: center;
+		margin: 0 auto;
+		margin-bottom: 4rem;
+		color: #fff;
+		background: rgb(57, 172, 106);
+		font-size:18px;
+	}
+	
+		
+	.graybtn{
+		display: block;
+		width: 90%;
+		height: 2rem;
+		line-height: 2rem;
+		text-align: center;
+		margin: 0 auto;
+		margin-bottom: 4rem;
+		color: #333;
+		background: #eee;
+	}
+    </style>
+
+	<body>
+	<div id="share-way" class="mask-way"></div>
+	<div style="padding:0.5rem 0;padding-left: 0.8rem;font-size: 14px;background: #c3AB64;">
+		<a href="http://mei.vshijie.cn/bk/index.php/Home/House/home" style="color: #fff;">&lt; 返回</a>
+	</div>
+		<div class="lj-pages">
+			<div class="page-padding">
+				<div class="detai-box">
+					<div class="swiper-container">
+					    <div class="swiper-wrapper">
+					    <?php if($houseImg):?>
+					    	<foreach name='houseImg' item='v' key='k'>
+					        	<div class="swiper-slide"><img class="actShowImage" src="__ROOT__/Uploads/{$v.pic}"></div>
+					        </foreach>
+					    <?php else:?>
+					    	<div class="swiper-slide"><img class="actShowImage" src="__PUBLIC__/Home/home/lizi.png"></div>
+					    <?php endif?>
+					    </div>
+					</div>
+				</div>
+				<div class="like-box ershoufang-like" is_followed="0">
+					<h1 class="title" title="{$result.name}" style="width:100%">{$result.name}(
+					<?php if($result['type']==0):?>
+                            <span>经济型</span>
+                        <?php elseif($result['type']==1):?>
+                            <span>舒适性</span>
+                        <?php elseif($result['type']==2):?>
+                            <span>高端度假</span>
+                        <?php endif?>)
+                     </h1>
+				</div>
+				<div class="main-detail">
+					<div style="width:100%">
+						<a href="__ROOT__/index.php/Home/House/map?place={$result.province}{$result.city}{$result.county}{$result.address}">
+							<img src="http://mei.vshijie.cn/bk/Public/Home/home/location.jpg" style="width:40px;height:40px;" />
+							{$result.province}{$result.city}{$result.county}{$result.address}
+							<span class="icon-go-right"></span>
+						</a>
+					</div>
+				</div>
+				<div class="main-detail">
+					<div style="width:50%">
+						<p>床型</p>
+						<p>
+							<?php if($result['bed_type']==0):?>
+                                一张单人床
+                            <?php elseif($result['bed_type']==1):?>
+                                一张双人床
+                            <?php elseif($result['bed_type']==2):?>
+                                两张单人床
+                            <?php endif?>
+						</p>
+					</div>
+					<div style="width:50%">
+						<p style="margin-top:10px;">
+							<a style="color:#e30000;text-decoration: underline;" href="__ROOT__/index.php/Home/House/story?oid={$result.uid}">☆点此查看房主故事☆</a>
+						</p>
+					</div>
+				</div>
+				<div class="p-list">
+					<ul>
+						<li><span class="half">床型：
+							<span class="d-value">
+								<?php if($result['bed_type']==0):?>
+                                一张单人床
+                            <?php elseif($result['bed_type']==1):?>
+                                一张双人床
+                            <?php elseif($result['bed_type']==2):?>
+                                两张单人床
+                            <?php endif?>
+							</span></span>
+						</li>
+					</ul>
+				</div>
+				<a href="javascript:;" class="actIamlink gotomap" data-href="/bj/map/pos/?pos=116.382471,40.08696&amp;house_code=BJCP91853423" title="位置及周边" data-dianji="map_esfxq_/bj/BJCP91853423">
+					<div class="p-list">
+						<h3>房屋详情<span class="icon-go-right"></span></h3>
+						<ul class="map-ul">
+							<li>
+								<div>{$result.details}</div>
+							</li>
+						</ul>
+					</div>
+				</a>
+				
+				<div class="p-list ershoufang-list jingjiren-list">
+				<ul class="fang-list" node-type="list">
+				<li>用户点评：</li>
+				<?php if($data):?>
+				<foreach name='data' item='v' key='k'>
+					<li>
+						<font color="blue">{$v.r_name}</font>评价:
+					</li>
+					<li>
+						<span>
+							<?php if($v['rate']>0):?>
+								<img style="width: 16px;height: 16px;" src="__PUBLIC__/Home/pay/star.png"/>
+							<?php elseif($v['rate']<=0):?>
+								<img style="width: 16px;height: 16px;" src="__PUBLIC__/Home/pay/star_gray.png"/>
+							<?php endif?>
+						</span>
+						<span>
+							<?php if($v['rate']>1):?>
+								<img style="width: 16px;height: 16px;" src="__PUBLIC__/Home/pay/star.png"/>
+							<?php elseif($v['rate']<=1):?>
+								<img style="width: 16px;height: 16px;" src="__PUBLIC__/Home/pay/star_gray.png"/>
+							<?php endif?>
+						</span>
+						<span>
+							<?php if($v['rate']>2):?>
+								<img style="width: 16px;height: 16px;" src="__PUBLIC__/Home/pay/star.png"/>
+							<?php elseif($v['rate']<=2):?>
+								<img style="width: 16px;height: 16px;" src="__PUBLIC__/Home/pay/star_gray.png"/>
+							<?php endif?>
+						</span>
+						<span>
+							<?php if($v['rate']>3):?>
+								<img style="width: 16px;height: 16px;" src="__PUBLIC__/Home/pay/star.png"/>
+							<?php elseif($v['rate']<=3):?>
+								<img style="width: 16px;height: 16px;" src="__PUBLIC__/Home/pay/star_gray.png"/>
+							<?php endif?>
+						</span>
+						<span>
+							<?php if($v['rate']>4):?>
+								<img style="width: 16px;height: 16px;" src="__PUBLIC__/Home/pay/star.png"/>
+							<?php elseif($v['rate']<=4):?>
+								<img style="width: 16px;height: 16px;" src="__PUBLIC__/Home/pay/star_gray.png"/>
+							<?php endif?>
+						</span>
+					</li>
+					<li>{$v.comment}</li>
+					</foreach>
+				<?php else:?>
+				<li>
+					<a href="javascript:;">暂时没有网友评价</a>
+				</li>
+				<?php endif?>
+				</ul>
+			</div>
+				<?php if($ad):?>
+					<div >
+						<center>广告</center>
+						<hr style="border:1px dashed #000; height:1px" />
+						<center>
+						<a href="{$ad.link}"><img src="__ROOT__/Uploads/{$ad.pic}" style="max-width: 95%;"/></a>
+						</center>
+						<br/>
+						<br/>
+						<br/>
+						<br/>
+						<br/>
+					</div>
+				<?php endif?>
+				<div class="contant">
+					<!-- 
+					<div class="user-image">
+						<a data-href="/bj/jingjiren/1000000020145400/" href=""><img data-listen="1" class="lazyload" src="__PUBLIC__/Home/details/20145400_1440660444.jpg.120x160.jpg"></a>
+					</div>
+					<p>{$result.cont_name}</p>
+					<p>{$result.contact}</p> -->
+					<div class="c-opera" style="left: 0.9375rem;">
+						<a href="tel:{$result.contact}" class="tel" onclick="try{$ULOG.send('10012',{'pid':'lianjiamweb','key':window.location.href})}catch(e){}"><span class="icon-go-tel"></span><p>致电</p></a>
+						<a href="sms:{$result.contact}" onclick="try{$ULOG.send('10013',{'pid':'lianjiamweb','key':window.location.href})}catch(e){}"class="msg nodeTypeSendSMS"><span class="icon-go-msg"></span><p>短信</p></a>
+					</div>
+					<div class="c-opera" style="background-color: #c3AB64;width: 60%;height: 100%;top:0;right:0;">
+						<p style="display:inline;position: absolute;top: 1.5rem;font-size: 1rem;color: #FFFFFF;">￥{$result.price}</p>
+						<p style="display: inline;margin-right: 0px;right: 2rem;position: absolute;top: 1.5rem;font-size: 1rem;color: #FFFFFF;">
+						<?php if($isweixin):?>
+							<a style="color: #FFFFFF;" href="__ROOT__/index.php/Home/Pay/sign?hid={$result.id}">立即预定</a>
+						<?php else:?>
+							<a style="color: #FFFFFF;" href="javascript:void(0)">登录微信立即预定</a>
+						<?php endif?>
+						</p>
+					</div>
+				</div>
+				
+		</div>
+		</section>
+		</div>
+
+		<script type="text/javascript" src="__PUBLIC__/Home/index.js"></script>
+		<script type="text/javascript" src="__PUBLIC__/Home/common.js"></script>
+		<script src="__PUBLIC__/Admin/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+		<script src="__PUBLIC__/Home/dist/js/swiper.min.js"></script>
+		 <script>
+			var swiper = new Swiper('.swiper-container',{
+				pagination: '.pagination',
+				loop:false,
+				grabCursor: true,
+				paginationClickable: true,
+				autoplay: 2000,
+				autoplayDisableOnInteraction: false
+			});
+		</script>
+	</body>
+
+</html>

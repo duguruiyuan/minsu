@@ -1,0 +1,48 @@
+/* ::::: http://static1.ljcdn.com/m/asset/common/css/common.css?_v=20160411145342 ::::: */
+
+* { margin: 0px; padding: 0px; }
+ul, ol, li { list-style: outside none none; }
+input, img { vertical-align: middle; }
+a { text-decoration: none; }
+html, body { font-family: "Hiragino Sans GB",Helvetica,sans-serif; font-size: 100%; }
+* {  }
+*::-moz-selection { background-color: rgba(13, 173, 81, 0.2); color: rgb(51, 51, 51); }
+* { box-sizing: border-box; cursor: pointer; }
+.clear::after { content: "."; clear: both; display: block; height: 0px; visibility: hidden; font-size: 0px; line-height: 0; }
+html, body { width: 100%; height: 100%; overflow-x: hidden; }
+.lj-pages { position: absolute; width: 100%; height: 100%; }
+.lj-pages .d-page { position: absolute; left: 0px; top: 0px; width: 100%; height: 100%; background-color: rgb(255, 255, 255); }
+a { text-decoration: none; }
+.icon-close::before, .icon-close::after { content: ""; display: block; position: absolute; height: 1px; width: 1rem; background-color: rgb(255, 255, 255); left: 0px; top: 0.5rem; transform: rotate(45deg); transform-origin: 0.5rem 0px 0px; }
+.icon-close::after { transform: rotate(-45deg); }
+.icon-back::before { content: ""; display: inline-block; width: 0.625rem; height: 0.625rem; border-style: solid; border-color: rgb(57, 172, 106); -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; border-width: 0px 0px 2px 2px; transform: rotate(45deg); position: absolute; top: 0.3125rem; left: 0px; }
+.icon-back::after { content: ""; display: inline-block; width: 1.25rem; height: 2px; background-color: rgb(57, 172, 106); position: absolute; top: 0.625rem; left: -1px; }
+.icon-search::before { display: inline-block; content: ""; width: 0.4375rem; height: 2px; background-color: rgb(57, 172, 106); transform: rotate(45deg); position: absolute; left: 0.889rem; top: 1.1875rem; }
+.cell:nth-child(n+5) { margin-bottom: 0px; }
+.header .my span::after, .header .app span::after { content: ""; display: block; }
+.title-nav .a-left::before { content: ""; display: inline-block; width: 0.625rem; height: 0.625rem; border-style: solid; border-color: rgb(255, 255, 255); -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; border-width: 0px 0px 1px 1px; transform: rotate(45deg); }
+.search-header .search-select .m-select::before { content: ""; display: inline-block; width: 0.5rem; height: 0.5rem; background-color: rgb(255, 255, 255); border-style: solid; border-color: rgb(226, 226, 226); -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; border-width: 1px 0px 0px 1px; position: absolute; top: -0.3125rem; left: 50%; margin-left: -0.25rem; transform: rotate(45deg); }
+.down-layer .close::before, .down-layer .close::after { content: ""; display: block; position: absolute; height: 0.0625rem; width: 0.4375rem; background-color: rgb(102, 102, 102); left: 0.1875rem; top: 0.375rem; transform: rotate(45deg); }
+.down-layer .close::after { transform: rotate(-45deg); }
+.page-loading .loading-house::before { direction: inherit; content: ""; left: 0px; bottom: 0px; position: absolute; width: 100%; background: transparent url('fang-loading.png') no-repeat scroll 0px 100% / 2.5rem 2.5rem; height: 0px; animation: 3s linear 0s normal none infinite running autoHeight; }
+.toast-info .success .info-icon::before { content: ""; display: inline-block; width: 2.8125rem; height: 1.25rem; border-style: solid; border-color: rgb(255, 255, 255); -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; border-width: 0px 0px 1px 1px; transform: rotate(-45deg); }
+.toast-info .fail .info-icon::before, .toast-info .fail .info-icon::after { position: absolute; top: 1.25rem; left: 0.625rem; }
+.toast-info .fail .info-icon::before { content: ""; display: inline-block; width: 2.8125rem; height: 0.0625rem; background-color: rgb(255, 255, 255); transform: rotate(-45deg); }
+.toast-info .fail .info-icon::after { content: ""; display: inline-block; width: 2.8125rem; height: 0.0625rem; background-color: rgb(255, 255, 255); transform: rotate(45deg); }
+/* ::::: http://static1.ljcdn.com/m/asset/user/css/login.css?_v=20160411145342 ::::: */
+
+*::-moz-selection { background-color: rgba(13, 173, 81, 0.2); color: rgb(51, 51, 51); }
+body, .d-page { background-color: rgb(242, 242, 242) ! important; }
+.login-type { background-color: rgb(255, 255, 255); height: 2.8125rem; border-bottom: 0.3125rem solid rgb(209, 209, 209); position: relative; }
+.login-type a { display: block; float: left; width: 50%; height: 2.8125rem; line-height: 2.8125rem; vertical-align: middle; font-size: 0.9375rem; text-align: center; color: rgb(0, 0, 0); }
+.login-type .arrow { position: absolute; left: 0px; bottom: -0.3125rem; width: 50%; height: 0.3125rem; background-color: #c3AB64; transition: transform 0.3s ease 0s; }
+.form-list { background-color: rgb(255, 255, 255); padding-left: 0.9375rem; border-bottom: 1px solid rgb(197, 197, 197); }
+.form-list li { position: relative; border-bottom: 1px solid rgb(226, 226, 226); padding-right: 0.9375rem; }
+.form-list li:last-child { border-bottom: 0px none; }
+.form-list li .h-text, .form-list li .f-text { width: 100%; height: 2.75rem; border: 0px none; font-size: 0.9375rem; padding-left: 0.3125rem; }
+.form-list li .h-text { width: 65%; }
+.form-list li .send-check { position: absolute; width: 5.3125rem; display: block; height: 2.1875rem; line-height: 2.1875rem; right: 0.9375rem; top: 50%; margin-top: -1.0625rem; font-size: 0.8125rem; vertical-align: middle; text-align: center; border: 1px solid rgb(186, 186, 186); color: rgb(0, 0, 0); }
+.p-br { padding: 0px 0.9375rem; margin-top: 0.9375rem; font-size: 0.875rem; }
+.btn { display: block; width: 100%; height: 2.8125rem; line-height: 2.8125rem; vertical-align: middle; text-align: center; font-size: 1.125em; color: rgb(255, 255, 255); background-color: #c3AB64;}
+.regist-a { color: #c3AB64; font-size: 0.875rem; }
+.forget-a { color: rgb(75, 75, 75); font-size: 0.875rem; float: right; }
