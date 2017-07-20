@@ -39,7 +39,7 @@
 							</li>
 							<li>
 								<input class="f-text" style="width:50%" type="text" name="captcha"/>
-								<img width="40%" height="50" alt="验证码" src="verify_c" title="点击刷新">
+								<img width="40%" height="50" alt="验证码" onclick="yanzheng()" src="verify_c?r=<?php echo rand()?>" id="verifyImg" title="点击刷新">
 							</li>
 							<li id="mpwd" style="display:none;">
 								<input class="f-text" name="pwd" placeholder="请输入手机动态码" validate="notNull" validatename="手机动态码" type="text">
@@ -123,5 +123,10 @@
 				});
 			});
 		})
+		
+		function yanzheng(){
+	      var im=document.getElementById("verifyImg");
+	      im.src="verify_c?r=<?php echo rand()?>";
+	    }
 	</script>
 </html>

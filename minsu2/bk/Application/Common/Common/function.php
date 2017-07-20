@@ -81,16 +81,10 @@
 	}
 		
 	function sendText($mobile,$text) {
-		$ch = curl_init();
-		$apikey = "d4a4d01a6c34c06de56c3700801806f6"; //修改为您的apikey(https://www.yunpian.com)登录官网后获取
-		
-		// 发送短信
-		$data=array('text'=>$text,'apikey'=>$apikey,'mobile'=>$mobile);
-		curl_setopt ($ch, CURLOPT_URL, 'https://sms.yunpian.com/v2/sms/single_send.json');
-		curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER,true);
-		$json_data = curl_exec($ch);
-		//解析返回结果（json格式字符串）
-		$array = json_decode($json_data,true);
+		$data = array(
+			'mobile' => $mobile,
+			'text' => $text
+		);
+		M('phone_text')->add($data);
 	}
  ?>

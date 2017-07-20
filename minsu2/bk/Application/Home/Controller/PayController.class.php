@@ -39,7 +39,7 @@ class PayController extends Controller{
     		if($total<=0) {
     			$total=1;
     		}
-    		$r_fee=$total*$result['price'];
+    		$r_fee=($total+1)*$result['price'];
     		$this->assign('total',$total);
 			$this->assign('result',$result);
 			$this->assign('r_fee',$r_fee);
@@ -69,7 +69,7 @@ class PayController extends Controller{
 			$endTime = $_POST['end_time'];
 			$hid=$_POST['hid'];
 			$houseinfo = M('houseinfo')->WHERE("id={$hid}")->find();
-			$r_fee=$total*$houseinfo['price'];
+			$r_fee=($total+1)*$houseinfo['price'];
 			$maxUsed = M('h_time')->FIELD('MAX(used) as used')->WHERE("date>='{$beginTime}' AND date<='{$endTime}' AND hid={$hid}")->find();
 			if(is_null($maxUsed['used']) || $maxUsed['used']<$houseinfo['total']) {
 				$_POST['r_fee']=$r_fee;
@@ -157,7 +157,7 @@ class PayController extends Controller{
 				$begin_time=$begin_time+86400;
 			}
 			unset($_SESSION['b_time_queue']); 
-			sendText($r_phone,'【自在乡居】您好，感谢预定！关注微信公众号(美丽新乡村)随时随地查看订单状态。');
+			sendText($r_phone,'【自在乡居】亲爱的村民，您的订单已确认。村支书温馨提示：入住前24小时内可免费取消或修改订单，如果不满24小时内的调整，则需要扣除当天房费，调整流程欢迎致电13718138279，祝您享用乡下美好时光！');
 		}
 		header('Location: '.$u);
 	}

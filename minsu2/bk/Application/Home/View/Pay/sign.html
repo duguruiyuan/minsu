@@ -87,7 +87,7 @@
 									{$result.facility}
 								</li>
 							</ul>
-							<ul >
+							<ul>
 								<li>
 									<input class="text" name="r_name" placeholder="您的姓名" validate="notNull" validatename="您的姓名" required="required" type="text">
 								</li>
@@ -101,6 +101,7 @@
 								</li>
 								<input type="hidden" name="hid" value="{$Think.get.hid}">
 							</ul>
+							<ul><li><font size="2" color="#FF0000;">温馨提示：费用中收取了一晚房费的押金，退房后退还</font></li></ul>
 							<div style="background:#FFFFFF;width:100%">
 								<button class="fee">￥{$r_fee}</button>
 								<button id="appointBtn" class="appoint" type="submit">预定</button>
@@ -175,7 +176,10 @@
 					        	var url ='http://mei.vshijie.cn/bk/index.php/Home/Pay/ajaxAppoint?u='+
 					        	encodeURIComponent('http://mei.vshijie.cn/bk/index.php/Home/House/index?id={$Think.get.hid}')+
 					        	'&oid='+oid;
-								window.location.href=url;
+					        	layer.msg('亲爱的村民，您的订单已确认。村支书温馨提示：入住前24小时内可免费取消或修改订单，如果不满24小时内的调整，则需要扣除当天房费，调整流程欢迎致电13718138279，祝您享用乡下美好时光！',
+					        	 {icon: 1, time:8000}, function(){
+									window.location.href=url;
+								});
 						    }
 						});
 					} else {
