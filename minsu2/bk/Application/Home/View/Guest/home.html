@@ -157,7 +157,7 @@
 								￥{$v.r_fee}
 								<span>
 									<?php if($v['status']==1):?>
-									<a href="javascipt:;" class="tag">您已预订</a>
+									<a href="http://mei.vshijie.cn/bk/index.php/Home/Pay/sign?hid={$v.hid}" class="tag">您已预订,点击续订</a>
 									<?php elseif($v['status']==3):?>
 									<a href="javascipt:;" class="tag">您已经提交退款申请</a>
 									<?php elseif($v['status']==4):?>

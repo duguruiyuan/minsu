@@ -81,7 +81,18 @@
 								</span>
 								</li>
 								<li>
-									{$Think.session.begin}&nbsp;{$Think.session.end}&nbsp;住{$total}晚
+									<label id="sessionBegin">{$Think.session.begin}</label>&nbsp;
+									<label id="sessionEnd">{$Think.session.end}</label>
+									&nbsp;住{$total}晚
+									<a id="changeDate" onclick="changeDate()" href="#"><font color="red" size="2">点此改日期</font></a>
+								</li>
+								<li id="beginLi" style="display:none;">
+									<input type="text" id="beginTime" class="text laydate-icon" style="height: 2.1875rem;width: 100%;border-radius: 0.1875rem;text-align: center;"
+										placeholder="入住" required="required" value="{$Think.session.begin}"/>
+								</li>
+								<li id="endLi" style="display:none;">
+									<input type="text" id="endTime" class="text laydate-icon" style="height: 2.1875rem;width: 100%;border-radius: 0.1875rem;text-align: center;"
+										placeholder="退房" required="required" value="{$Think.session.end}">
 								</li>
 								<li>
 									{$result.facility}
@@ -103,7 +114,7 @@
 							</ul>
 							<ul><li><font size="2" color="#FF0000;">温馨提示：费用中收取了一晚房费的押金，退房后退还</font></li></ul>
 							<div style="background:#FFFFFF;width:100%">
-								<button class="fee">￥{$r_fee}</button>
+								<button class="fee" id="feeTotal">￥{$r_fee}</button>
 								<button id="appointBtn" class="appoint" type="submit">预定</button>
 							</div>
 							</form>
@@ -198,20 +209,78 @@
 	})
 	
 	    function calculate() {
-    		var begin = $('input[name=begin_time]').val();
-			var end = $('input[name=end_time]').val();
+    		var begin = $('#beginTime').val();
+			var end = $('#endTime').val();
     		if(begin=='' || end=='') {
     			layer.msg('请选择开始时间', {icon: 2,time: 2000});
     		} else {
     			var days = getDateDiff(begin,end);
-    			$("#needPay").html('您的费用合计为'+(days+1)*{$result.price}+'元');
+    			$("#feeTotal").html('￥'+((days+1)*{$result.price}));
     		}
     	}
     	function getDateDiff(startDate,endDate)  {  
-		    var startTime = new Date(Date.parse(startDate.replace(/-/g,   "-"))).getTime();     
-		    var endTime = new Date(Date.parse(endDate.replace(/-/g,   "-"))).getTime();     
-		    var dates = (endTime-startTime)/(1000*60*60*24);     
+		    var startTime = new Date(Date.parse(startDate.replace(/年/g,   "-").replace(/月/g,   "-").replace("日\(入住\)",   ""))).getTime();     
+		    var endTime = new Date(Date.parse(endDate.replace(/年/g,   "-").replace(/月/g,   "-").replace("日\(退房\)",   ""))).getTime();     
+		    var dates = (endTime-startTime)/(1000*60*60*24);    
+		    if(dates<1) {
+		    	dates=1;
+		    } 
 		    return  dates;    
 		}
+		
+		var start = {
+	            elem: '#beginTime',
+	            format: 'YYYY年MM月DD日(入住)',
+	            min: laydate.now(), //设定最小日期为当前日期
+	            max: '2099-12-31 23:59:59', // 最大日期
+	            istime: true, // 是否开启时间选择
+	            isclear: true, // 是否显示清空
+	            istoday: true, // 是否显示今天
+	            issure: true, // 是否显示确认
+	            festival: true, // 是否显示节日
+	            start:laydate.now(), // 开始日期
+	            choose: function(datas){ // 选择好日期的回调
+	                end.min = datas; //开始日选好后，重置结束日的最小日期
+	                end.start = datas; //将结束日的初始值设定为开始日
+	                $('#sessionBegin').html($('#beginTime').val());
+	                $('#sessionEnd').html($('#endTime').val());
+	                $.ajax({
+						url: "http://mei.vshijie.cn/bk/index.php/Home/house/beginSession?d="+datas,
+						type: 'POST',
+						dataType: 'text'
+					});
+					calculate();
+	            }
+	        };
+	        var end = {
+	            elem: '#endTime',
+	            format: 'YYYY年MM月DD日(退房)',
+	            min: laydate.now(),
+	            max: '2099-12-31 23:59:59',
+	            istime: true,
+	            isclear: true,
+	            istoday: true,
+	            issure: true,
+	            festival: true,
+	            choose: function(datas){
+	                start.max = datas; //结束日选好后，重置开始日的最大日期
+	                $('#sessionBegin').html($('#beginTime').val());
+	                $('#sessionEnd').html($('#endTime').val());
+	                $.ajax({
+						url: "http://mei.vshijie.cn/bk/index.php/Home/house/endSession?d="+datas,
+						type: 'POST',
+						dataType: 'text'
+					});
+					calculate();
+	            }
+	        };
+	        laydate.skin('default');
+	        laydate(start);
+	        laydate(end);
+	        
+	        function changeDate() {
+	        	$("#beginLi").show();
+	        	$("#endLi").show();
+	        }
 	</script>
 </html>
