@@ -124,8 +124,8 @@ class HouseController extends Controller {
 		$this->ajaxReturn($_SESSION['end']);
 	}
 	
-	public function story($oid) {
-		$data = M('owner')->where("id={$oid}")->find();
+	public function story($hid) {
+		$data = M('houseinfo')->where("id={$hid}")->find();
 		$this->assign('data',$data);
 		$this->display();
 	}

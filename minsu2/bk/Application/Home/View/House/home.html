@@ -1,16 +1,11 @@
 <!DOCTYPE html>
-<html style="font-size: 16px;">
-
+<html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-
 		<meta content="fullscreen=yes,preventMove=yes" name="ML-Config">
-
 		<meta content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" name="viewport">
-
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<meta content="yes" name="apple-mobile-web-app-capable">
 		<meta content="yes" name="apple-touch-fullscreen">
@@ -30,7 +25,7 @@
     body {
         background: #eee;
         font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-        font-size: 14px;
+        font-size: 16px;
         color:#000;
         margin: 0;
         padding: 0;
@@ -79,7 +74,7 @@
 	}
 
 	#province{
-		font-size: 14px;text-align: center;color: #fff;
+		text-align: center;color: #fff;
 		position: absolute;
 		top: 0rem;
 		z-index: 10000;
@@ -107,7 +102,6 @@
 		right: 10px;
 		height: 30px;
 		padding: 0 10px;
-		font-size: 14px;
 		line-height: 30px;
 		color: #111111;
 		text-align: center;
@@ -152,7 +146,6 @@
 	#menu-top li a {
 	    display: block;
 	    padding-right: 5px;
-	    font-size: 12px;
 	    line-height: 40px;
 	    color: #fff;
 	    white-space: nowrap;
@@ -167,7 +160,6 @@
 	border: 0px none;
 	background: rgba(255, 255, 255, 0.9) none repeat scroll 0% 0%;
 	color: rgb(153, 153, 153);
-	font-size: 0.8125rem;
 	padding-left: 2.0625rem;
 	border-radius: 0.1875rem;
 	display: inline-block;
@@ -191,7 +183,6 @@
 	.banner li {
 		float: left;
 		border: 1px solid #ccc;
-		font-size: 14px;
 		padding: 0.7rem;
 		margin-bottom: 0.3rem;
 		margin-right: 0.3rem;
@@ -203,17 +194,17 @@
 		    <ul>
                 <li class="menu-home">
                     <a href="http://mei.vshijie.cn/bk/index.php/Home/Owner/index">
-                        <span style="font-size: 13px;margin-right: 10px;">❤</span>我是房主
+                        <span style="margin-right: 10px;">❤</span>我是房主
                     </a>
                 </li>
 		        <li class="menu-locate">
 		            <a href="http://mei.vshijie.cn/bk/index.php/Home/Guest/home">
-		            	<span style="font-size: 18px;margin-right: 10px;">★</span>我的预定
+		            	<span style="margin-right: 10px;">★</span>我的预定
 		            </a>
 		        </li>
 		    </ul>
 		</div>
-<div id="myProvince" style="padding:0.7rem 0;font-size: 14px;background:#c3AB64;text-align:center;" >
+<div id="myProvince" style="padding:0.7rem 0;background:#c3AB64;text-align:center;" >
 	<div style="width: 60px;display: inline;text-align: left;position: fixed;left: 2px;">
 		<?php if($_SESSION['tag']):?>
 			<a href="javascript:;" style="text-decoration: none;color: #fff;padding-left: 0.8rem;" id="returnA">&lt; 返回</a>
@@ -269,7 +260,7 @@
 					<input class="input" placeholder="商圈/酒店/地址" value="{$key}" />
 				</div>
 				<div id="minsuMenu" class="member">
-					<i class="nav-top has-msg"></i><span class="msg">&nbsp;</span>
+					<i class="navigat-top"><img width="34px;" height="39px;" src="http://mei.vshijie.cn/bk/Public/Home/home/my.png"/></i><span class="msg">&nbsp;</span>
 				</div>
 			</header>
 		</div>
@@ -288,14 +279,14 @@
 
 		<div class="section-wrapper">
 			<header class="home-header"><div class="tosearch" style="width: 100%;">
-				<input type="text" name="begin_time" id="beginTime" class="text laydate-icon" style="height: 2.1875rem;width: 100%;border-radius: 0.1875rem;text-align: center;"
+				<input type="text" name="begin_time" id="beginTime" class="text laydate-icon" style="height: 3rem;width: 100%;border-radius: 0.1875rem;text-align: center;font-size:16px;"
 					placeholder="入住" required="required" value="{$Think.session.begin}"/>
 				</div>
 			</header>
 		</div>
 		<div class="section-wrapper">
 			<header class="home-header"><div class="tosearch" style="width: 100%;">
-				<input type="text" name="end_time" id="endTime" class="text laydate-icon" style="height: 2.1875rem;width: 100%;border-radius: 0.1875rem;text-align: center;"
+				<input type="text" name="end_time" id="endTime" class="text laydate-icon" style="height: 3rem;width: 100%;border-radius: 0.1875rem;text-align: center;font-size:16px;"
 					placeholder="退房" required="required" value="{$Think.session.end}">
 				</div>
 			</header>
@@ -306,25 +297,25 @@
 				<li style="width: 23%;" class="cell ">
 					<a title="主题乡居" href="http://mei.vshijie.cn/bk/index.php/Home/House/home?tag=主题乡居" class="actIamlink" >
 						<p class="menu-ershoufang"></p>
-						<p>主题乡居</p>
+						<p style="font-weight:bold;">主题乡居</p>
 					</a>
 				</li>
 				<li style="width: 23%;" class="cell ">
 					<a title="特价乡居" href="http://mei.vshijie.cn/bk/index.php/Home/House/home?tag=特价乡居" class="actIamlink">
 						<p class="menu-xinfang"></p>
-						<p>特价乡居</p>
+						<p style="font-weight:bold;">特价乡居</p>
 					</a>
 				</li>
 				<li style="width: 23%;" class="cell ">
 					<a  title="热门乡居" href="http://mei.vshijie.cn/bk/index.php/Home/House/home?tag=热门乡居" class="actIamlink" >
 						<p class="menu-yezhu"></p>
-						<p>热门乡居</p>
+						<p style="font-weight:bold;">热门乡居</p>
 					</a>
 				</li>
 				<li style="width: 23%;" class="cell ">
 					<a  title="少数民族" href="http://mei.vshijie.cn/bk/index.php/Home/House/home?tag=少数民族" class="actIamlink" >
 						<p class="menu-school"></p>
-						<p>少数民族</p>
+						<p style="font-weight:bold;">少数民族</p>
 					</a>
 				</li>
 			</ul>

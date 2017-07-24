@@ -162,18 +162,33 @@
 					</div>
 					<div style="width:50%">
 						<p style="margin-top:10px;">
-							<a style="color:#e30000;text-decoration: underline;" href="__ROOT__/index.php/Home/House/story?oid={$result.uid}">☆点此查看房主故事☆</a>
+							<a style="color:#e30000;text-decoration: underline;" href="__ROOT__/index.php/Home/House/story?hid={$result.id}">☆点此查看房主故事☆</a>
 						</p>
 					</div>
 				</div>
-				<div class="p-list">
-					<ul>
-						<li><span>设施：
-							<span class="d-value">
-							{$result.facility}
-							</span></span>
-						</li>
-					</ul>
+				<div>
+					<table>
+						<tr><td style="width: 50px;">设施：</td>
+							<td>
+							<span style="display:inline-block;margin:2px;width:150px;"><span class="icons-facility06"></span>免费旅游交通图</span>
+							<span style="display:inline-block;margin:2px;width:150px;"><span class="icons-facility32"></span>wifi无线上网</span>
+							<span style="display:inline-block;margin:2px;width:150px;"><span class="icons-facility30"></span>中餐厅</span>
+							<span style="display:inline-block;margin:2px;width:150px;"><span class="icons-facility13"></span>西餐厅</span>
+							<span style="display:inline-block;margin:2px;width:150px;"><span class="icons-facility16"></span>会议厅</span>
+							<span style="display:inline-block;margin:2px;width:150px;"><span class="icons-facility39"></span>洗衣服务</span>
+							<span style="display:inline-block;margin:2px;width:150px;"><span class="icons-facility10"></span>行李寄存</span>
+							<span style="display:inline-block;margin:2px;width:150px;"><span class="icons-facility09"></span>叫醒服务</span>
+							<span style="display:inline-block;margin:2px;width:150px;"><span class="icons-facility28"></span>接机服务</span>
+							<span style="display:inline-block;margin:2px;width:150px;"><span class="icons-facility17"></span>24小时前台服务</span>
+							<span style="display:inline-block;margin:2px;width:150px;"><span class="icons-facility05"></span>免费洗漱用品</span>
+							<span style="display:inline-block;margin:2px;width:150px;"><span class="icons-facility04"></span>免费瓶装水</span>
+							<span style="display:inline-block;margin:2px;width:150px;"><span class="icons-facility07"></span>24小时热水</span>
+							<span style="display:inline-block;margin:2px;width:150px;"><span class="icons-facility34"></span>电热水壶</span>
+							<span style="display:inline-block;margin:2px;width:150px;"><span class="icons-facility42"></span>小冰箱</span>
+							<span style="display:inline-block;margin:2px;width:150px;"><span class="icons-facility08"></span>吹风机</span>
+							</td>
+						</tr>
+					</table>
 				</div>
 
 				<a href="javascript:;" class="actIamlink gotomap" data-href="/bj/map/pos/?pos=116.382471,40.08696&amp;house_code=BJCP91853423" title="位置及周边" data-dianji="map_esfxq_/bj/BJCP91853423">
@@ -194,43 +209,31 @@
 				<foreach name='data' item='v' key='k'>
 					<li>
 						<font color="blue">{$v.r_name}</font>评价:
-					</li>
-					<li>
-						<span>
-							<?php if($v['rate']>0):?>
-								<img style="width: 16px;height: 16px;" src="__PUBLIC__/Home/pay/star.png"/>
-							<?php elseif($v['rate']<=0):?>
-								<img style="width: 16px;height: 16px;" src="__PUBLIC__/Home/pay/star_gray.png"/>
-							<?php endif?>
-						</span>
-						<span>
-							<?php if($v['rate']>1):?>
-								<img style="width: 16px;height: 16px;" src="__PUBLIC__/Home/pay/star.png"/>
-							<?php elseif($v['rate']<=1):?>
-								<img style="width: 16px;height: 16px;" src="__PUBLIC__/Home/pay/star_gray.png"/>
-							<?php endif?>
-						</span>
-						<span>
-							<?php if($v['rate']>2):?>
-								<img style="width: 16px;height: 16px;" src="__PUBLIC__/Home/pay/star.png"/>
-							<?php elseif($v['rate']<=2):?>
-								<img style="width: 16px;height: 16px;" src="__PUBLIC__/Home/pay/star_gray.png"/>
-							<?php endif?>
-						</span>
-						<span>
-							<?php if($v['rate']>3):?>
-								<img style="width: 16px;height: 16px;" src="__PUBLIC__/Home/pay/star.png"/>
-							<?php elseif($v['rate']<=3):?>
-								<img style="width: 16px;height: 16px;" src="__PUBLIC__/Home/pay/star_gray.png"/>
-							<?php endif?>
-						</span>
-						<span>
-							<?php if($v['rate']>4):?>
-								<img style="width: 16px;height: 16px;" src="__PUBLIC__/Home/pay/star.png"/>
-							<?php elseif($v['rate']<=4):?>
-								<img style="width: 16px;height: 16px;" src="__PUBLIC__/Home/pay/star_gray.png"/>
-							<?php endif?>
-						</span>
+						<?php if($v['rate']>0):?>
+							<img style="width: 16px;height: 16px;float: inherit;" src="__PUBLIC__/Home/pay/star.png"/>
+						<?php elseif($v['rate']<=0):?>
+							<img style="width: 16px;height: 16px;float: inherit;" src="__PUBLIC__/Home/pay/star_gray.png"/>
+						<?php endif?>
+						<?php if($v['rate']>1):?>
+							<img style="width: 16px;height: 16px;float: inherit;" src="__PUBLIC__/Home/pay/star.png"/>
+						<?php elseif($v['rate']<=1):?>
+							<img style="width: 16px;height: 16px;float: inherit;" src="__PUBLIC__/Home/pay/star_gray.png"/>
+						<?php endif?>
+						<?php if($v['rate']>2):?>
+							<img style="width: 16px;height: 16px;float: inherit;" src="__PUBLIC__/Home/pay/star.png"/>
+						<?php elseif($v['rate']<=2):?>
+							<img style="width: 16px;height: 16px;float: inherit;" src="__PUBLIC__/Home/pay/star_gray.png"/>
+						<?php endif?>
+						<?php if($v['rate']>3):?>
+							<img style="width: 16px;height: 16px;float: inherit;" src="__PUBLIC__/Home/pay/star.png"/>
+						<?php elseif($v['rate']<=3):?>
+							<img style="width: 16px;height: 16px;float: inherit;" src="__PUBLIC__/Home/pay/star_gray.png"/>
+						<?php endif?>
+						<?php if($v['rate']>4):?>
+							<img style="width: 16px;height: 16px;float: inherit;" src="__PUBLIC__/Home/pay/star.png"/>
+						<?php elseif($v['rate']<=4):?>
+							<img style="width: 16px;height: 16px;float: inherit;" src="__PUBLIC__/Home/pay/star_gray.png"/>
+						<?php endif?>
 					</li>
 					<li>{$v.comment}</li>
 					</foreach>
@@ -267,8 +270,8 @@
 						<a href="sms:{$result.contact}" onclick="try{$ULOG.send('10013',{'pid':'lianjiamweb','key':window.location.href})}catch(e){}"class="msg nodeTypeSendSMS"><span class="icon-go-msg"></span><p>短信</p></a>
 					</div>
 					<div class="c-opera" style="background-color: #c3AB64;width: 60%;height: 100%;top:0;right:0;">
-						<p style="display:inline;position: absolute;top: 1.5rem;font-size: 1rem;color: #FFFFFF;">￥{$result.price}</p>
-						<p style="display: inline;margin-right: 0px;right: 2rem;position: absolute;top: 1.5rem;font-size: 1rem;color: #FFFFFF;">
+						<p style="display:inline;position: absolute;top: 1.5rem;font-size: 1rem;color: #FFFFFF;padding-left: 20px;">￥{$result.price}</p>
+						<p style="display: inline;margin-right: 0px;right: 20px;position: absolute;top: 1.5rem;font-size: 1rem;color: #FFFFFF;">
 						<?php if($isweixin):?>
 							<a style="color: #FFFFFF;" href="__ROOT__/index.php/Home/Pay/sign?hid={$result.id}">立即预定</a>
 						<?php else:?>

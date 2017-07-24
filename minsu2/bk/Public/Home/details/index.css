@@ -327,3 +327,63 @@ html, body { background: transparent none repeat scroll 0% 0% ! important; }
 .page-news .list-view li p:nth-of-type(3) a:nth-of-type(2), .page-news .list-view li p.newhouse-list-btns a:nth-of-type(2) { color: rgb(0, 174, 102); background-color: rgb(229, 247, 239); }
 .page-news .list-view li:nth-of-type(2) p.newhouse-list-btns a { color: rgb(97, 213, 189); background-color: rgb(222, 246, 241); }
 .page-news .list-view li:nth-of-type(3) p.newhouse-list-btns a { color: rgb(255, 123, 50); background-color: rgb(255, 234, 223); }
+.icons-facility04 {
+background-position: -90px 0;
+}
+.icons-facility05 {
+background-position: -120px 0;
+}
+.icons-facility06 {
+background-position: -150px 0;
+}
+.icons-facility07 {
+background-position: 0px -30px;
+}
+.icons-facility08 {
+background-position: -30px -30px;
+}
+.icons-facility09 {
+background-position: -60px -30px;
+}
+.icons-facility10 {
+background-position: -90px -30px;
+}
+.icons-facility13 {
+background-position: 0px -60px;
+}
+.icons-facility16 {
+background-position: -90px -60px;
+}
+.icons-facility17 {
+background-position: -120px -60px;
+}
+.icons-facility28 {
+background-position: -90px -120px;
+}
+.icons-facility30 {
+background-position: -150px -120px;
+}
+.icons-facility32 {
+background-position: -30px -150px;
+}
+.icons-facility34 {
+background-position: -90px -150px;
+}
+.icons-facility38 {
+background-position: -30px -180px;
+}
+.icons-facility39 {
+background-position: -60px -180px;
+}
+.icons-facility42 {
+background-position: -150px -180px;
+}
+.icons-facility01, .icons-facility02, .icons-facility03, .icons-facility04, .icons-facility05, .icons-facility06, .icons-facility07, .icons-facility08, .icons-facility09, .icons-facility10, .icons-facility11, .icons-facility12, .icons-facility13, .icons-facility14, .icons-facility15, .icons-facility16, .icons-facility17, .icons-facility18, .icons-facility19, .icons-facility20, .icons-facility21, .icons-facility22, .icons-facility23, .icons-facility24, .icons-facility25, .icons-facility26, .icons-facility27, .icons-facility28, .icons-facility29, .icons-facility30, .icons-facility31, .icons-facility32, .icons-facility33, .icons-facility34, .icons-facility35, .icons-facility36, .icons-facility37, .icons-facility38, .icons-facility39, .icons-facility40, .icons-facility41, .icons-facility42, .icons-facility43, .icons-facility44, .icons-facility45, .icons-facility46, .icons-facility47 {
+display: inline-block;
+vertical-align: middle;
+margin-right: 8px;
+width: 21px;
+height: 21px;
+background-image: url(icon_facility.png);
+background-repeat: no-repeat;
+}

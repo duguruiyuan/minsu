@@ -19,6 +19,7 @@
 		<title>美丽新乡村-预订乡居</title>
 		
 		<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/release/index.css" media="all">
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/details/index.css" media="all">
 		<link rel="stylesheet" href="__PUBLIC__/Admin/laydate/need/laydate.css">
 		<style>
 		.text{
@@ -84,7 +85,7 @@
 									<label id="sessionBegin">{$Think.session.begin}</label>&nbsp;
 									<label id="sessionEnd">{$Think.session.end}</label>
 									&nbsp;住{$total}晚
-									<a id="changeDate" onclick="changeDate()" href="#"><font color="red" size="2">点此改日期</font></a>
+									<a id="changeDate" onclick="changeDate()" href="#"><font color="red">点此改日期</font></a>
 								</li>
 								<li id="beginLi" style="display:none;">
 									<input type="text" id="beginTime" class="text laydate-icon" style="height: 2.1875rem;width: 100%;border-radius: 0.1875rem;text-align: center;"
@@ -95,7 +96,30 @@
 										placeholder="退房" required="required" value="{$Think.session.end}">
 								</li>
 								<li>
-									{$result.facility}
+									<div>
+										<table>
+											<tr><td style="width: 50px;">设施：</td>
+												<td>
+												<span style="display:inline-block;margin:2px;width:150px;"><span class="icons-facility06"></span>免费旅游交通图</span>
+												<span style="display:inline-block;margin:2px;width:150px;"><span class="icons-facility32"></span>wifi无线上网</span>
+												<span style="display:inline-block;margin:2px;width:150px;"><span class="icons-facility30"></span>中餐厅</span>
+												<span style="display:inline-block;margin:2px;width:150px;"><span class="icons-facility13"></span>西餐厅</span>
+												<span style="display:inline-block;margin:2px;width:150px;"><span class="icons-facility16"></span>会议厅</span>
+												<span style="display:inline-block;margin:2px;width:150px;"><span class="icons-facility39"></span>洗衣服务</span>
+												<span style="display:inline-block;margin:2px;width:150px;"><span class="icons-facility10"></span>行李寄存</span>
+												<span style="display:inline-block;margin:2px;width:150px;"><span class="icons-facility09"></span>叫醒服务</span>
+												<span style="display:inline-block;margin:2px;width:150px;"><span class="icons-facility28"></span>接机服务</span>
+												<span style="display:inline-block;margin:2px;width:150px;"><span class="icons-facility17"></span>24小时前台服务</span>
+												<span style="display:inline-block;margin:2px;width:150px;"><span class="icons-facility05"></span>免费洗漱用品</span>
+												<span style="display:inline-block;margin:2px;width:150px;"><span class="icons-facility04"></span>免费瓶装水</span>
+												<span style="display:inline-block;margin:2px;width:150px;"><span class="icons-facility07"></span>24小时热水</span>
+												<span style="display:inline-block;margin:2px;width:150px;"><span class="icons-facility34"></span>电热水壶</span>
+												<span style="display:inline-block;margin:2px;width:150px;"><span class="icons-facility42"></span>小冰箱</span>
+												<span style="display:inline-block;margin:2px;width:150px;"><span class="icons-facility08"></span>吹风机</span>
+												</td>
+											</tr>
+										</table>
+									</div>
 								</li>
 							</ul>
 							<ul>
@@ -112,7 +136,7 @@
 								</li>
 								<input type="hidden" name="hid" value="{$Think.get.hid}">
 							</ul>
-							<ul><li><font size="2" color="#FF0000;">温馨提示：费用中收取了一晚房费的押金，退房后退还</font></li></ul>
+							<ul><li><font color="#FF0000;">温馨提示：费用中收取了一晚房费的押金，退房后退还</font></li></ul>
 							<div style="background:#FFFFFF;width:100%">
 								<button class="fee" id="feeTotal">￥{$r_fee}</button>
 								<button id="appointBtn" class="appoint" type="submit">预定</button>
