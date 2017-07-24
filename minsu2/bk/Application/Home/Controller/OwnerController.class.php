@@ -168,7 +168,6 @@ class OwnerController extends Controller {
 				$_POST['list_pic'] = $info[0]['savepath'].$info[0]['savename'];
 			}
 			$_POST['uid']=$_SESSION['owner_id'];
-			$_POST['facility']=str_replace(',','|',$_POST['facility']);
 			$houseinfo->where("id={$id}")->save($_POST);
 			$this->success('编辑成功',U('index'));
 		}else{
@@ -205,7 +204,6 @@ class OwnerController extends Controller {
 			$_POST['list_pic'] = $info[0]['savepath'].$info[0]['savename'];
 			$_POST['createtime'] = date('Y-m-d H:i:s');
 			$_POST['uid']=$_SESSION['owner_id'];
-			$_POST['facility']=str_replace(',','|',$_POST['facility']);
 			//存入房屋信息
 			$hiid = $houseInfo->add($_POST);
 			foreach ($info as $k => $v) {
