@@ -10,7 +10,7 @@ class HouseController extends AuthController {
 	//房屋添加首页
 	public function index()
 	{	
-		$result = M('houseinfo')->order('updatetime desc')->SELECT();
+		$result = M('houseinfo')->order('createtime desc')->SELECT();
 		$this->assign('result',$result);
 		$this->display();
 	}

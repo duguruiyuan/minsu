@@ -154,8 +154,27 @@
 						<a href="{:U('House/index',array('id'=>$v['hid']))}" class="actIamlink" title="美丽新乡村"><img data-listen="1" class="lazyload" alt="美丽新乡村" src="__ROOT__/Uploads/{$v.list_pic}" >
 							<p class="f-title"  title="{$v.name}" style="padding-right:2rem;">{$v.name}</p>
 							<p>
-								￥{$v.r_fee}
-								<span>
+								<span style="display:block;">
+									<?php if($r['type']==0):?>
+			                            <span>院子</span>
+			                        <?php elseif($r['type']==1):?>
+			                            <span>窑洞</span>
+			                        <?php elseif($r['type']==2):?>
+			                            <span>木屋</span>
+			                        <?php elseif($r['type']==3):?>
+			                            <span>别墅</span>
+			                        <?php endif?>
+			                         +
+			                        <?php if($r['bed_type']==0):?>
+			                            <span>高级大床房</span>
+			                        <?php elseif($r['bed_type']==1):?>
+			                            <span>标准间</span>
+			                        <?php elseif($r['bed_type']==2):?>
+			                            <span>三人间</span>
+			                        <?php endif?>
+								</span>
+								<span style="display:block;">￥{$v.r_fee}</span>
+								<span style="display:block;">
 									<?php if($v['status']==1):?>
 									<a href="http://mei.vshijie.cn/bk/index.php/Home/Pay/sign?hid={$v.hid}" class="tag">您已预订,点击续订</a>
 									<?php elseif($v['status']==3):?>
