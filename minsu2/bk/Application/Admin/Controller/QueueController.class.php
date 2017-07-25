@@ -196,16 +196,23 @@ class QueueController extends AuthController {
 		}
 	}
 	
-	public function order($dt=0) {
+	public function order($dt=10) {
 		$this->assign('dt',$dt);
 		$this->display();
 	}
 	
-	public function ajaxOrder($dt=0) {
+	public function ajaxOrder($dt=10) {
 		$date= array();
 		$click= array();
 		if($dt==0) {
 			$sql='SELECT substring(createtime,1,7) AS date,count(*) as click FROM bk_h_time_queue WHERE status>5 GROUP BY substring(createtime,1,7)';
+			$data=M()->query($sql);
+			foreach ($data as $k => $v) {
+				array_push($date,$v['date']);
+				array_push($click,$v['click']);
+			}
+		} elseif($dt==10) {
+			$sql='SELECT substring(createtime,1,10) AS date,count(*) as click FROM bk_h_time_queue WHERE status>5 GROUP BY substring(createtime,1,10)';
 			$data=M()->query($sql);
 			foreach ($data as $k => $v) {
 				array_push($date,$v['date']);
@@ -218,7 +225,21 @@ class QueueController extends AuthController {
 				array_push($date,$v['date']);
 				array_push($click,$v['click']);
 			}
-		} else {
+		} elseif($dt==11) {
+			$sql='SELECT substring(createtime,1,10) AS date,count(*) as click FROM bk_h_time_queue WHERE status>3 AND status<7 GROUP BY substring(createtime,1,10)';
+			$data=M()->query($sql);
+			foreach ($data as $k => $v) {
+				array_push($date,$v['date']);
+				array_push($click,$v['click']);
+			}
+		} elseif($dt==12) {
+			$sql='SELECT substring(createtime,1,10) AS date,count(*) as click FROM bk_h_time_queue WHERE status=1 GROUP BY substring(createtime,1,10)';
+			$data=M()->query($sql);
+			foreach ($data as $k => $v) {
+				array_push($date,$v['date']);
+				array_push($click,$v['click']);
+			}
+		} else{
 			$sql='SELECT substring(createtime,1,7) AS date,count(*) as click FROM bk_h_time_queue WHERE status=1 GROUP BY substring(createtime,1,7)';
 			$data=M()->query($sql);
 			foreach ($data as $k => $v) {
@@ -237,11 +258,20 @@ class QueueController extends AuthController {
 	public function ajaxDeal($dt=0) {
 		$date= array();
 		$click= array();
-		$sql='SELECT substring(createtime,1,7) AS date,sum(r_fee) as click FROM bk_h_time_queue WHERE status>5 GROUP BY substring(createtime,1,7)';
-		$data=M()->query($sql);
-		foreach ($data as $k => $v) {
-			array_push($date,$v['date']);
-			array_push($click,$v['click']);
+		if($dt==0) {
+			$sql='SELECT substring(createtime,1,10) AS date,sum(r_fee) as click FROM bk_h_time_queue WHERE status>5 GROUP BY substring(createtime,1,10)';
+			$data=M()->query($sql);
+			foreach ($data as $k => $v) {
+				array_push($date,$v['date']);
+				array_push($click,$v['click']);
+			}	
+		} else {
+			$sql='SELECT substring(createtime,1,7) AS date,sum(r_fee) as click FROM bk_h_time_queue WHERE status>5 GROUP BY substring(createtime,1,7)';
+			$data=M()->query($sql);
+			foreach ($data as $k => $v) {
+				array_push($date,$v['date']);
+				array_push($click,$v['click']);
+			}			
 		}
 		$this->ajaxReturn(array('date'=>$date,'click'=>$click));
 	}

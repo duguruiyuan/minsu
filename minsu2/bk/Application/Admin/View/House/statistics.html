@@ -227,25 +227,13 @@
               </a>
 
               <ul class="treeview-menu">
-
-
-
                 <foreach name="auth_infoB" item="vv">
-
                   <if condition="$vv['auth_pid'] eq $v['auth_id']">
-
                     <li><a href="__MODULE__/{$vv.auth_c}/{$vv.auth_a}"><i class="fa fa-circle-o"></i>{$vv.auth_name}</a></li>
-
                   </if>
-
                 </foreach>
-
-
-
               </ul>
-
             </li>
-
           </foreach>
 
           <!--菜单栏循环结束-->

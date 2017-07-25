@@ -266,9 +266,12 @@
         </span>
     <div>
     	<center>
-	    	<span><input type="button"  value="订单量" class="tag<?php if($dt==0):?>Active<?php endif?>" onclick="selectDate(0)"/></span>
-	    	<span><input type="button"  value="退单量" class="tag<?php if($dt==1):?>Active<?php endif?>" onclick="selectDate(1)"/></span>
-	    	<span><input type="button"  value="预定中量" class="tag<?php if($dt==2):?>Active<?php endif?>" onclick="selectDate(2)"/></span>
+	    	<span><input type="button"  value="日订单量" class="tag<?php if($dt==10):?>Active<?php endif?>" onclick="selectDate(10)"/></span>
+	    	<span><input type="button"  value="月订单量" class="tag<?php if($dt==0):?>Active<?php endif?>" onclick="selectDate(0)"/></span>
+	    	<span><input type="button"  value="日退单量" class="tag<?php if($dt==11):?>Active<?php endif?>" onclick="selectDate(11)"/></span>
+	    	<span><input type="button"  value="月退单量" class="tag<?php if($dt==1):?>Active<?php endif?>" onclick="selectDate(1)"/></span>
+	    	<span><input type="button"  value="日预定中量" class="tag<?php if($dt==12):?>Active<?php endif?>" onclick="selectDate(12)"/></span>
+	    	<span><input type="button"  value="月预定中量" class="tag<?php if($dt==2):?>Active<?php endif?>" onclick="selectDate(2)"/></span>
     	</center>
     </div>
 	<div id="mapData" style="height:500px;border:1px solid #ccc;padding:10px;"></div>

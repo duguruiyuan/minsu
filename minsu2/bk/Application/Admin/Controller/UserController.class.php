@@ -53,22 +53,36 @@ class UserController extends AuthController {
 		}
 	}
 	
-	public function statistics($dt=0) {
+	public function statistics($dt=10) {
 		$this->assign('dt',$dt);
 		$this->display();
 	}
 	
-	public function ajaxStatistics($dt=0) {
+	public function ajaxStatistics($dt=10) {
 		$date= array();
 		$click= array();
-		if($dt==0) {
+		if($dt==10) {
+			$sql='SELECT substring(createtime,1,10) AS date,count(*) as click FROM bk_owner GROUP BY substring(createtime,1,10)';
+			$data=M()->query($sql);
+			foreach ($data as $k => $v) {
+				array_push($date,$v['date']);
+				array_push($click,$v['click']);
+			}
+		} else if($dt==0) {
 			$sql='SELECT substring(createtime,1,7) AS date,count(*) as click FROM bk_owner GROUP BY substring(createtime,1,7)';
 			$data=M()->query($sql);
 			foreach ($data as $k => $v) {
 				array_push($date,$v['date']);
 				array_push($click,$v['click']);
 			}
-		} else {
+		}else if($dt==11) {
+			$sql='SELECT substring(createtime,1,10) AS date,count(*) as click FROM bk_guest GROUP BY substring(createtime,1,10)';
+			$data=M()->query($sql);
+			foreach ($data as $k => $v) {
+				array_push($date,$v['date']);
+				array_push($click,$v['click']);
+			}
+		}else if($dt==1) {
 			$sql='SELECT substring(createtime,1,7) AS date,count(*) as click FROM bk_guest GROUP BY substring(createtime,1,7)';
 			$data=M()->query($sql);
 			foreach ($data as $k => $v) {

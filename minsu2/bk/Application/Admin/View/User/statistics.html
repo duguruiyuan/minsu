@@ -245,12 +245,14 @@
 
     <div class="content-wrapper" style="background: #FDF5E1;">
         <span class="l">
-            <a href="javascript:;" class="btn btn-primary radius"> <i class="fa"></i>房屋详情页点击数统计</a>
+            <a href="javascript:;" class="btn btn-primary radius"> <i class="fa"></i>注册量统计</a>
         </span>
     <div>
     	<center>
-	    	<span><input type="button"  value="房主统计" class="tag<?php if($dt==0):?>Active<?php endif?>" onclick="selectDate(0)"/></span>
-	    	<span><input type="button"  value="房客统计" class="tag<?php if($dt==1):?>Active<?php endif?>"/ onclick="selectDate(1)"></span>
+	    	<span><input type="button"  value="日房主注册量" class="tag<?php if($dt==10):?>Active<?php endif?>" onclick="selectDate(10)"/></span>
+	    	<span><input type="button"  value="月房主注册量" class="tag<?php if($dt==0):?>Active<?php endif?>" onclick="selectDate(0)"/></span>
+	    	<span><input type="button"  value="日房客注册量" class="tag<?php if($dt==11):?>Active<?php endif?>" onclick="selectDate(11)"/></span>
+	    	<span><input type="button"  value="月房客注册量" class="tag<?php if($dt==1):?>Active<?php endif?>" onclick="selectDate(1)"/></span>
     	</center>
     </div>
 	<div id="mapData" style="height:500px;border:1px solid #ccc;padding:10px;"></div>

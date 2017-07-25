@@ -266,14 +266,12 @@
         </span>
     <div>
     	<center>
-	    	<span><input type="button"  value="按月份" class="tag<?php if($dt==0):?>Active<?php endif?>" onclick="selectDate(0)"/></span>
+	    	<span><input type="button"  value="按日期" class="tag<?php if($dt==0):?>Active<?php endif?>" onclick="selectDate(0)"/></span>
+	    	<span><input type="button"  value="按月份" class="tag<?php if($dt==2):?>Active<?php endif?>" onclick="selectDate(2)"/></span>
     	</center>
     </div>
 	<div id="mapData" style="height:500px;border:1px solid #ccc;padding:10px;"></div>
     </div>
-
-
-
   </div>
   <!-- 整个结束 -->
 
@@ -299,7 +297,7 @@
 var mapData={};
 (function ($) {
 	$.ajax({
-		url: "http://mei.vshijie.cn/bk/index.php/Admin/Queue/ajaxOrder",
+		url: "http://mei.vshijie.cn/bk/index.php/Admin/Queue/ajaxDeal",
 		type: 'POST',
 		dataType: 'json',
 		data:'dt={$dt}',
@@ -375,7 +373,7 @@ function showChart() {
 }
 
 function selectDate(dt){
-	location.href='http://mei.vshijie.cn/bk/index.php/Admin/Queue/order?dt='+dt;
+	location.href='http://mei.vshijie.cn/bk/index.php/Admin/Queue/deal?dt='+dt;
 }
   </script>
 

@@ -73,6 +73,7 @@ class PayController extends Controller{
 			$maxUsed = M('h_time')->FIELD('MAX(used) as used')->WHERE("date>='{$beginTime}' AND date<='{$endTime}' AND hid={$hid}")->find();
 			if(is_null($maxUsed['used']) || $maxUsed['used']<$houseinfo['total']) {
 				$_POST['r_fee']=$r_fee;
+				$_POST['r_trade_no']=time();
 				session('b_time_queue', $_POST);
 				$openid=$_POST['openid'];
 				$data = $this->payConfig($openid,$hid,$r_fee);
@@ -90,7 +91,8 @@ class PayController extends Controller{
 		$unifiedorder['mch_id']=self::MCH_ID;
 		$unifiedorder['nonce_str']='suijizifuchuanhao';
 		$unifiedorder['body']=$body;
-		$unifiedorder['out_trade_no']=time();
+		$_POST=session('b_time_queue');
+		$unifiedorder['out_trade_no']=$_POST['r_trade_no'];
 		$unifiedorder['spbill_create_ip']=getIP();
 		$unifiedorder['notify_url']='http://mei.vshijie.cn/minsu/index.php/Home/Weixin/payResult';
 		$unifiedorder['trade_type']='JSAPI';
