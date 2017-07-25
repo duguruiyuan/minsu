@@ -102,6 +102,17 @@ class HouseController extends AuthController {
 		
 	}
 
+	//房屋添加首页
+	public function reconcile($tradeNo=null) {	
+		if($tradeNo) {
+			$timeQueues = M('h_time_queue')->where('r_trade_no='.$tradeNo)->order('createtime desc')->select();
+		} else {
+			$timeQueues = M('h_time_queue')->order('createtime desc')->select();
+		}
+		$this->assign('timeQueues',$timeQueues);
+		$this->display();
+	}
+	
 	//删除方法
 	public function del($id) {
 		$uiid = M('houseinfo')->field('uid,list_pic')->where("id={$id}")->find();
@@ -122,7 +133,21 @@ class HouseController extends AuthController {
 		}
 	}
 	
-
+	public function editStory($id) {
+		if(IS_POST) {
+			$z = M('houseinfo')->where("id={$id}")->save($_POST);
+			if ($z) {
+				$this->success('修改房主故事成功',U('index'));
+			}else{
+				$this->error('修改房主故事失败');
+			}
+		} else {
+			$data=M('houseinfo')->where("id={$id}")->find();
+			$this->assign('data',$data);
+			$this->display();
+		}
+	}
+	
 	//房屋审核管理
 	public function houseAudit() {
 		$status = I('get.status','');

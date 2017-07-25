@@ -353,6 +353,7 @@
                                     </td>
                                     <td>
                                         <a href="{:U('edit',array('id'=>$v['id']))}"class="btn btn-primary radius"> <i class="fa fa-calendar-check-o"></i>编辑</a>
+                                        <a href="{:U('editStory',array('id'=>$v['id']))}"class="btn btn-primary radius"> <i class="fa fa-calendar-check-o"></i>房主故事</a>
                                         <a href="__ROOT__/index.php/Admin/Queue/index?hid={$v.id}" class="btn btn-primary radius"> <i class="fa fa-calendar-check-o"></i>排期信息</a>
                                         <a href="__ROOT__/index.php/Admin/Queue/reserve?hid={$v.id}" class="btn btn-primary radius"> <i class="fa fa-calendar-check-o"></i>预定信息</a>
                                         <a href="javascript:;" onclick="if(confirm('确定删除吗?')) location.href='{:U('del',array('id'=>$v['id']))}'" class="btn btn-danger radius"> <i class=" fa-remove "></i>删除</a>

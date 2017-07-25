@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
-    <title>房主列表</title>
+    <title>对账查询</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -54,174 +54,243 @@
     </style>
 </head>
 <body class="hold-transition skin-blue sidebar-mini sidebar-collapse">
-<div class="wrapper">
 
-    <!--引入公共左侧和头部-->
-    <!--左边开始-->
+<div class="wrapper">
     <header class="main-header">
-        <!-- Logo -->
         <a href="{:U('Index/index')}" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
             <span class="logo-mini"><b>A</b>LT</span>
-            <!-- logo for regular state and mobile devices -->
             <span class="logo-lg"><b>Admin</b>LTE</span>
         </a>
+
         <!-- Header Navbar: style can be found in header.less -->
+
         <nav class="navbar navbar-static-top" role="navigation">
+
             <!-- Sidebar toggle button-->
+
             <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+
                 <span class="sr-only">Toggle navigation</span>
+
             </a>
+
             <div class="navbar-custom-menu">
+
                 <ul class="nav navbar-nav">
+
                     <li class="dropdown user user-menu">
+
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+
                             <img src="__PUBLIC__/Admin/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+
                             <span class="hidden-xs">{$_SESSION['aname']}</span>
+
                         </a>
+
                         <ul class="dropdown-menu">
+
                             <!-- User image -->
+
                             <li class="user-header">
+
                                 <img src="__PUBLIC__/Admin/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+
                                 <p>
+
                                     <small>管理员</small>
+
                                 </p>
+
                             </li>
+
                             <li class="user-footer">
+
                                 <div class="pull-right">
+
                                     <a href="{:U('Login/out')}" class="btn btn-default btn-flat">安全退出</a>
+
                                 </div>
+
                             </li>
+
                         </ul>
+
                     </li>
+
                 </ul>
+
             </div>
+
         </nav>
+
     </header>
+
     <!-- Left side column. contains the logo and sidebar -->
+
     <aside class="main-sidebar">
+
         <!-- sidebar: style can be found in sidebar.less -->
+
         <section class="sidebar">
+
             <!-- Sidebar user panel -->
+
             <div class="user-panel">
+
                 <div class="pull-left image">
+
                     <img src="__PUBLIC__/Admin/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+
                 </div>
+
                 <div class="pull-left info">
+
                     <p>{$_SESSION['aname']}</p>
+
                     <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+
                 </div>
+
             </div>
+
             <!-- search form -->
+
             <form action="#" method="get" class="sidebar-form">
+
                 <div class="input-group">
+
                     <input type="text" name="q" class="form-control" placeholder="Search...">
+
             <span class="input-group-btn">
+
                         <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
+
                       </span>
+
                 </div>
+
             </form>
-            <!-- /.search form -->
-            <!-- sidebar menu: : style can be found in sidebar.less -->
-            <!--载入菜单-->
             <ul class="sidebar-menu">
-                <!--菜单栏循环开始-->
                 <foreach name="auth_infoA" item="v">
+
                     <li class="treeview">
+
                         <a href="#">
+
                             <i class="fa {$v.auth_icon}"></i>
+
                             <span>{$v.auth_name}</span>
+
                         </a>
+
                         <ul class="treeview-menu">
-                            
                             <foreach name="auth_infoB" item="vv">
                                 <if condition="$vv['auth_pid'] eq $v['auth_id']">
                                 <li><a href="__MODULE__/{$vv.auth_c}/{$vv.auth_a}"><i class="fa fa-circle-o"></i>{$vv.auth_name}</a></li>
                                 </if>
                             </foreach>
-                            
                         </ul>
+
                     </li>
+
                 </foreach>
+
                 <!--菜单栏循环结束-->
+
             </ul>
+
         </section>
+
         <!-- /.sidebar -->
+
     </aside>
+
     <!--左边结束-->
 
+
+
     <!-- 右侧部分开始 -->
+
     <div class="content-wrapper" style="background: #FDF5E1;">
+
         <section class="content-header">
             <div class="cl pd-5 bg-1 bk-gray mt-20">
             <div class="box-header" style="margin-bottom:15px">
-              </form>
+                <form action="" method="get">
+	                <b style="height: ">商户订单号: </b>&nbsp;&nbsp;&nbsp;
+	                <input type="text" name="tradeNo" value="" class="laydate-icon" placeholder="1500951429" id="tradeNo" style="width: 158px;">
+	                        <button type="submit" class="btn btn-success radius" id="tradeNoBtn" name=""><i class="fa fa-search"></i> 查询</button>
+	                        </span>
+	                        <style type="text/css">
+	                            .left{
+	                                margin-left: 10px;
+	                            }
+	                        </style>
+	              </form>
+
+            </div>
             </div>
 
-                <span class="l">
-                    <a href="javascript:;" class="btn btn-primary radius">
-                    	<i class="fa  fa-plus-square"></i>房主列表
-                    </a>
-                </span>
-                <span class="r">
-                    <a href="javascript:;" class="btn btn-primary radius"> <i class=""></i>全部</a>
-                </span>
-            </div>
             <div class="box">
                 <div class="box-body">
                     <table id="example1" class="table table-bordered table-striped">
                         <thead>
                         <tr>
-                            <th>房主id</th>
-                            <th>昵称</th>
-                            <th>手机号码</th>
-                            <th>最后登录IP</th>
-                            <th>注册时间</th>
-                            <th>账号是否正常</th>
-                            <th width="15%">操作</th>
+                            <th>开始时间</th>
+                            <th>结束时间</th>
+                            <th>状态</th>
+                            <th>涉及房间数</th>
+                            <th>预定者姓名</th>
+                            <th>预定者手机</th>
+                            <th>预定者已交费</th>
+                            <th>商户订单号</th>
+                            <th>添加时间</th>
                         </tr>
                         </thead>
                         <tbody>
-                            <foreach name='data' item='v' key='k'>
+                            <foreach name='timeQueues' item='v' key='k'>
                                 <tr>
-                                    <td>{$v.id}</td>
-                                    <td>{$v.nickname}</td>
-                                    <td>{$v.phone}</td>
-                                    <td>{$v.last_ip}</td>
+                                    <td>{$v.begin_time}</td>
+                                    <td>{$v.end_time}</td>
+                                    <td>
+                                        <?php if($v['status']==0):?>
+                                            <span>空闲</span>
+                                        <?php elseif($v['status']==1):?>
+                                            <span>已预订</span>
+                                        <?php elseif($v['status']==2):?>
+                                            <span>不可用</span>
+                                        <?php elseif($v['status']==3):?>
+                                            <span>提交退款申请</span>
+                                        <?php elseif($v['status']==4):?>
+                                            <span>同意退款处理</span>
+                                        <?php elseif($v['status']==5):?>
+                                            <span>退款返钱完毕</span>
+                                        <?php elseif($v['status']==6):?>
+                                            <span>退款驳回</span>
+                                        <?php elseif($v['status']==7):?>
+                                            <span>已过期(已退房)</span>
+                                       <?php elseif($v['status']==8):?>
+                                            <span>已打款</span>
+                                        <?php endif?>
+                                    </td>
+                                    <td>{$v.amount}</td>
+                                    <td>{$v.r_name}</td>
+                                    <td>{$v.r_phone}</td>
+                                    <td>{$v.r_fee}</td>
+                                    <td>{$v.r_trade_no}</td>
                                     <td>{$v.createtime}</td>
-                                    <td>
-                                        <?php if($v['status']==0):?>
-                                            <span>正常</span>
-                                        <?php else:?>
-                                            <span>锁定</span>
-                                        <?php endif?>
-                                    </td>
-                                    <td>
-                                    	<a href="{:U('editOwner',array('id'=>$v['id']))}"class="btn btn-primary radius"> <i class="fa fa-calendar-check-o"></i>编辑</a>
-                                        <?php if($v['status']==0):?>
-                                            <a href="javascript:;"class="btn btn-warning radius" onclick="if(confirm('确定锁定吗?')) location.href='{:U('dealOwner',array('id'=>$v['id'],'status'=>1))}'"> <i class="fa fa-calendar-check-o"></i>锁定</a>
-                                        <?php else:?>
-                                            <a href="javascript:;"class="btn btn-warning radius" onclick="if(confirm('确定解锁吗?')) location.href='{:U('dealOwner',array('id'=>$v['id'],'status'=>0))}'"> <i class="fa fa-calendar-check-o"></i>解锁</a>
-                                        <?php endif?>
-                                        <a href="javascript:;" onclick="if(confirm('确定删除吗?')) location.href='{:U('del',array('id'=>$v['id']))}'" class="btn btn-danger radius"> <i class=" fa-remove "></i> 删除</a>
-                                    </td>
                                 </tr>
                             </foreach>
-                            
                         </tbody>
-
                     </table>
                 </div><!-- /.box-body -->
             </div><!-- /.box -->
     </div><!-- /.col -->
     </section>
 </div>
-<!-- 右侧部分结束 -->
-
 </div>
-<!-- 整个结束 -->
-
-
 <!-- jQuery 2.1.4 -->
 <script src="__PUBLIC__/Admin/plugins/jQuery/jQuery-2.1.4.min.js"></script>
 <!-- Bootstrap 3.3.5 -->
@@ -229,21 +298,12 @@
 <!-- DataTables -->
 <script src="__PUBLIC__/Admin/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="__PUBLIC__/Admin/plugins/datatables/dataTables.bootstrap.min.js"></script>
-<!-- SlimScroll -->
-<script src="__PUBLIC__/Admin/plugins/slimScroll/jquery.slimscroll.min.js"></script>
-<!-- FastClick -->
-<script src="__PUBLIC__/Admin/plugins/fastclick/fastclick.min.js"></script>
-<!-- AdminLTE App -->
-<script src="__PUBLIC__/Admin/dist/js/app.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="__PUBLIC__/Admin/dist/js/demo.js"></script>
 <!-- page script -->
 
 <!-- 其他模板的js文件引入的部份開始 -->
 <script type="text/javascript" src="__PUBLIC__/Admin/layer/1.9.3/layer.js"></script>
 <!-- 其他模板的js文件引入的部份結束 -->
 <script>
-   
     $(function () {
         $("#example1").DataTable({
             "bPaginate": true, //翻页功能
@@ -286,5 +346,6 @@
         });
     });
 </script>
+
 </body>
 </html>

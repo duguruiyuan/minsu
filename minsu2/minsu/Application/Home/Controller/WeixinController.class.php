@@ -164,11 +164,12 @@ class WeixinController extends Controller{
 		$accessToken = $this->cacheToken();
 		if(!is_null($accessToken)) {
 			$mkHomeBtn=array('type'=>'view','name'=>'乡村安家','url'=>'http://mei.vshijie.cn/minsu/');
+			$xiangjuBtn=array('type'=>'view','name'=>'乡居短租','url'=>'http://mei.vshijie.cn/bk/index.php/Home/House/home');
 			$fundSubBtn=array('type'=>'view','name'=>'项目众筹','url'=>'http://mei.vshijie.cn/minsu/index.php/Home/Funding/index.html');
 			$houseSubBtn=array('type'=>'view','name'=>'民宅合作','url'=>'http://mei.vshijie.cn/minsu/index.php/Home/Index/problem.html');
 			$landSubBtn=array('type'=>'view','name'=>'土地合作','url'=>'http://mei.vshijie.cn/minsu/index.php/Home/Index/problem.html');
 			$projectBtn=array('name'=>'项目合作','sub_button'=>array($fundSubBtn,$houseSubBtn,$landSubBtn));
-			$json_data = array ('button'=>array($mkHomeBtn,$projectBtn)); 
+			$json_data = array ('button'=>array($mkHomeBtn,$xiangjuBtn,$projectBtn)); 
 			$post_data=$this->JSON($json_data);
 			echo send_post('https://api.weixin.qq.com/cgi-bin/menu/create?access_token='.$accessToken, $post_data);
 		}	
