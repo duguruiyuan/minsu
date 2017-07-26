@@ -377,5 +377,110 @@ class OwnerController extends Controller {
 		}
 		$this->error('提现失败',U('index'));
 	}
+	
+	public function mlogin() {
+		$this->display();
+	}
+	
+	public function fpwd() {
+		$this->display();
+	}
+	
+	/** 
+	 *  
+	 * 验证码生成 
+	 */  
+	public function verify_c($r=1){  
+	    $Verify = new \Think\Verify();  
+	    $Verify->fontSize = 18;  
+	    $Verify->length   = 4;  
+	    $Verify->useNoise = false;  
+	    $Verify->codeSet = '0123456789';  
+	    $Verify->imageW = 130;  
+	    $Verify->imageH = 50;  
+	    //$Verify->expire = 600;  
+	    $Verify->entry();  
+	}  
+	
+	//登录验证
+	public function ajaxCaptcha() {
+		$phone = I('post.phone');
+		$captcha = I('post.captcha');
+		$user = M('owner');
+		$result = $user->where("phone='{$phone}'")->find();
+		//用户或者密码不正确
+		if(!$result){
+			$data['status'] = 1;
+			$this->ajaxReturn($data);
+		}
+		$verify = new \Think\Verify();  
+		//用户或者密码不正确
+		if(!$verify->check($captcha)){
+			$data['status'] = 2;
+			$this->ajaxReturn($data);
+		}
+		$code = randomStr6();
+		$text="【自在乡居】您的验证码是".$code;
+		sendText($phone,$text);
+		$_SESSION['mcode']=$code;
+		$data['status'] = 'ok';
+		$this->ajaxReturn($data);
+	}
+
+
+	//登录验证
+	public function ajaxMlogin() {
+		$user = M('owner');
+		$phone = I('post.phone');
+		$pass = I('post.pwd');
+		$openid = I('post.openid');
+		$result = $user->where("phone='{$phone}'")->find();
+		//用户或者密码不正确
+		if(!$result){
+			$data['status'] = 1;
+			$this->ajaxReturn($data);
+		}
+
+		//用户或者密码不正确
+		if($_SESSION['mcode'] != $pass){
+			$data['status'] = 2;
+			$this->ajaxReturn($data);
+		}
+		if($openid!=null && strlen($result['openid'])<12) {
+			$result['openid']=$openid;
+			$user->where("id={$result['id']}")->save($result);
+		}
+		$_SESSION['owner_id'] = $result['id'];
+		$_SESSION['owner_name'] = $result['nickname'];
+		setcookie(session_name(),session_id(),time() + 3600*24*700,'/');
+		$data['status'] = 'ok';
+		if($_SESSION['redirect']) {
+			$data['redirect']=$_SESSION['redirect'];
+		} else {
+			$data['redirect']='http://mei.vshijie.cn/bk/index.php/Home/Owner/index';
+		}
+		$this->ajaxReturn($data);
+	}
+	
+	public function clear() {
+		unset($_SESSION);
+	}
+	
+	public function ajaxFpwd() {
+		$user = M('owner');
+		$phone = I('post.phone');
+		$pass = I('post.pwd');
+		$result = $user->where("phone='{$phone}'")->find();
+		//用户或者密码不正确
+		if(!$result){
+			$data['status'] = 1;
+			$this->ajaxReturn($data);
+		}
+		$password = md5($pass);
+		$result['pwd'] = $password;
+		$user->where("id={$result['id']}")->save($result);
+		$data['status'] = 'ok';
+		$this->ajaxReturn($data);
+	}
 }
  ?>

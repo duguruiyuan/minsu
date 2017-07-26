@@ -28,17 +28,19 @@
 				<div class="login-type">
 					<a href="#" class="actTap" actdata="panel=#loginType1">房主登录</a>
 					<span class="arrow"></span>
+					<a style="text-align: right;color: #c3AB64;font-size: 12px" href="mlogin">>>手机验证码登录</a>
 				</div>
 				<form style="" class="tapPanel" id="loginType1" action="" method="post" autocomplete="off" >
 					<input name="redirect" disabled="disabled" class="redirect" value="" type="hidden">
 					<div class="form-list">
 						<ul>
 							<li>
-								<input class="f-text" name="phone" placeholder="请输入手机号" validate="notNull" validatename="手机号" required="required" type="text">
+								<input class="f-text" name="phone" id="phone" placeholder="请输入手机号" validate="notNull" validatename="手机号" required="required" type="text">
 							</li>
 							<li>
-								<input class="f-text" name="pwd" placeholder="请输入登录密码" validate="notNull" validatename="密码" type="password">
+								<input class="f-text" name="pwd" id="pwd" placeholder="请输入登录密码" validate="notNull" validatename="密码" type="password">
 							</li>
+							<li style="text-align: right;font-size: 12px"><a style="color: #c3AB64;" href="fpwd">忘记密码?</a></li>
 						</ul>
 					</div>
 					<p class="p-br">
@@ -70,8 +72,8 @@
 				return;
 			}
 			$('.actLogin').click(function(event) {
-				var phone = $('input[name=phone').val();
-				var pwd = $('input[name=pwd').val();
+				var phone = $('#phone').val();
+				var pwd = $('#pwd').val();
 				$.ajax({
 					url: "{:U('Owner/ajaxLogin')}",
 					type: 'post',

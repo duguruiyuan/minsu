@@ -71,8 +71,8 @@
 				return;
 			}
 			$('.actLogin').click(function(event) {
-				var phone = $('input[name=phone').val();
-				var pwd = $('input[name=pwd').val();
+				var phone = $('input[name=phone]').val();
+				var pwd = $('input[name=pwd]').val();
 				$.ajax({
 					url: "{:U('Guest/ajaxLogin')}",
 					type: 'post',

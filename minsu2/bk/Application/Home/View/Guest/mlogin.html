@@ -76,8 +76,8 @@
 				return;
 			}
 			$('#sendText').click(function(event) {
-				var phone = $('input[name=phone').val();
-				var captcha = $('input[name=captcha').val();
+				var phone = $('input[name=phone]').val();
+				var captcha = $('input[name=captcha]').val();
 				$.ajax({
 					url: "{:U('Guest/ajaxCaptcha')}",
 					type: 'post',
@@ -99,8 +99,8 @@
 				});
 			});
 			$('#login').click(function(event) {
-				var phone = $('input[name=phone').val();
-				var pwd = $('input[name=pwd').val();
+				var phone = $('input[name=phone]').val();
+				var pwd = $('input[name=pwd]').val();
 				$.ajax({
 					url: "{:U('Guest/ajaxMlogin')}",
 					type: 'post',

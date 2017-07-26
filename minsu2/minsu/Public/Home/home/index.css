@@ -89,15 +89,15 @@ a { text-decoration: none; }
 .home-nav ul li a { text-align: center; font-size: 0.75rem; color: rgb(34, 34, 34); display: block; }
 .home-nav ul p:nth-child(2) { line-height: 1.25rem; margin-top: 0.3125rem; }
 .home-nav ul a:active p:nth-child(1) { transform: scale(1.3); }
-.home-nav ul .menu-ershoufang, .home-nav ul .menu-subway, .home-nav ul .menu-school, .home-nav ul .menu-rent, .home-nav ul .menu-caijing, .home-nav ul .menu-xinfang, .home-nav ul .menu-jingjiren, .home-nav ul .menu-yezhu, .home-nav ul .menu-chengjiao, .home-nav ul .menu-wenda { width: 3.375rem; height: 3.375rem; display: inline-block; vertical-align: middle; background-size: cover; background-image: url('home-spirit-new.png'); transition: transform 0.3s ease-in 0s; }
-.home-nav ul .menu-ershoufang { background-position: 0px 0px; }
-.home-nav ul .menu-xinfang { background-position: 0px -3.6875rem; }
-.home-nav ul .menu-yezhu { background-position: 0px -11.0625rem; }
-.home-nav ul .menu-jingjiren { background-position: 0px -14.75rem; }
-.home-nav ul .menu-school { background-position: 0px -18.4375rem; }
-.home-nav ul .menu-chengjiao { background-position: 0px -25.8125rem; }
-.home-nav ul .menu-wenda { background-position: 0px -29.5rem; }
-.home-nav ul .menu-rent { background-position: 0px -33.1875rem; }
+.home-nav ul .menu-good, .home-nav ul .menu-release, .home-nav ul .menu-bk, .home-nav ul .menu-fund, .home-nav ul .menu-agent, .home-nav ul .menu-coop, .home-nav ul .menu-land, .home-nav ul .menu-entrust {width: 3.375rem; height: 3.375rem; display: inline-block; vertical-align: middle; background-size: cover; background-image: url('home-menu.png'); transition: transform 0.3s ease-in 0s; }
+.home-nav ul .menu-good {background-position: 0.21rem 0.2rem;}
+.home-nav ul .menu-release {background-position: 0.21rem -2.97rem;}
+.home-nav ul .menu-bk {background-position: 0.21rem -19.1rem;}
+.home-nav ul .menu-fund {background-position: 0.21rem -9.5rem;}
+.home-nav ul .menu-agent {background-position: 0.21rem -12.7375rem;}
+.home-nav ul .menu-coop { background-position: 0.21rem -16rem;}
+.home-nav ul .menu-land { background-position: 0.21rem -28.9rem;}
+.home-nav ul .menu-entrust { background-position: 0.21rem -22.4rem;}
 .banners-slider-block, .home-list, .fangjia-entry { margin-top: 0.75rem; }
 .fangjia-entry, .home-list { background-color: rgb(255, 255, 255); border-top: 1px solid rgb(229, 229, 229); }
 .fangjia-entry .f-price, .home-list .f-price { right: 1.25rem; }
