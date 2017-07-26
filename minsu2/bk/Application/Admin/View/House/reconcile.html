@@ -221,6 +221,10 @@
                 <form action="" method="get">
 	                <b style="height: ">商户订单号: </b>&nbsp;&nbsp;&nbsp;
 	                <input type="text" name="tradeNo" value="" class="laydate-icon" placeholder="1500951429" id="tradeNo" style="width: 158px;">
+	                 <b style="height: ">开始时间: </b>&nbsp;&nbsp;&nbsp;
+	                <input type="text" name="begin" value="" class="laydate-icon" placeholder="2017-07-26" id="begin" style="width: 158px;">
+	                 <b style="height: ">添加时间: </b>&nbsp;&nbsp;&nbsp;
+	                <input type="text" name="createtime" value="" class="laydate-icon" placeholder="2017-07-26" id="createtime" style="width: 158px;">
 	                        <button type="submit" class="btn btn-success radius" id="tradeNoBtn" name=""><i class="fa fa-search"></i> 查询</button>
 	                        </span>
 	                        <style type="text/css">
@@ -240,6 +244,8 @@
                         <tr>
                             <th>开始时间</th>
                             <th>结束时间</th>
+                            <th>民宿ID</th>
+                            <th>民宿名</th>
                             <th>状态</th>
                             <th>涉及房间数</th>
                             <th>预定者姓名</th>
@@ -254,6 +260,8 @@
                                 <tr>
                                     <td>{$v.begin_time}</td>
                                     <td>{$v.end_time}</td>
+                                    <td>{$v.hid}</td>
+                                    <td>{$v.hname}</td>
                                     <td>
                                         <?php if($v['status']==0):?>
                                             <span>空闲</span>

@@ -103,12 +103,17 @@ class HouseController extends AuthController {
 	}
 
 	//房屋添加首页
-	public function reconcile($tradeNo=null) {	
+	public function reconcile($tradeNo=null, $begin=null, $createtime=null) {	
+		$sql='SELECT t.*, h.name as hname FROM bk_h_time_queue as t inner join bk_houseinfo as h on t.hid=h.id ';
 		if($tradeNo) {
-			$timeQueues = M('h_time_queue')->where('r_trade_no='.$tradeNo)->order('createtime desc')->select();
-		} else {
-			$timeQueues = M('h_time_queue')->order('createtime desc')->select();
+			$sql=$sql.' where t.r_trade_no='.$tradeNo;
+		} else if($begin) {
+			$sql=$sql.' where t.begin_time="'.$begin.'"';
+		} else if($createtime) {
+			$sql=$sql.' where substring(t.createtime,1,10)="'.$createtime.'"';
 		}
+		$sql=$sql.' order by t.createtime desc';
+		$timeQueues=M()->query($sql);
 		$this->assign('timeQueues',$timeQueues);
 		$this->display();
 	}

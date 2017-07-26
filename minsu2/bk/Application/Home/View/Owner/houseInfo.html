@@ -51,6 +51,8 @@
 						</a>
 						<input type="button" value="删除" class="delete"
 						 onclick="if(confirm('确定删除此房源吗?')) location.href='{:U('delHouse',array('id'=>$v['id']))}'"/>
+					    <input type="button" value="编辑房主故事" class="delete"
+						 onclick="location.href='{:U('editStory',array('id'=>$v['id']))}'"/>
 					</li>
 					</foreach>
 				</ul>

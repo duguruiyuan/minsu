@@ -179,14 +179,13 @@ class OwnerController extends Controller {
 		}
 	}
 
-	public function editStory() {
-		$id=$_SESSION['owner_id'];
+	public function editStory($id) {
 		if (IS_POST) {
-			M('owner')->where("id={$id}")->setField('stitle', $_POST['stitle']);
-			M('owner')->where("id={$id}")->setField('story', $_POST['story']);
+			M('houseinfo')->where("id={$id}")->setField('stitle', $_POST['stitle']);
+			M('houseinfo')->where("id={$id}")->setField('story', $_POST['story']);
 			$this->success('修改房主故事成功',U('index'));
 		} else {
-			$data=M('owner')->where("id={$id}")->find();
+			$data=M('houseinfo')->where("id={$id}")->find();
 			$this->assign('data',$data);
 			$this->display();
 		}
