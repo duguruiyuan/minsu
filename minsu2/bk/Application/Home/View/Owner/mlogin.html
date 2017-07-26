@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta content="fullscreen=yes,preventMove=yes" name="ML-Config">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="yes" name="apple-touch-fullscreen">
+		<meta content="telephone=no,email=no" name="format-detection">
+		<link href="http://m.lianjia.com/favicon.ico" rel="apple-touch-icon-precomposed">
+		<link href="http://m.lianjia.com/favicon.ico" rel="Bookmark">
+		<link href="http://m.lianjia.com/favicon.ico" rel="apple-touch-icon">
+		<title>房客登录</title>
+
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/register/index.css" media="all">
+	</head>
+
+	<body>
+<div style="padding:0.5rem 0;padding-left: 0.8rem;font-size: 14px;background: #c3AB64;">
+	<a href="javascript:window.history.back();" style="color: #fff;">&lt; 返回</a>
+</div>
+		<div class="lj-pages">
+			<section class="d-page" page-model="user/userform">
+				<div class="login-type">
+					<a href="#" class="actTap" actdata="panel=#loginType1">手机验证码登录</a>
+					<span class="arrow"></span>
+					<a style="text-align: right;color: #c3AB64;font-size: 12px" href="login">>>账号密码登录</a>
+				</div>
+				<form style="" class="tapPanel" id="loginType1" action="" method="post" autocomplete="off" >
+					<input name="redirect" disabled="disabled" class="redirect" value="" type="hidden">
+					<div class="form-list">
+						<ul>
+							<li>
+								<input class="f-text" name="phone" placeholder="请输入手机号" validate="notNull" validatename="手机号" required="required" type="text">
+							</li>
+							<li>
+								<input class="f-text" style="width:50%" type="text" name="captcha"/>
+								<img width="40%" height="50" alt="验证码" onclick="yanzheng()" src="verify_c?r=<?php echo rand()?>" id="verifyImg" title="点击刷新">
+							</li>
+							<li id="mpwd" style="display:none;">
+								<input class="f-text" name="pwd" placeholder="请输入手机动态码" validate="notNull" validatename="手机动态码" type="text">
+							</li>
+						</ul>
+					</div>
+					<p class="p-br">
+						<a href="#" class="btn actLogin" id="sendText">发送短信</a>
+						<a href="#" class="btn actLogin" id="login" style="display:none;">登录</a>
+					</p>
+				</form>
+				
+				<p class="p-br">
+					<a href="{:U('Guest/register')}" class="regist-a">立即注册</a>
+				</p>
+			</section>
+
+		</div>
+
+		<span id="cnzz_stat_icon_1253491255"></span><span id="cnzz_stat_icon_1254525948"></span>
+		<div style="display: none;"></div>
+	</body>
+	<script type="text/javascript" src="__PUBLIC__/Home/index.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/Home/common.js"></script>
+	<script src="__PUBLIC__/Admin/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/Admin/layer/1.9.3/layer.js"></script>
+	<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			var oid=getCookie('oid');
+			if(oid==null && navigator.userAgent.toLowerCase().indexOf("micromessenger") != -1) {
+		    	var url ='http://mei.vshijie.cn/bk/index.php/Home/Weixin/callOpenid?u='+encodeURIComponent(window.location.href);
+				window.location.href=url;
+				return;
+			}
+			$('#sendText').click(function(event) {
+				var phone = $('input[name=phone]').val();
+				var captcha = $('input[name=captcha]').val();
+				$.ajax({
+					url: "{:U('ajaxCaptcha')}",
+					type: 'post',
+					dataType: 'json',
+					data: {phone:phone,captcha:captcha},
+					success:function(Data){
+						if (Data.status==1) {
+				            layer.msg('手机号未注册', {icon: 5,time: 2000});
+				        };
+			            if (Data.status==2) {
+			              	layer.msg('验证码不正确', {icon: 5,time: 2000});
+			            };
+			            if (Data.status=='ok') {
+			              	$('#login').show();
+			              	$('#mpwd').show();
+			              	$('#sendText').hide();
+			            };
+					}
+				});
+			});
+			$('#login').click(function(event) {
+				var phone = $('input[name=phone]').val();
+				var pwd = $('input[name=pwd]').val();
+				$.ajax({
+					url: "{:U('ajaxMlogin')}",
+					type: 'post',
+					dataType: 'json',
+					data: {phone:phone,pwd:pwd,openid:oid},
+					success:function(Data){
+						if (Data.status==1) {
+				            layer.msg('手机号不正确', {icon: 5,time: 2000});
+				        };
+			            if (Data.status==2) {
+			              	layer.msg('手机动态码不正确', {icon: 5,time: 2000});
+			            };
+			            if (Data.status==3) {
+			              	layer.msg('用户被锁定,请联系客服', {icon: 5,time: 2000});
+			            };
+			            if (Data.status=='ok') {
+			              	setTimeout(window.location.href=Data.redirect,10);
+			            };
+					}
+				});
+			});
+		})
+		
+		function yanzheng(){
+	      var im=document.getElementById("verifyImg");
+	      im.src="verify_c?r=<?php echo rand()?>";
+	    }
+	</script>
+</html>
