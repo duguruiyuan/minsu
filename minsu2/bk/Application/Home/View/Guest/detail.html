@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+		<meta content="fullscreen=yes,preventMove=yes" name="ML-Config">
+
+		<meta content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" name="viewport">
+
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="yes" name="apple-touch-fullscreen">
+		<meta content="telephone=no,email=no" name="format-detection">
+
+		<title>美丽新乡村-预订乡居</title>
+		
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/release/index.css" media="all">
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/details/index.css" media="all">
+		<link rel="stylesheet" href="__PUBLIC__/Admin/laydate/need/laydate.css">
+		<style>
+		.text{
+			width: 70%;
+			height: 2rem;
+			border: 1px solid #ccc;
+			border-radius: 3px;
+			padding: 0 1rem;
+		}
+		.appoint {
+			border: none;
+			background: #c3AB64;
+			color: #FFFFFF;
+			padding: 0.5rem;
+			width:48%;
+			display:inline;
+			font-size:16px;
+		}
+		.fee {
+			border: none;
+			background: #FFFFFF;
+			padding: 0.5rem;
+			width:48%;
+			display:inline;
+			font-size:16px;
+		}
+		</style>
+	</head>
+
+	<body>
+		<div class="lj-pages">
+			<section style="" class="d-page" page-model="yezhu/yezhu">
+				<div class="yezhu-wrapper">
+					<div class="list">
+						<div class="step stepon steps" data-page="step1">
+							<div class="header"  style="z-index: 0;">
+								<span class="tips" >
+									<a  href="javascript:window.history.back();">&nbsp;&nbsp;<i></i>返回</a>
+								</span>
+								<span class="title">{$result.name}</span>
+							</div>
+							
+							<ul class="stepChange" style="padding-top: 1.25rem;margin-top: 0px;">
+								<li>您的订单详情:</li><hr/>
+								<li><span style="font-size:20px;font-weight:bold;">
+									<?php if($result['type']==0):?>
+			                            <span>院子</span>
+			                        <?php elseif($result['type']==1):?>
+			                            <span>窑洞</span>
+			                        <?php elseif($result['type']==2):?>
+			                            <span>木屋</span>
+			                        <?php elseif($result['type']==3):?>
+			                            <span>别墅</span>
+			                        <?php endif?>
+			                        +
+			                        <?php if($result['bed_type']==0):?>
+			                            <span>高级大床房</span>
+			                        <?php elseif($result['bed_type']==1):?>
+			                            <span>标准间</span>
+			                        <?php elseif($result['bed_type']==2):?>
+			                            <span>三人间</span>
+			                        <?php endif?>
+								</span>
+								</li>
+								<li>
+									<label id="sessionBegin">{$result.begin_time}</label>&nbsp;
+									<label id="sessionEnd">{$result.end_time}</label>
+									&nbsp;住{$result.amount}晚共{$result.r_fee}元
+								</li>
+
+								<li>
+									<table width="100%">
+										<tr><td style="width: 48px;">设施：</td>
+											<td style="font-size:14px;">
+											<span id="facility6" style="display:none;margin:2px;width:145px;"><span class="icons-facility6"></span>免费旅游交通图</span>
+							<span id="facility32" style="display:none;margin:2px;width:145px;"><span class="icons-facility32"></span>wifi无线上网</span>
+							<span id="facility30" style="display:none;margin:2px;width:145px;"><span class="icons-facility30"></span>中餐厅</span>
+							<span id="facility13" style="display:none;margin:2px;width:145px;"><span class="icons-facility13"></span>西餐厅</span>
+							<span id="facility16" style="display:none;margin:2px;width:145px;"><span class="icons-facility16"></span>会议厅</span>
+							<span id="facility39" style="display:none;margin:2px;width:145px;"><span class="icons-facility39"></span>洗衣服务</span>
+							<span id="facility10" style="display:none;margin:2px;width:145px;"><span class="icons-facility10"></span>行李寄存</span>
+							<span id="facility9" style="display:none;margin:2px;width:145px;"><span class="icons-facility9"></span>叫醒服务</span>
+							<span id="facility28" style="display:none;margin:2px;width:145px;"><span class="icons-facility28"></span>接机服务</span>
+							<span id="facility17" style="display:none;margin:2px;width:145px;"><span class="icons-facility17"></span>24小时前台服务</span>
+							<span id="facility5" style="display:none;margin:2px;width:145px;"><span class="icons-facility5"></span>免费洗漱用品</span>
+							<span id="facility4" style="display:none;margin:2px;width:145px;"><span class="icons-facility4"></span>免费瓶装水</span>
+							<span id="facility7" style="display:none;margin:2px;width:145px;"><span class="icons-facility7"></span>24小时热水</span>
+							<span id="facility34" style="display:none;margin:2px;width:145px;"><span class="icons-facility34"></span>电热水壶</span>
+							<span id="facility42" style="display:none;margin:2px;width:145px;"><span class="icons-facility42"></span>小冰箱</span>
+							<span id="facility8" style="display:none;margin:2px;width:145px;"><span class="icons-facility8"></span>吹风机</span>
+							</td>
+										</tr>
+									</table>
+								</li>
+							</ul>
+
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+		<!-- 其他模板的js文件引入的部份結束 -->
+		<script type="text/javascript" src="__PUBLIC__/Home/index.js"></script>
+		<script type="text/javascript" src="__PUBLIC__/Home/common.js"></script>
+		<script src="__PUBLIC__/Admin/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+		<!-- 其他模板的js文件引入的部份結束 -->
+	</body>
+
+    <script type="text/javascript">
+	        
+	        var facility = new Array({$result.facility});
+			$.each(facility,function(i,item){
+				$("#facility"+item).css("display","inline-block");
+			});
+	</script>
+</html>

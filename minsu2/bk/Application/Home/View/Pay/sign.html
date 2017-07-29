@@ -57,7 +57,7 @@
 						<div class="step stepon steps" data-page="step1">
 							<div class="header"  style="z-index: 0;">
 								<span class="tips" >
-									<a  href="javascript:window.history.back();"><i></i>返回</a>
+									<a  href="javascript:window.history.back();">&nbsp;&nbsp;<i></i>返回</a>
 								</span>
 								<span class="title">{$result.name}</span>
 							</div>
@@ -87,7 +87,7 @@
 									<label id="sessionBegin">{$Think.session.begin}</label>&nbsp;
 									<label id="sessionEnd">{$Think.session.end}</label>
 									&nbsp;住{$total}晚
-									<a id="changeDate" onclick="changeDate()" href="#"><font color="red">点此改日期</font></a>
+									<a id="changeDate" onclick="changeDate()" href="#"><font color="red">点此可修改订单日期</font></a>
 								</li>
 								<li id="beginLi" style="display:none;">
 									<input type="text" id="beginTime" class="text laydate-icon" style="height: 2.1875rem;width: 100%;border-radius: 0.1875rem;text-align: center;"
@@ -306,5 +306,9 @@
 	        	$("#beginLi").show();
 	        	$("#endLi").show();
 	        }
+	        	        var facility = new Array({$result.facility});
+			$.each(facility,function(i,item){
+				$("#facility"+item).css("display","inline-block");
+			});
 	</script>
 </html>

@@ -387,14 +387,23 @@
   <script type="text/javascript">
 
   $(function(){
- $('input[type=checkbox]').change(function(){
-    $('#facility').val($('input[type=checkbox]:checked').map(function(){return this.value}).get().join(','))
+	  $('#facilityLi input[type=checkbox]').change(function(){
+	    $('#facility').val($('#facilityLi input[type=checkbox]:checked').map(function(){return this.value}).get().join(','))
+	  });
+	  $('#tagsLi input[type=checkbox]').change(function(){
+	    $('#tags').val($('#tagsLi input[type=checkbox]:checked').map(function(){return this.value}).get().join(','))
+	  });
   })
-
-var facility = new Array({$result.facility});
-$.each(facility,function(i,item){
-	$("input[type=checkbox][value="+item+"]").attr("checked","checked");
-});
+  
+	var facility = new Array({$result.facility});
+	$.each(facility,function(i,item){
+		$("#facilityLi input[type=checkbox][value="+item+"]").attr("checked","checked");
+	});
+		
+	var tags = '{$result.tags}'.split(',');
+	$.each(tags,function(i,item){
+		$("#tagsLi input[type=checkbox][value="+item+"]").attr("checked","checked");
+	});
 
     $(document).on('click','.additem', function() {
         // 找到父级的div

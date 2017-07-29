@@ -11,7 +11,7 @@
 
 		<meta content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" name="viewport">
 
-		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-tstatus-bar-style" content="black">
 		<meta content="yes" name="apple-mobile-web-app-capable">
 		<meta content="yes" name="apple-touch-fullscreen">
 		<meta content="telephone=no,email=no" name="format-detection">
@@ -146,14 +146,16 @@
 			</div>
 			<?php if($_SESSION['gid']):?>
 			<div class="home-list p-list">
-				<h2>我的预定</h2>
+				<h2 style="font-size:16px;">我的预定</h2>
 				<ul class="fang-list">
 				<?php if(count($data)>0):?>
 				<foreach name='data' item='v' key='k'>
 					<li>
-						<a href="{:U('House/index',array('id'=>$v['hid']))}" class="actIamlink" title="美丽新乡村"><img data-listen="1" class="lazyload" alt="美丽新乡村" src="__ROOT__/Uploads/{$v.list_pic}" >
+						<a href="{:U('Guest/detail',array('id'=>$v['id']))}" class="actIamlink"><img data-listen="1" class="lazyload" src="__ROOT__/Uploads/{$v.list_pic}" >
 							<p class="f-title"  title="{$v.name}" style="padding-right:2rem;">{$v.name}</p>
+							<p>{$v.province}{$v.city}{$v.county}{$v.address}</p>
 							<p>
+							<!-- 
 								<span style="display:block;">
 									<?php if($r['type']==0):?>
 			                            <span>院子</span>
@@ -172,22 +174,22 @@
 			                        <?php elseif($r['bed_type']==2):?>
 			                            <span>三人间</span>
 			                        <?php endif?>
-								</span>
+								</span> -->
 								<span style="display:block;">￥{$v.r_fee}</span>
 								<span style="display:block;">
-									<?php if($v['status']==1):?>
+									<?php if($v['tstatus']==1):?>
 									<a href="http://mei.vshijie.cn/bk/index.php/Home/Pay/sign?hid={$v.hid}" class="tag">您已预订,点击续订</a>
-									<?php elseif($v['status']==3):?>
+									<?php elseif($v['tstatus']==3):?>
 									<a href="javascipt:;" class="tag">您已经提交退款申请</a>
-									<?php elseif($v['status']==4):?>
+									<?php elseif($v['tstatus']==4):?>
 									<a href="javascipt:;" class="tag">您的退款已经受理</a>
-									<?php elseif($v['status']==5):?>
+									<?php elseif($v['tstatus']==5):?>
 									<a href="javascipt:;" class="tag">您的退款已返钱完毕</a>
-									<?php elseif($v['status']==6):?>
+									<?php elseif($v['tstatus']==6):?>
 									<a href="javascipt:;" class="tag">您的退款申请被拒绝</a>
-									<?php elseif($v['status']==7):?>
+									<?php elseif($v['tstatus']==7):?>
 									<a href="{:U('Guest/comment',array('qid'=>$v['id']))}" class="tag">评价赚积分</a>
-									<?php elseif($v['status']==8):?>
+									<?php elseif($v['tstatus']==8):?>
 									<a href="javascipt:;" class="tag">已评价</a>
 									<?php endif?>
 								</span>

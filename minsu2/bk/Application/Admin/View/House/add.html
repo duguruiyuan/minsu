@@ -143,33 +143,61 @@
                 <label for="exampleInputEmail1">名称</label><span style="color:red">*</span>
                 <input type="text" name="name" class="form-control" placeholder="最主要的信息描述" required="required" value="">
               </div>
-              <div class="form-group">
-                  <label>类型</label>
-                  <select name="type" class="form-control" id="product_1">
-                      <option value='0'>经济型</option>
-                      <option value='1'>舒适性</option>
-                      <option value='2'>高端度假</option>
+            <div class="form-group">
+                <label>类型</label><span style="color:red">*</span>
+            	<select name="type"  class="form-control" id="product_1">
+                      <option value='0' <?php if($v['type']==0):?>selected<?php endif?>>院子</option>
+                      <option value='1' <?php if($v['type']==1):?>selected<?php endif?>>窑洞</option>
+                      <option value='2' <?php if($v['type']==2):?>selected<?php endif?>>木屋</option>
+                      <option value='3' <?php if($v['type']==3):?>selected<?php endif?>>别墅</option>
                   </select>
-              </div>
+            </div>
+            <div class="form-group">
+                <label>房型</label><span style="color:red">*</span>
+            	<select name="bed_type"  class="form-control" id="product_1">
+                      <option value='0' <?php if($v['bed_type']==0):?>selected<?php endif?>>高级大床房</option>
+                      <option value='1' <?php if($v['bed_type']==1):?>selected<?php endif?>>标准间</option>
+                      <option value='2' <?php if($v['bed_type']==2):?>selected<?php endif?>>三人间</option>
+                  </select>
+            </div>
              <div class="form-group">
                 <label for="exampleInputEmail1">总房间数</label><span style="color:red">*</span>
-                <input type="number" name="total" class="form-control" placeholder="房间数" required="required" value="">
+                <input type="number" name="total" class="form-control" placeholder="房间数" required="required" value="{$result.total}">
               </div>
              <div class="form-group">
                 <label for="exampleInputEmail1">每晚收费</label><span style="color:red">*</span>
-                <input type="number" step="0.01" name="price" class="form-control" placeholder="一天多少钱" required="required" value="">
+                <input type="number" step="0.01" name="price" class="form-control" placeholder="一天多少钱" required="required" value="{$result.price}">
               </div>
-               <div class="form-group">
-               	<input type="checkbox" id="facility1" value="1"/><label>无线上网</label>
-               	<input type="checkbox" id="facility2" value="2"/><label>停车场</label>
-               	<input type="checkbox" id="facility3" value="3"/><label>热水洗浴</label>
-               	<input type="checkbox" id="facility4" value="4"/><label>洗漱用品</label>
-               	<input type="checkbox" id="facility5" value="5"/><label>叫醒服务</label>
-               	<input type="checkbox" id="facility6" value="6"/><label>吹风机</label>
-               	<input type="checkbox" id="facility7" value="7"/><label>行李寄存</label>
-               	<input type="checkbox" id="facility8" value="8"/><label>早餐</label>
-               	<input type="hidden" name="facility" id="facility" value=""/>
+              <div class="form-group" id="facilityLi">
+              	<div>
+              	<label for="exampleInputEmail1">房屋设施</label><span style="color:red">*</span>
+              	</div>
+               	<span style="display:inline-block;margin:2px;width:165px;"><input type="checkbox" id="facility6" value="6"/><span class="icons-facility6"></span>免费旅游交通图</span>
+				<span style="display:inline-block;margin:2px;width:165px;"><input type="checkbox" id="facility32" value="32"/><span class="icons-facility32"></span>wifi无线上网</span>
+				<span style="display:inline-block;margin:2px;width:165px;"><input type="checkbox" id="facility30" value="30"/><span class="icons-facility30"></span>中餐厅</span>
+				<span style="display:inline-block;margin:2px;width:165px;"><input type="checkbox" id="facility13" value="13"/><span class="icons-facility13"></span>西餐厅</span>
+				<span style="display:inline-block;margin:2px;width:165px;"><input type="checkbox" id="facility16" value="16"/><span class="icons-facility16"></span>会议厅</span>
+				<span style="display:inline-block;margin:2px;width:165px;"><input type="checkbox" id="facility39" value="39"/><span class="icons-facility39"></span>洗衣服务</span>
+				<span style="display:inline-block;margin:2px;width:165px;"><input type="checkbox" id="facility10" value="10"/><span class="icons-facility10"></span>行李寄存</span>
+				<span style="display:inline-block;margin:2px;width:165px;"><input type="checkbox" id="facility9" value="9"/><span class="icons-facility9"></span>叫醒服务</span>
+				<span style="display:inline-block;margin:2px;width:165px;"><input type="checkbox" id="facility28" value="28"/><span class="icons-facility28"></span>接机服务</span>
+				<span style="display:inline-block;margin:2px;width:165px;"><input type="checkbox" id="facility17" value="17"/><span class="icons-facility17"></span>24小时前台服务</span>
+				<span style="display:inline-block;margin:2px;width:165px;"><input type="checkbox" id="facility5" value="5"/><span class="icons-facility5"></span>免费洗漱用品</span>
+				<span style="display:inline-block;margin:2px;width:165px;"><input type="checkbox" id="facility4" value="4"/><span class="icons-facility4"></span>免费瓶装水</span>
+				<span style="display:inline-block;margin:2px;width:165px;"><input type="checkbox" id="facility7" value="7"/><span class="icons-facility7"></span>24小时热水</span>
+				<span style="display:inline-block;margin:2px;width:165px;"><input type="checkbox" id="facility34" value="34"/><span class="icons-facility34"></span>电热水壶</span>
+				<span style="display:inline-block;margin:2px;width:165px;"><input type="checkbox" id="facility42" value="42"/><span class="icons-facility42"></span>小冰箱</span>
+				<span style="display:inline-block;margin:2px;width:165px;"><input type="checkbox" id="facility8" value="8"/><span class="icons-facility8"></span>吹风机</span>
+               	<input type="hidden" name="facility" id="facility" value="{$result.facility}"/>
                </div>
+            <div class="form-group" id="tagsLi">
+               <div><label for="exampleInputEmail1">标签</label></div>
+               	<input type="checkbox" id="tag1" value="主题乡居"/><label style="margin-right:7px;">主题乡居</label>
+               	<input type="checkbox" id="tag2" value="特价乡居"/><label style="margin-right:7px;">特价乡居</label>
+               	<input type="checkbox" id="tag3" value="热门乡居"/><label style="margin-right:7px;">热门乡居</label>
+               	<input type="checkbox" id="tag4" value="少数民族"/><label style="margin-right:7px;">少数民族</label>
+               	<input type="hidden" name="tags" id="tags" value=""/>
+              </div>
               <div class="form-group">
                 <label for="exampleInputEmail1">其他详情</label>
                 <script id="editor" style="z-index:-5;" type="text/plain" style="width:1024px;height:500px;" name='details'></script>
@@ -209,11 +237,25 @@
   <script type="text/javascript" src="__PUBLIC__/Admin/area.js"></script>
   <script type="text/javascript">
   _init_area();
+
   $(function(){
-	   $('input[type=checkbox]').change(function(){
-	    $('#facility').val($('input[type=checkbox]:checked').map(function(){return this.value}).get().join(','))
+	  $('#facilityLi input[type=checkbox]').change(function(){
+	    $('#facility').val($('#facilityLi input[type=checkbox]:checked').map(function(){return this.value}).get().join(','))
 	  });
-   })
+	  $('#tagsLi input[type=checkbox]').change(function(){
+	    $('#tags').val($('#tagsLi input[type=checkbox]:checked').map(function(){return this.value}).get().join(','))
+	  });
+  })
+  
+	var facility = new Array({$result.facility});
+	$.each(facility,function(i,item){
+		$("#facilityLi input[type=checkbox][value="+item+"]").attr("checked","checked");
+	});
+		
+	var tags = '{$result.tags}'.split(',');
+	$.each(tags,function(i,item){
+		$("#tagsLi input[type=checkbox][value="+item+"]").attr("checked","checked");
+	});
   </script>
   </body>
 </html>

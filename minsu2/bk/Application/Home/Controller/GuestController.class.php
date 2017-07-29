@@ -24,6 +24,13 @@ class GuestController extends Controller {
 		$this->display();
 	}
 	
+	public function detail($id) {
+		$sql="SELECT h.*, t.*, t.hid as hid, t.id as id, h.name as name,t.r_fee as r_fee,t.end_time as end_time, t.begin_time as begin_time FROM bk_houseinfo AS h INNER JOIN bk_h_time_queue AS t ON h.id=t.hid WHERE t.id=${id}";
+		$data=M()->query($sql);
+		$this->assign('result',$data[0]);
+		$this->display();
+	}
+	
 	public function home() {
 		$gid = session('gid');
 		if(!$gid) {
@@ -36,7 +43,7 @@ class GuestController extends Controller {
 		}
 		if($gid) {
 			$guest=M('guest')->WHERE("id=${gid}")->find();
-			$sql="SELECT t.hid as hid, t.id as id, h.name as name,t.r_fee as r_fee,t.end_time as end_time,h.list_pic as list_pic,t.status as status FROM bk_houseinfo AS h INNER JOIN bk_h_time_queue AS t ON h.id=t.hid WHERE t.r_id={$gid} ORDER BY t.id DESC";
+			$sql="SELECT h.*,t.hid as hid, t.id as id, h.name as name,t.r_fee as r_fee,t.end_time as end_time,h.list_pic as list_pic,t.status as tstatus FROM bk_houseinfo AS h INNER JOIN bk_h_time_queue AS t ON h.id=t.hid WHERE t.r_id={$gid} ORDER BY t.status,t.id DESC";
 			$data=M()->query($sql);
 			foreach ($data as $key => $value) {
 				if($value['status']==1 && strtotime($value['end_time'])<time()) {
