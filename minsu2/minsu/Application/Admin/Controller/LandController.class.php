@@ -127,27 +127,15 @@ class LandController extends AuthController {
 	}
 
 	//删除方法
-	public function del($hid)
+	public function del($id)
 	{
-		$uiid = M('landinfo')->field('userinfo_uiid,list_pic')->where("hid={$hid}")->find();
-		$frist = M('userinfo')->where("uiid={$uiid['userinfo_uiid']}")->delete();
+		$uiid = M('landinfo')->field('uid,list_pic')->where("id={$id}")->find();
+		$frist = M('userinfo')->where("uiid={$uiid['uid']}")->delete();
 		if (!$frist) {
 			$this->error('删除失败');
 		}
-		// 删除列表图
-		$list_pic = 'Uploads'.$uiid['list_pic'];
-		if(is_file($list_pic)) unlink($list_pic);
-		
-		$house_pic = M('landimg')->field('pic')->where("landinfo_hid={$hid}")->select();
 
-		foreach ($house_pic as $k => $v) {
-			$img = 'Uploads'.$v['pic'];
-			if(is_file($img)) unlink($img);
-		}
-
-		M('landimg')->where("landinfo_hid={$hid}")->delete();
-
-		$z = M('landinfo')->where("hid={$hid}")->delete();
+		$z = M('landinfo')->where("id={$id}")->delete();
 		if ($z) {
 			$this->success('删除成功');
 		}else{
