@@ -317,7 +317,7 @@
                	<input type="checkbox" id="tag2" value="特价乡居"/><label style="margin-right:7px;">特价乡居</label>
                	<input type="checkbox" id="tag3" value="热门乡居"/><label style="margin-right:7px;">热门乡居</label>
                	<input type="checkbox" id="tag4" value="少数民族"/><label style="margin-right:7px;">少数民族</label>
-               	<input type="hidden" name="tags" id="tags" value=""/>
+               	<input type="hidden" name="tags" id="tags" value="{$result.tags}"/>
              </li>
               <div class="form-group">
                 <label for="exampleInputEmail1">其他详情</label>
@@ -393,16 +393,15 @@
 	  $('#tagsLi input[type=checkbox]').change(function(){
 	    $('#tags').val($('#tagsLi input[type=checkbox]:checked').map(function(){return this.value}).get().join(','))
 	  });
-  })
   
 	var facility = new Array({$result.facility});
 	$.each(facility,function(i,item){
-		$("#facilityLi input[type=checkbox][value="+item+"]").attr("checked","checked");
+		$("#facilityLi input[value="+item+"]").attr("checked","checked");
 	});
 		
 	var tags = '{$result.tags}'.split(',');
 	$.each(tags,function(i,item){
-		$("#tagsLi input[type=checkbox][value="+item+"]").attr("checked","checked");
+		$("#tagsLi input[value="+item+"]").attr("checked","checked");
 	});
 
     $(document).on('click','.additem', function() {
@@ -432,9 +431,6 @@
     });
 
   })
-
-
   </script>
-
   </body>
 </html>
