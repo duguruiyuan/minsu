@@ -6,7 +6,7 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta content="fullscreen=yes,preventMove=yes" name="ML-Config">
-		<meta content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" name="viewport">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<meta content="yes" name="apple-mobile-web-app-capable">
 		<meta content="yes" name="apple-touch-fullscreen">
@@ -81,7 +81,6 @@
 		background: rgb(57, 172, 106);
 		font-size:16px;
 	}
-	
 		
 	.graybtn{
 		display: block;
@@ -95,6 +94,10 @@
 		background: #eee;
 		font-size:16px;
 	}
+
+	#detailDiv img{
+		width:100%
+	}	
     </style>
 
 	<body>
@@ -193,10 +196,8 @@
 				<a href="javascript:;" class="actIamlink gotomap" data-href="/bj/map/pos/?pos=116.382471,40.08696&amp;house_code=BJCP91853423" title="位置及周边" data-dianji="map_esfxq_/bj/BJCP91853423">
 					<div class="p-list">
 						<h3>房屋详情<span class="icon-go-right"></span></h3>
-						<ul class="map-ul">
-							<li>
-								<div>{$result.details}</div>
-							</li>
+							<div id="detailDiv" style="line-height: 2em;border: 1px solid rgb(226, 226, 226);width:100%">
+							{$result.details}</div>
 						</ul>
 					</div>
 				</a>

@@ -48,7 +48,6 @@ class PayController extends Controller{
 	}
 
 	public function ajaxSign() {
-		if(IS_AJAX) {
 			$begin=$_SESSION['begin'];
 	        $beginYear=((int)substr($begin,0,4));//年
     		$beginMonth=((int)substr($begin,7,2));//月
@@ -79,13 +78,12 @@ class PayController extends Controller{
 				$data = $this->payConfig($openid,$hid,$r_fee);
 				$this->ajaxReturn($data);
 			}
-		}
 		$data['status'] = 'no';
 		$this->ajaxReturn($data);
 	}
 	
 	public function payConfig($openid,$hid,$r_fee) {
-		$body='美丽新乡村-预订民宿支付';
+		$body='自在乡居-预订民宿支付';
 		$unifiedorder['total_fee']=100*$r_fee;
 		$unifiedorder['appid']=self::APP_ID;
 		$unifiedorder['mch_id']=self::MCH_ID;
@@ -137,14 +135,11 @@ class PayController extends Controller{
 		if($bTimeQueue) {
 			$guest = M('guest')->WHERE("openid='{$oid}'")->find();
 			$r_id=$guest['id'];
-			$r_name=$bTimeQueue['r_name'];
-			$r_phone=$bTimeQueue['r_phone'];
-			$r_sex=$bTimeQueue['r_sex'];
+			$bTimeQueue['r_name']=$guest['name'];
+			$bTimeQueue['r_phone']=$guest['phone'];
+			$bTimeQueue['r_sex']=$guest['sex'];
 			$createtime=date('Y-m-d H:i:s');
 			$bTimeQueue['createtime']=$createtime;
-			if(is_null($r_id)) {
-				$r_id=M('guest')->add(array('openid'=>$oid,'name'=>$r_name,'phone'=>$r_phone,'sex'=>$r_sex,'createtime'=>$createtime));
-			}
 			$bTimeQueue['status']=1;
 			$bTimeQueue['amount']=1;
 			$bTimeQueue['r_id']=$r_id;
@@ -158,8 +153,10 @@ class PayController extends Controller{
 				M()->execute($sql);
 				$begin_time=$begin_time+86400;
 			}
-			unset($_SESSION['b_time_queue']); 
-			sendText($r_phone,'【自在乡居】亲爱的村民，您的订单已确认。村支书温馨提示：入住前24小时内可免费取消或修改订单，如果不满24小时内的调整，则需要扣除当天房费，调整流程欢迎致电13718138279，祝您享用乡下美好时光！');
+			unset($_SESSION['b_time_queue']);
+			$house=M('houseinfo')->WHERE("id={$hid}")->find();
+			sendText($house['contact'],'【自在乡居】您好，您在自在乡居上发布的房源刚刚已经被人预定，请您尽快处理预约房源信息，提供更为及时周到的服务。生意兴隆从服务做起。');
+			sendText($bTimeQueue['r_phone'],'【自在乡居】亲爱的村民，您的订单已确认。村支书温馨提示：入住前24小时内可免费取消或修改订单，如果不满24小时内的调整，则需要扣除当天房费，调整流程欢迎致电13718138279，祝您享用乡下美好时光！');
 		}
 		header('Location: '.$u);
 	}

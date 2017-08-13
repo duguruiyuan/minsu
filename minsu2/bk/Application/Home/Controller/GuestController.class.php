@@ -112,6 +112,10 @@ class GuestController extends Controller {
 	}
 
 	public function login() {
+		$gid = session('gid');
+		if($gid && $_SESSION['redirect']) {
+			header('Location:'.$_SESSION['redirect']);
+		}
 		$this->display();
 	}
 
