@@ -21,6 +21,21 @@ class PayController extends Controller{
 		$this->display();
 	}
 	
+	public function civilian($id,$openid=null) {
+		if($openid==null) {
+			$openid=cookie('oid');
+		} 
+		
+		$data = M('civilianinfo')->where("id={$id}")->find();
+		$this->assign('img',M('civilian_pic')->where("lid={$id}")->select());
+		$this->assign('result',$data);
+		if($data['contact_charge']==1 && !is_null($openid)) {
+			$status = M('unlock_contact')->field('status')->where("hid={$funid} AND openid='{$openid}'  AND business=2")->find();
+			$this->assign('unlock_contact',$status['status']);
+		} 
+		$this->assign('ad',M('ad')->find());
+		$this->display();
+	}	
 		
 	public function house($hid,$openid=null) {
 		$num = mt_rand(3,4);

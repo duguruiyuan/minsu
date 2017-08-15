@@ -155,7 +155,7 @@ class PayController extends Controller{
 			}
 			unset($_SESSION['b_time_queue']);
 			$house=M('houseinfo')->WHERE("id={$hid}")->find();
-			sendText($house['contact'],'【自在乡居】您好，您在自在乡居上发布的房源刚刚已经被人预定，请您尽快处理预约房源信息，提供更为及时周到的服务。生意兴隆从服务做起。');
+			sendText($house['contact'],'【自在乡居】您好，您在自在乡居发布的乡居刚刚接到定单，请尽快处理订单信息，准备为客户提供及时周到的服务。生意兴隆从服务做起。');
 			sendText($bTimeQueue['r_phone'],'【自在乡居】亲爱的村民，您的订单已确认。村支书温馨提示：入住前24小时内可免费取消或修改订单，如果不满24小时内的调整，则需要扣除当天房费，调整流程欢迎致电13718138279，祝您享用乡下美好时光！');
 		}
 		header('Location: '.$u);

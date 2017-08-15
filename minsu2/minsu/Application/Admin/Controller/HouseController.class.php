@@ -346,7 +346,7 @@ class HouseController extends AuthController
 		$date= array();
 		$click= array();
 		if($dt==0) {
-			$sql='SELECT * FROM ms_house_click LIMIT 53';
+			$sql='SELECT * FROM ms_house_click  ORDER BY date desc LIMIT 53';
 			$data=M()->query($sql);
 			foreach ($data as $k => $v) {
 				array_push($date,$v['date']);
@@ -356,7 +356,7 @@ class HouseController extends AuthController
 			$weekSql='SELECT WEEK(now(),1)as week';
 			$week=(M()->query($weekSql));
 			$week=$week[0]['week'];
-			$sql='SELECT WEEK(date,1)as date,SUM(click) as click FROM ms_house_click GROUP BY WEEK(date,1)';
+			$sql='SELECT WEEK(date,1)as date,SUM(click) as click FROM ms_house_click GROUP BY WEEK(date,1) ORDER BY date desc';
 			$data=M()->query($sql);
 			foreach ($data as $k => $v) {
 				$dateDisplay =$week-$v['date'];
@@ -371,7 +371,7 @@ class HouseController extends AuthController
 				array_push($click,$v['click']);
 			}
 		} else {
-			$sql='SELECT substring(date,1,7) AS date, sum(click) as click FROM ms_house_click GROUP BY substring(date,1,7)';
+			$sql='SELECT substring(date,1,7) AS date, sum(click) as click FROM ms_house_click GROUP BY substring(date,1,7) ORDER BY date desc';
 			$data=M()->query($sql);
 			foreach ($data as $k => $v) {
 				array_push($date,$v['date']);
