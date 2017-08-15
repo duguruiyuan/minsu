@@ -16,7 +16,7 @@
 		<meta content="yes" name="apple-touch-fullscreen">
 		<meta content="telephone=no,email=no" name="format-detection">
 
-		<title>美丽新乡村-土地投资留言</title>
+		<title>美丽新乡村-民宅合作留言</title>
 		
 		<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/release/index.css" media="all">
 	</head>
@@ -29,7 +29,7 @@
 				<div class="yezhu-wrapper">
 					<div class="list">
 						<div class="step stepon steps" data-page="step1">
-							<div class="header"  style="z-index: 0;"><span class="tips" ><a  href="javascript:window.history.back();"><i></i>返回</a></span><span class="title">土地投资留言</span></div>
+							<div class="header"  style="z-index: 0;"><span class="tips" ><a  href="javascript:window.history.back();"><i></i>返回</a></span><span class="title">民宅合作留言</span></div>
 
 							<ul class="stepChange" style="padding-top: 1.25rem;margin-top: 0px;">
 								<pre style="font-size:0.9rem;">
@@ -85,7 +85,7 @@
 			};
 
 			$.ajax({
-				url: "{:U('Land/ajaxInterested')}",
+				url: "{:U('Civilian/ajaxInterested')}",
 				type: 'POST',
 				dataType: 'json',
 				data: {name: name,mail: mail,phone: phone,message: message,lid:lid},
@@ -95,7 +95,7 @@
 							icon: 1,
 							time: 2000 //2秒关闭（如果不配置，默认是3秒）
 						}, function(){
-							window.location.href="{:U('Land/index')}";
+							window.location.href="{:U('Civilian/index')}";
 						}); 
 					};
 
@@ -104,9 +104,6 @@
 					};
 				}
 			})
-			
-			
-
 		});
 	})
 

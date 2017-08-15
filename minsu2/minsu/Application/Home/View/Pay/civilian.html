@@ -102,12 +102,13 @@
 						    </div>
 						</div>
 					</div>
-					<div class="like-box ershoufang-like" is_followed="0">
+					<div class="like-box ershoufang-like">
 						<h1 class="title" title="{$result.name}" style="width:100%">{$result.name}</h1>
-						<input type="hidden" name="login_uid" value="{$Think.session.login_id}">
+						<input type="hidden" name="login_uid" value="{$Think.session.login_id}"/>
+					</div>
 						<div class="main-detail">
 							<div style="width:50%">
-								<p>售价</p>
+								<p>投资最低额度</p>
 								<p>{$result.price}</p>
 							</div>
 							<div style="width:50%">
@@ -124,13 +125,16 @@
 								<?php if ($result['coop_type'] ==2): ?>整体转让<?php endif ?>
 							</p>
 						</li>
+						<li><span class="left">权益回报：</span>
+							<p class="d-value">{$result.return}</p>
+						</li>
 						<li><span class="left">内部配套：</span>
 							<p class="d-value">{$result.facility}</p>
 						</li>
 						<li><span class="left">交通描述：</span>
 							<p class="d-value">{$result.traffic}</p>
 						</li>
-						<li><span class="left">土地地址：</span>
+						<li><span class="left">房屋地址：</span>
 							<p class="d-value">{$result.address}</p>
 						</li>
 						<li><span class="left">周边环境：</span>
