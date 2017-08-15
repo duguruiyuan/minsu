@@ -30,7 +30,7 @@ class PayController extends Controller{
 		$this->assign('img',M('civilian_pic')->where("lid={$id}")->select());
 		$this->assign('result',$data);
 		if($data['contact_charge']==1 && !is_null($openid)) {
-			$status = M('unlock_contact')->field('status')->where("hid={$funid} AND openid='{$openid}'  AND business=2")->find();
+			$status = M('unlock_contact')->field('status')->where("hid={$id} AND openid='{$openid}'  AND business=-1")->find();
 			$this->assign('unlock_contact',$status['status']);
 		} 
 		$this->assign('ad',M('ad')->find());

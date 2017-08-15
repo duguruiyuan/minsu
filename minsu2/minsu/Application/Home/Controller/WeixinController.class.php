@@ -177,7 +177,7 @@ class WeixinController extends Controller{
 
 	public function ajaxTimelineUnlock($openid,$hid,$u,$business) {
 		$data = M('unlock_contact')->where("hid={$hid} AND openid='{$openid}' AND business={$business}")->find();
-		$contact=array('openid'=>$openid,'hid'=>$hid,'type'=>0,'status'=>1);
+		$contact=array('openid'=>$openid,'hid'=>$hid,'type'=>0,'status'=>1,business=>$business);
 		if(is_null($data['id'])) {
 			M('unlock_contact')->add($contact);
 		} else {
